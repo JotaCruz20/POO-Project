@@ -1,16 +1,13 @@
-import java.util.Date;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class Tarefa {
-    protected Date dataInicio;
+    protected GregorianCalendar dataInicio;
     protected double duracao;
-    protected Date dataFim;
+    protected GregorianCalendar dataFim;
     protected Pessoa pessoaResponsavel;
 
     public double getTaxaEsforco(){
         return 0;
-    }
-
-    public static void main(String[] args) {
-
     }
 }
