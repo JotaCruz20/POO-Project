@@ -1,5 +1,5 @@
-import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Calendar;
 
 public class Tarefa {
     protected GregorianCalendar dataInicio;
@@ -7,7 +7,6 @@ public class Tarefa {
     protected GregorianCalendar dataFim;
     protected Pessoa pessoaResponsavel;
 
-    public double getTaxaEsforco(){
-        return 0;
-    }
+    public double getTaxaEsforco(){ return 0; }
+
 }

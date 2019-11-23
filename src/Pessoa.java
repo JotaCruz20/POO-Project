@@ -4,15 +4,25 @@ abstract class Pessoa {
     protected String nome;
     protected String email;
     protected double esforco;
-    protected ArrayList<Projeto> projetos;
     protected ArrayList<Tarefa> tarefas;
 
-    public double getCusto(){
-
+    public Pessoa(String nome, String email){
+        this.nome = nome;
+        this.email = email;
+        this.esforco = 0;
+        this.tarefas =null;
     }
 
-    @Override
+    public void toStringTarefas(){
+        for (int i=0;i<tarefas.size();i++){
+            System.out.println(tarefas.get(i));
+        }
+    }
+
+    public abstract double getCusto();
+
+    @Override //CORRIGIR!
     public String toString() {
-        return super.toString();
+        return "--"+nome.toUpperCase()+"--\nemail: "+email+"\nTarefas: "+tarefas+"\n";
     }
 }

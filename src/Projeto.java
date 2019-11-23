@@ -3,6 +3,7 @@ import java.util.Scanner;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+
 public class Projeto {
     private String nome;
     private String acron;
@@ -39,11 +40,7 @@ public class Projeto {
         }
     }
 
-    public int verificaData(int dia,int mes,int ano){
-        //acabar isto
-    }
-
-    public void criaTarefa(){
+    public void criaTarefa(Tarefa tarefa){
         String datai,nome_tarefa,nome_pessoa;
         String[] keep_data;
         long duracao;
@@ -111,11 +108,9 @@ public class Projeto {
     }
 
     public double custo(){
-
     }
 
     public void terminaProjeto(){
-
     }
 
     @Override
