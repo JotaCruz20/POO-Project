@@ -9,4 +9,8 @@ public class Tarefa {
 
     public double getTaxaEsforco(){ return 0; }
 
+    @Override
+    public String toString() {
+        return "Pessoa Responsavel: "+pessoaResponsavel.nome;
+    }
 }
