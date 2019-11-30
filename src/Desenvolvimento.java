@@ -10,6 +10,6 @@ public class Desenvolvimento extends Tarefa {
     }
 
     public double getTaxaEsforco(){
-
+        return 0;
     }
 }

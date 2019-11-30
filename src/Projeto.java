@@ -40,7 +40,7 @@ public class Projeto {
         }
     }
 
-    public void criaTarefa(Tarefa tarefa){
+    /*public void criaTarefa(Tarefa tarefa){
         String datai,nome_tarefa,nome_pessoa;
         String[] keep_data;
         long duracao;
@@ -85,7 +85,7 @@ public class Projeto {
                 System.out.println("Data inválida");
             }
         }
-    }
+    }*/
 
     public void eliminaTarefa(Tarefa tarefa){
 
@@ -107,8 +107,8 @@ public class Projeto {
 
     }
 
-    public double custo(){
-    }
+    /*public double custo(){
+    }*/
 
     public void terminaProjeto(){
     }
