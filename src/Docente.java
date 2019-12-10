@@ -12,6 +12,7 @@ public class Docente extends Pessoa {
         this.areaInvestigacao = areaInvestigacao;
         formandos = null;
         projetos = null;
+
     }
 
     public void adicionaFormando(Formando formando){
@@ -22,6 +23,11 @@ public class Docente extends Pessoa {
         for(int i=0;i<formandos.size();i++){
             System.out.println(formandos.get(i));
         }
+    }
+
+    @Override
+    public double duracaoTarefas() {
+        return 0;
     }
 
     public void adicionaProjeto(Projeto projeto){

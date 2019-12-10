@@ -1,16 +1,37 @@
 import java.util.GregorianCalendar;
-import java.util.Calendar;
 
 public class Tarefa {
     protected GregorianCalendar dataInicio;
     protected double duracao;
     protected GregorianCalendar dataFim;
     protected Pessoa pessoaResponsavel;
+    protected double perConclusao;
 
     public double getTaxaEsforco(){ return 0; }
 
+    public void atribuirPessoa(Pessoa pessoa){
+        this.pessoaResponsavel=pessoa;
+    }
+
+    public void setPerConclusao(double perConclusao){
+        this.perConclusao=perConclusao;
+    }
+
+    public double getPerConclusao() {
+        return perConclusao;
+    }
+
+    public double getDuracao() {
+        return duracao;
+    }
+
     @Override
     public String toString() {
-        return "Pessoa Responsavel: "+pessoaResponsavel.nome;
+        if(pessoaResponsavel!=null) {
+            return "Pessoa Responsavel: " + pessoaResponsavel.nome;
+        }
+        else{
+            return "Sem Pessoa Responsavel";
+        }
     }
 }

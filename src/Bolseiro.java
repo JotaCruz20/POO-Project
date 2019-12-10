@@ -32,8 +32,16 @@ abstract class Bolseiro extends Pessoa {
         this.projeto = projeto;
     }
 
-    public static String formatoData(GregorianCalendar data){
-        return data.get(Calendar.DAY_OF_MONTH)+" "+ data.get(Calendar.MONTH)+" "+data.get(Calendar.YEAR);
+    public String getDataFim() {
+        return dataInicio.get(Calendar.DAY_OF_MONTH)+" "+ dataInicio.get(Calendar.MONTH)+" "+dataInicio.get(Calendar.YEAR);
+    }
+
+    public double duracaoTarefas() {
+        double total = 0;
+        for (int i = 0; i < tarefas.size(); i++) {
+            total += tarefas.get(i).getDuracao();
+        }
+        return total;
     }
 
     /*@Override

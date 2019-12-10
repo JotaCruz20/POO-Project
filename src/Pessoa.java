@@ -19,6 +19,12 @@ abstract class Pessoa {
         }
     }
 
+    public abstract double duracaoTarefas();
+
+    public double getEsforco() {
+        return esforco;
+    }
+
     public abstract double getCusto();
 
     @Override //CORRIGIR!
