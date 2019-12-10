@@ -120,6 +120,7 @@ public class GereProjetos{
                             data[2] = Integer.parseInt(keep_data[2]);
                         }
                         projetos.get(projetosBox.getSelectedIndex()).gui(data[0], data[1], data[2]);
+                        frame.setVisible(false);
                     } catch (NumberFormatException ex) {
                         JOptionPane.showMessageDialog(null, "Ponha uma data correta entre /", "ERROR!", JOptionPane.PLAIN_MESSAGE);
 
@@ -145,6 +146,7 @@ public class GereProjetos{
             frameCriaProjeto.setTitle("Criar projeto novo");
             frameCriaProjeto.setSize(350,320);
             frameCriaProjeto.setLayout(new BorderLayout());
+            frameCriaProjeto.setLocationRelativeTo(null);
             frameCriaProjeto.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
             JPanel panelButoes = new JPanel();

@@ -8,19 +8,16 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-
-
 public class Projeto{
     private String nome;
     private String acron;
     private GregorianCalendar dataInicio;
-    private int duracao;
+    private int duracao,concluir;
     private GregorianCalendar dataFim;
-    private int numTarefas,concluir;
     private ArrayList<Tarefa> tarefas=new ArrayList<>();
     private Pessoa investigadrPrincipal;
-    private ArrayList<Pessoa> docentes=new ArrayList<>();
-    private ArrayList<Pessoa> bolseiros=new ArrayList<>();
+    private ArrayList<Pessoa> docentes;
+    private ArrayList<Pessoa> bolseiros;
     //gui main
     private JFrame frame;
     private JButton buttonCriaTarefa,buttonEliminaTarefa,buttonListaTarefaNConcluidas,buttonListaTarefasNaoIniciadas,buttonCusto,buttonConclusao,buttonAtualizarConclusao,buttonAtribuiTarefa;
@@ -40,9 +37,7 @@ public class Projeto{
     //gui lista
     private JFrame frameLista=new JFrame();
     //gui elimina
-    private JFrame frameElimina=new JFrame();
-    private JPanel panelElimina=new JPanel();
-    private JButton buttonElimina=new JButton();
+
     //gui atualiza
     private JFrame frameAtualiza=new JFrame();
     private JPanel panelAtualiza=new JPanel();
@@ -288,9 +283,18 @@ public class Projeto{
      */
     public DefaultListModel listaTarefasNaoConcluidas(){//falta mudar aqui para comparar a data com a duracao
         DefaultListModel list=new DefaultListModel();
-        for(int i=0;i<tarefas.size();i++){
-            if(tarefas.get(i).getPerConclusao()<0){
-                list.addElement(tarefas.get(i).toString());
+        String[] dataAtual;
+        String dataBuffer;
+        GregorianCalendar data1,data2;
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        for(int i=0;i<tarefas.size();i++) {
+            dataBuffer = labelInformacaoDataAtual.getText();
+            dataAtual = dataBuffer.split(" ");
+            dataAtual = dataAtual[2].split("/");
+            data1=new GregorianCalendar(Integer.parseInt(dataAtual[0]),Integer.parseInt(dataAtual[1]),Integer.parseInt(dataAtual[2]));
+            data2 = tarefas.get(i).dataInicio;
+            if (data2.compareTo(data1) > 0) {
+            list.addElement(tarefas.get(i).toString());
             }
         }
         return list;
@@ -332,7 +336,6 @@ public class Projeto{
         Pessoa pessoa = new Docente("Jose", "mail", 12, "Poop");
         Tarefa tarefa;
         data = new GregorianCalendar(ano, mes, dia);
-        this.numTarefas+=1;
         if(pessoa==null) {
             if (opcao==0) {
                 tarefa = new Desenvolvimento(data, duracaoEstimada);
@@ -568,7 +571,6 @@ public class Projeto{
             frame.setVisible(true);
             frameCria.setVisible(false);
             frameAtualiza.setVisible(false);
-            frameElimina.setVisible(false);
             frameLista.setVisible(false);
             frame.setVisible(true);
         }
@@ -599,7 +601,6 @@ public class Projeto{
                 panelLista.add(listaTarefas, BorderLayout.CENTER);
                 panelJuncao.add(panelLista, BorderLayout.CENTER);
                 panelJuncao.add(new JSeparator(SwingConstants.VERTICAL), BorderLayout.EAST);
-                frameElimina.setVisible(false);
                 frame.setVisible(true);
             }
         }
@@ -720,12 +721,13 @@ public class Projeto{
             panelAtualiza.add(buttonAtualiza);
             panelAtualiza.add(buttonVoltarAtras);
 
+            frameAtualiza.add(panelAtualiza);
+            frameAtualiza.setLocationRelativeTo(null);
             frameAtualiza.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
             frameAtualiza.setTitle("Atualizar Conclusao de uma tarefa");
-            frameAtualiza.setSize(300,150);
+            frameAtualiza.setSize(500,400);
             frameAtualiza.setVisible(true);
             frame.setVisible(false);
-            frameAtualiza.add(panelAtualiza);
         }
     }
 

@@ -25,6 +25,10 @@ public class Tarefa {
         return duracao;
     }
 
+    public GregorianCalendar getDataInicio() {
+        return dataInicio;
+    }
+
     @Override
     public String toString() {
         if(pessoaResponsavel!=null) {
