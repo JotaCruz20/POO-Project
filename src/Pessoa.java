@@ -19,6 +19,10 @@ abstract class Pessoa {
         }
     }
 
+    public String getNome() {
+        return nome;
+    }
+
     public abstract double duracaoTarefas();
 
     public double getEsforco() {

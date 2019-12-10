@@ -1,0 +1,11 @@
+Docente<Maria António<antonieta@meumail.com<001<Informatica
+Licenciado<João Semente<joaosementedegirassol@quentemail.com<8<2<2020
+Licenciado<Carlos Arraial<arraial@email.com<28<12<2022
+Mestre<Ana Patrício<joanapatricio@meumail.com<20<4<2021
+Docente<Rita Oliveira<oliveiral@mail.com<002<Biologia
+Licenciado<Pascoal Bonito<soubonito@mail.com<18<5<2021
+Doutorado<Angela Gonçalves<angelangela@quentemail.com<16<8<2025
+Mestre<Matilde Fernandes<matildx@maumail.com<11<3<2021
+Doutorado<Miguel Joelho<joanetes@mail.com
+Docente<Osvaldo Daniel<olvado@quentemail.com<003<Física
+Licenciado<Isabel Marques<isabelinha@meumail.com

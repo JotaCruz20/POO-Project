@@ -2,9 +2,56 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c5b9c3db-397d-4596-80e3-ec51db7d752d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/TextoPessoas.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TextoProjetos.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Bolseiro.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/Bolseiro.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Desenvolvimento.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/Desenvolvimento.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Design.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/Design.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Docente.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/Docente.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Documentacao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/Documentacao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Doutorado.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/Doutorado.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Formando.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/Formando.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/GUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/GUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/GereProjetos$addProjectAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/GereProjetos$addProjectAction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/GereProjetos$concluirAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/GereProjetos$concluirAction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/GereProjetos$fecharAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/GereProjetos$fecharAction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/GereProjetos$selecionarProjecto.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/GereProjetos$selecionarProjecto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/GereProjetos$voltarAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/GereProjetos$voltarAction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/GereProjetos.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/GereProjetos.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/GereProjetos�addProjectAction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/GereProjetos�comboBoxAction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/GereProjetos�concluirAction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/GereProjetos�fecharAction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/GereProjetos�selectProjectAction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/GereProjetos�voltarAction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Licenciado.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/Licenciado.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/META-INF/POO-Project.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Mestre.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/Mestre.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Pessoa.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/Pessoa.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Projeto$atualizaConclusao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/Projeto$atualizaConclusao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Projeto$buttonAtribuiTarefa.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/Projeto$buttonAtribuiTarefa.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Projeto$buttonAtualizaConclusao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/Projeto$buttonAtualizaConclusao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Projeto$buttonConcluir.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/Projeto$buttonConcluir.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Projeto$buttonEliminaTarefa.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/Projeto$buttonEliminaTarefa.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Projeto$buttonListaTarefasNaoConcluidas.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/Projeto$buttonListaTarefasNaoConcluidas.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Projeto$buttonListaTarefasNaoIniciadas.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/Projeto$buttonListaTarefasNaoIniciadas.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Projeto$buttonPrintCusto.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/Projeto$buttonPrintCusto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Projeto$buttonTarefa.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/Projeto$buttonTarefa.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Projeto$buttonVoltaAtras.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/Projeto$buttonVoltaAtras.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Projeto$criaTarefa.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/Projeto$criaTarefa.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Projeto.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/Projeto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Projeto�buttonCriaTarefa.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Projeto�buttonEliminaTarefa.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Projeto�buttonListaTarefa.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Projeto�buttonVoltaAtras.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Projeto�criaTarefa.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Projeto�eliminaTarefa.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Tarefa.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/Tarefa.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GereProjetos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GereProjetos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pessoa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pessoa.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Projeto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Projeto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Tarefa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tarefa.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,63 +79,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Projeto.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="283" column="55" selection-start-line="283" selection-start-column="55" selection-end-line="283" selection-end-column="55" />
+            <state relative-caret-position="442">
+              <caret line="65" column="5" selection-start-line="65" selection-start-column="5" selection-end-line="65" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2040#2371#0" />
-                <element signature="e#2754#2818#0" />
-                <element signature="e#2754#8217#0" />
-                <element signature="e#8253#8331#0" />
-                <element signature="e#8397#8485#0" />
-                <element signature="e#8397#8651#0" />
-                <element signature="e#8657#8737#0" />
-                <element signature="e#8802#8877#0" />
-                <element signature="e#8940#9146#0" />
-                <element signature="e#8940#9802#0" />
-                <element signature="e#9833#9972#0" />
-                <element signature="e#9833#10459#0" />
-                <element signature="e#10465#10572#0" />
-                <element signature="e#10465#10813#0" />
-                <element signature="e#10819#10962#0" />
-                <element signature="e#10705#11652#0" />
-                <element signature="e#11338#11445#0" />
-                <element signature="e#11338#11762#0" />
-                <element signature="e#11768#11887#0" />
-                <element signature="e#12346#12347#0" expanded="true" />
-                <element signature="e#12383#12384#0" expanded="true" />
-                <element signature="e#11972#12346#0" />
-                <element signature="e#13554#13699#0" />
-                <element signature="e#13554#13944#0" />
-                <element signature="e#13950#14134#0" />
-                <element signature="e#14594#14595#0" expanded="true" />
-                <element signature="e#14646#14647#0" expanded="true" />
-                <element signature="e#14263#14371#0" />
-                <element signature="e#14263#14625#0" />
-                <element signature="e#14644#14724#0" />
-                <element signature="e#21333#21422#0" />
-                <element signature="e#21333#22694#0" />
-                <element signature="e#22700#22782#0" />
-                <element signature="e#22700#23858#0" />
-                <element signature="e#23864#23935#0" />
-                <element signature="e#23864#25298#0" />
-                <element signature="e#25304#25395#0" />
-                <element signature="e#25304#27934#0" />
-                <element signature="e#27940#28015#0" />
-                <element signature="e#27940#30281#0" />
-                <element signature="e#30287#30389#0" />
-                <element signature="e#30287#31361#0" />
-                <element signature="e#31367#31426#0" />
-                <element signature="e#31367#32809#0" />
-                <element signature="e#32815#32892#0" />
-                <element signature="e#32815#34279#0" />
-                <element signature="e#34285#34335#0" />
-                <element signature="e#34285#34802#0" />
-                <element signature="e#34808#34874#0" />
-                <element signature="e#34808#35353#0" />
               </folding>
             </state>
           </provider>
@@ -101,6 +98,43 @@
               <caret line="28" column="25" selection-start-line="28" selection-start-column="25" selection-end-line="28" selection-end-column="25" />
               <folding>
                 <element signature="method#toString#0;class#Tarefa#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/GereProjetos.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="115">
+              <caret line="204" lean-forward="true" selection-start-line="204" selection-end-line="204" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="class#selecionarProjecto#0;class#GereProjetos#0" />
+                <element signature="class#addProjectAction#0;class#GereProjetos#0" />
+                <element signature="class#concluirAction#0;class#GereProjetos#0" />
+                <element signature="e#6667#6668#0" expanded="true" />
+                <element signature="e#6717#6718#0" expanded="true" />
+                <element signature="class#voltarAction#0;class#GereProjetos#0" />
+                <element signature="class#fecharAction#0;class#GereProjetos#0" />
+                <element signature="e#14186#14194#0" expanded="true" />
+                <element signature="e#16141#16149#0" expanded="true" />
+                <element signature="e#16772#16780#0" expanded="true" />
+                <element signature="e#18501#18502#0" expanded="true" />
+                <element signature="e#18555#18556#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Pessoa.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="13" column="5" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
+              <folding>
+                <element signature="e#513#514#0" expanded="true" />
+                <element signature="e#540#541#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -138,6 +172,10 @@
       <find>selecionarP</find>
       <find>selecionarPro</find>
       <find>new G</find>
+      <find>int duracao</find>
+      <find>selecionarProje</find>
+      <find>cria</find>
+      <find>seleciona</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -153,21 +191,23 @@
         <option value="$PROJECT_DIR$/src/Design.java" />
         <option value="$PROJECT_DIR$/src/Documentacao.java" />
         <option value="$PROJECT_DIR$/src/Desenvolvimento.java" />
-        <option value="$PROJECT_DIR$/src/Pessoa.java" />
         <option value="$PROJECT_DIR$/src/Bolseiro.java" />
         <option value="$PROJECT_DIR$/src/Docente.java" />
         <option value="$PROJECT_DIR$/src/GUI.java" />
-        <option value="$PROJECT_DIR$/src/GereProjetos.java" />
         <option value="$PROJECT_DIR$/src/Tarefa.java" />
+        <option value="$PROJECT_DIR$/TextoProjetos.txt" />
+        <option value="$PROJECT_DIR$/TextoPessoas.txt" />
+        <option value="$PROJECT_DIR$/src/Pessoa.java" />
         <option value="$PROJECT_DIR$/src/Projeto.java" />
+        <option value="$PROJECT_DIR$/src/GereProjetos.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="67" />
+    <option name="x" value="65" />
     <option name="y" value="25" />
-    <option name="width" value="927" />
-    <option name="height" value="1053" />
+    <option name="width" value="929" />
+    <option name="height" value="1055" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -177,31 +217,31 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="POO-Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="POO-Project" type="462c0819:PsiDirectoryNode" />
+              <item name="POOProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="POOProject" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="POO-Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="POO-Project" type="462c0819:PsiDirectoryNode" />
+              <item name="POOProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="POOProject" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Fichas/Ficha4/Futebol" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
@@ -288,6 +328,7 @@
       <workItem from="1575904309681" duration="18593000" />
       <workItem from="1575935002670" duration="208000" />
       <workItem from="1575970546713" duration="6435000" />
+      <workItem from="1575991250724" duration="1921000" />
     </task>
     <task id="LOCAL-00001" summary="push?">
       <created>1574542376348</created>
@@ -300,13 +341,44 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="129657000" />
+    <option name="totallyTimeSpent" value="131578000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
-    <editor active="true" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.31710017" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16845638" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Designer" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Learn" order="6" />
+      <window_info id="Favorites" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32937366" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39956802" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.3286119" />
+      <window_info anchor="bottom" id="Version Control" order="11" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.3261339" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Theme Preview" order="4" />
+      <window_info anchor="right" id="Maven" order="5" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Database" order="8" weight="0.32982844" />
+    </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16845638" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -336,7 +408,7 @@
       <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Database" order="8" weight="0.32982844" />
-    </layout>
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -429,45 +501,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pessoa.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="43" />
-          <folding>
-            <element signature="e#592#593#0" expanded="true" />
-            <element signature="e#783#784#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/GUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="433">
           <caret line="30" column="37" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GereProjetos.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="117" column="69" lean-forward="true" selection-start-line="117" selection-start-column="69" selection-end-line="117" selection-end-column="69" />
-          <folding>
-            <element signature="e#415#424#0" expanded="true" />
-            <element signature="e#479#487#0" expanded="true" />
-            <element signature="method#GereProjetos#0;class#GereProjetos#0" />
-            <element signature="class#addProjectAction#0;class#GereProjetos#0" />
-            <element signature="class#concluirAction#0;class#GereProjetos#0" />
-            <element signature="class#voltarAction#0;class#GereProjetos#0" />
-            <element signature="class#fecharAction#0;class#GereProjetos#0" />
-            <element signature="method#verificarData#0;class#GereProjetos#0" />
-            <element signature="method#formatoData#0;class#GereProjetos#0" />
-            <element signature="method#formatoGregorianCalendar#0;class#GereProjetos#0" />
-            <element signature="method#listaProjetos#0;class#GereProjetos#0" />
-            <element signature="e#13791#20536#0" />
-            <element signature="method#main#0;class#GereProjetos#0" />
           </folding>
         </state>
       </provider>
@@ -489,6 +528,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/TextoProjetos.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TextoPessoas.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="37" lean-forward="true" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Tarefa.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -499,62 +552,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pessoa.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="5" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
+          <folding>
+            <element signature="e#513#514#0" expanded="true" />
+            <element signature="e#540#541#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Projeto.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="283" column="55" selection-start-line="283" selection-start-column="55" selection-end-line="283" selection-end-column="55" />
+        <state relative-caret-position="442">
+          <caret line="65" column="5" selection-start-line="65" selection-start-column="5" selection-end-line="65" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2040#2371#0" />
-            <element signature="e#2754#2818#0" />
-            <element signature="e#2754#8217#0" />
-            <element signature="e#8253#8331#0" />
-            <element signature="e#8397#8485#0" />
-            <element signature="e#8397#8651#0" />
-            <element signature="e#8657#8737#0" />
-            <element signature="e#8802#8877#0" />
-            <element signature="e#8940#9146#0" />
-            <element signature="e#8940#9802#0" />
-            <element signature="e#9833#9972#0" />
-            <element signature="e#9833#10459#0" />
-            <element signature="e#10465#10572#0" />
-            <element signature="e#10465#10813#0" />
-            <element signature="e#10819#10962#0" />
-            <element signature="e#10705#11652#0" />
-            <element signature="e#11338#11445#0" />
-            <element signature="e#11338#11762#0" />
-            <element signature="e#11768#11887#0" />
-            <element signature="e#12346#12347#0" expanded="true" />
-            <element signature="e#12383#12384#0" expanded="true" />
-            <element signature="e#11972#12346#0" />
-            <element signature="e#13554#13699#0" />
-            <element signature="e#13554#13944#0" />
-            <element signature="e#13950#14134#0" />
-            <element signature="e#14594#14595#0" expanded="true" />
-            <element signature="e#14646#14647#0" expanded="true" />
-            <element signature="e#14263#14371#0" />
-            <element signature="e#14263#14625#0" />
-            <element signature="e#14644#14724#0" />
-            <element signature="e#21333#21422#0" />
-            <element signature="e#21333#22694#0" />
-            <element signature="e#22700#22782#0" />
-            <element signature="e#22700#23858#0" />
-            <element signature="e#23864#23935#0" />
-            <element signature="e#23864#25298#0" />
-            <element signature="e#25304#25395#0" />
-            <element signature="e#25304#27934#0" />
-            <element signature="e#27940#28015#0" />
-            <element signature="e#27940#30281#0" />
-            <element signature="e#30287#30389#0" />
-            <element signature="e#30287#31361#0" />
-            <element signature="e#31367#31426#0" />
-            <element signature="e#31367#32809#0" />
-            <element signature="e#32815#32892#0" />
-            <element signature="e#32815#34279#0" />
-            <element signature="e#34285#34335#0" />
-            <element signature="e#34285#34802#0" />
-            <element signature="e#34808#34874#0" />
-            <element signature="e#34808#35353#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GereProjetos.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="204" lean-forward="true" selection-start-line="204" selection-end-line="204" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="class#selecionarProjecto#0;class#GereProjetos#0" />
+            <element signature="class#addProjectAction#0;class#GereProjetos#0" />
+            <element signature="class#concluirAction#0;class#GereProjetos#0" />
+            <element signature="e#6667#6668#0" expanded="true" />
+            <element signature="e#6717#6718#0" expanded="true" />
+            <element signature="class#voltarAction#0;class#GereProjetos#0" />
+            <element signature="class#fecharAction#0;class#GereProjetos#0" />
+            <element signature="e#14186#14194#0" expanded="true" />
+            <element signature="e#16141#16149#0" expanded="true" />
+            <element signature="e#16772#16780#0" expanded="true" />
+            <element signature="e#18501#18502#0" expanded="true" />
+            <element signature="e#18555#18556#0" expanded="true" />
           </folding>
         </state>
       </provider>

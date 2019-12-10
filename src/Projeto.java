@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -8,11 +9,12 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Projeto{
+public class Projeto implements Serializable {
     private String nome;
     private String acron;
     private GregorianCalendar dataInicio;
-    private int duracao,concluir;
+    private double duracao;
+    private int concluir;
     private GregorianCalendar dataFim;
     private ArrayList<Tarefa> tarefas=new ArrayList<>();
     private Pessoa investigadrPrincipal;
@@ -53,7 +55,7 @@ public class Projeto{
      * @param dataFim Data de fim do Projeto
      * @param duracao Duração estimada do projeto
      */
-    public Projeto(String nome, String acron, GregorianCalendar dataInicio, GregorianCalendar dataFim, int duracao){
+    public Projeto(String nome, String acron, GregorianCalendar dataInicio, GregorianCalendar dataFim, double duracao){
         this.nome=nome;
         this.acron = acron;
         this.dataInicio = dataInicio;
@@ -61,6 +63,17 @@ public class Projeto{
         this.dataFim = dataFim;
         docentes = new ArrayList<Pessoa>(); //CORRIGIR
         bolseiros = new ArrayList<Pessoa>();
+    }
+
+    public Projeto(String nome, String acron,ArrayList<Tarefa> tarefas, ArrayList<Pessoa> bolseiros, ArrayList<Pessoa> docentes, GregorianCalendar dataInicio, GregorianCalendar dataFim, double duracao){
+        this.nome=nome;
+        this.acron = acron;
+        this.dataInicio = dataInicio;
+        this.duracao = duracao;
+        this.dataFim = dataFim;
+        this.docentes = docentes;
+        this.bolseiros = bolseiros;
+        this.tarefas = tarefas;
     }
 
     /**
@@ -180,7 +193,7 @@ public class Projeto{
      * Obter duracao do projecto
      * @return duracao do projeto
      */
-    public int getDuracao() {
+    public double getDuracao() {
         return duracao;
     }
 

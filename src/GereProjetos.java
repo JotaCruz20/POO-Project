@@ -2,42 +2,38 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-
 import static java.lang.System.exit;
+import static java.lang.System.setOut;
 
 
-public class GereProjetos{
+public class GereProjetos implements Serializable{
 
-    private ArrayList<Projeto> projetos=new ArrayList<Projeto>();
-    private ArrayList<Pessoa> pessoas=new ArrayList<Pessoa>();
+    private ArrayList<Projeto> projetos;
+    private ArrayList<Pessoa> pessoas;
 
     //GUI Menu
     private JFrame frame;
-    private JPanel optionPanel, nextPanel, selectProjectPanel;
-    private JButton addProjectButton;
-    private JLabel label;
-    private JButton closeButton, nextButton,selecionaProjecto;
-    JScrollPane listProjetosScroller;
-    JList projetosBox;
+    private JPanel selectProjectPanel;
+    private JButton nextButton;
+    private JList projetosBox;
     private int windowX, windowY;
 
     //gui CriaProjeto
     private JFrame frameCriaProjeto;
     private JTextField inputNome, inputAcron, inputDataInicio,inputDuracao,inputDataFim;
-    private JRadioButton diaRadio, mesRadio, anoRadio;
 
     public GereProjetos() {
         windowX = 300;
         windowY = 150;
 
-        ArrayList<Projeto> projetos = new ArrayList<>();
-        ArrayList<Projeto> pessoas = new ArrayList<>();
+        projetos = new ArrayList<>();
+        pessoas = new ArrayList<>();
+
+        lerFicheiro();
 
         int width = windowX - 2 * (windowX / 10);
         int height = width - width / 10;
@@ -49,19 +45,19 @@ public class GereProjetos{
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //optionPanel
-        optionPanel = new JPanel();
+        JPanel optionPanel = new JPanel();
         optionPanel.setLayout(new GridLayout(4, 1));
 
-        label = new JLabel("Escolha uma das seguintes opções");
+        JLabel label = new JLabel("Escolha uma das seguintes opções");
         label.setSize(width, height);
 
-        addProjectButton = new JButton("Adicionar projeto");
+        JButton addProjectButton = new JButton("Adicionar projeto");
         addProjectButton.setSize(width, height);
         addProjectButton.addActionListener(new addProjectAction());
 
         //DefaultListModel listaProjetosCriados = listaProjetos();
 
-        selecionaProjecto=new JButton("Abrir Projeto");
+        JButton selecionaProjecto=new JButton("Abrir Projeto");
         selecionaProjecto.setSize(width,height);
         selecionaProjecto.addActionListener(new selecionarProjecto());
 
@@ -73,25 +69,33 @@ public class GereProjetos{
         //selectProjectPanel.add(selectProjectBox);
         //selectProjectPanel.add(selectCreatedProjectButton);
 
-        closeButton = new JButton("Fechar");
+        JButton closeButton = new JButton("Fechar");
         closeButton.setSize(width,height);
         closeButton.addActionListener(new fecharAction());
 
-        nextPanel = new JPanel();
+        JPanel nextPanel = new JPanel();
 
         nextPanel.add(closeButton);
 
         selectProjectPanel = new JPanel();
 
+        projetosBox = new JList(listaProjetos());
+        projetosBox.setVisibleRowCount(3);
+        projetosBox.setFixedCellWidth(windowX - 2 * (windowX / 10));
+        selectProjectPanel.add(projetosBox);
+
+        JScrollPane listProjetosScroller = new JScrollPane(projetosBox);
+
+        selectProjectPanel.add(listProjetosScroller);
+
         frame.add(optionPanel,BorderLayout.NORTH);
         frame.add(selectProjectPanel,BorderLayout.CENTER);
         frame.add(nextPanel,BorderLayout.SOUTH);
-        selectProjectPanel.setVisible(false);
+        //selectProjectPanel.setVisible(tru);
         frame.setSize(500,500);
         frame.setLocationRelativeTo(null);
 
         frame.setVisible(true);
-
     }
 
     private class selecionarProjecto implements ActionListener{
@@ -138,7 +142,7 @@ public class GereProjetos{
         public void actionPerformed (ActionEvent e) {
             String nome, acron;
             GregorianCalendar dataInicio, dataFim;
-            int duracao;
+            double duracao;
 
             frame.setVisible(false);
 
@@ -146,15 +150,11 @@ public class GereProjetos{
             frameCriaProjeto.setTitle("Criar projeto novo");
             frameCriaProjeto.setSize(350,320);
             frameCriaProjeto.setLayout(new BorderLayout());
-            frameCriaProjeto.setLocationRelativeTo(null);
             frameCriaProjeto.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
             JPanel panelButoes = new JPanel();
             JPanel panelInfo = new JPanel();
-            ButtonGroup groupRadioButton = new ButtonGroup();
-            JPanel panelRadioButton = new JPanel();
             JPanel panelVazio = new JPanel();
-            JPanel panelVazio1 = new JPanel();
             panelInfo.setLayout(new GridLayout(7,1));
 
             JButton buttonConcluir = new JButton("Concluir");
@@ -186,19 +186,12 @@ public class GereProjetos{
 
             JLabel labelDuracao = new JLabel("Duração:");
             inputDuracao = new JTextField();
-            diaRadio = new JRadioButton("dia", true);
-            mesRadio = new JRadioButton("mes", false);
-            anoRadio = new JRadioButton("ano", false);
             panelInfo.add(labelDuracao);
             panelInfo.add(inputDuracao);
-            groupRadioButton.add(diaRadio);groupRadioButton.add(mesRadio);groupRadioButton.add(anoRadio);
-            panelRadioButton.add(diaRadio);panelRadioButton.add(mesRadio);panelRadioButton.add(anoRadio);
 
             JLabel labelDataFim = new JLabel("Data Fim");
             inputDataFim = new JTextField();
             inputDataFim.setEditable(false);
-            panelInfo.add(panelVazio1);
-            panelInfo.add(panelRadioButton);
 
             panelInfo.add(labelDataFim);
             panelInfo.add(inputDataFim);
@@ -213,78 +206,7 @@ public class GereProjetos{
     private class concluirAction implements ActionListener { //Após os dados terem sido inseridos, se esta opção for acionado, são verificados os dados e se estiverem criados é gerado um novo projeto, que é adicionado ao arrayList
         @Override
         public void actionPerformed (ActionEvent e) {
-            int duracao;
-            String nome, acron;
-
-            GregorianCalendar dataFim, dataInicio;
-
-            if (inputNome.getText().isEmpty() || inputAcron.getText().isEmpty() || inputDataInicio.getText().isEmpty() || inputDuracao.getText().isEmpty()){
-                JOptionPane.showMessageDialog(null,"Preencha todos os espaços");
-            }
-            else{
-                nome = inputNome.getText();
-                acron = inputAcron.getText();
-                String[] dataString = inputDataInicio.getText().split("/");
-                int[] dataInt = new int[3];
-                int flag = 0;
-                while (flag!=3) {
-                    for (int i=0;i<3;i++){
-                        try{
-                            dataInt[i] = Integer.parseInt(dataString[i]);
-                            flag++;
-                        }
-                        catch(NumberFormatException ex){
-                            JOptionPane.showMessageDialog(null, "Formato de data inválido");
-                        }
-                    }
-                }
-
-                if(verificarData(dataInt)) { //ALTERAR!
-                    dataInicio = new GregorianCalendar(dataInt[2],dataInt[1],dataInt[0]);
-
-                    try{
-                        duracao = Integer.parseInt(inputDuracao.getText());
-                        dataFim = dataInicio;
-
-                        if(diaRadio.isSelected()){
-                            dataFim.add(Calendar.DAY_OF_MONTH,duracao); //FAZER VERIFICAÇÃO PARA VER SE A DATA NÃO FICA MAL!
-                        }
-                        else if (mesRadio.isSelected()){
-                            dataFim.add(Calendar.MONTH,duracao );
-                        }
-                        else if(anoRadio.isSelected()){
-                            dataFim.add(Calendar.YEAR, duracao);
-                        }
-                        inputDataFim.setText(formatoData(dataFim));
-
-                        Projeto projeto = new Projeto(nome,acron,dataInicio,dataFim,duracao);
-                        projetos.add(projeto);
-                        JOptionPane.showMessageDialog(null,"Projeto criado com sucesso");
-                        selectProjectPanel.removeAll();
-
-                        projetosBox = new JList(listaProjetos());
-                        projetosBox.setVisibleRowCount(3);
-                        projetosBox.setFixedCellWidth(windowX - 2 * (windowX / 10));
-                        selectProjectPanel.add(projetosBox);
-
-                        listProjetosScroller = new JScrollPane(projetosBox);
-
-                        selectProjectPanel.add(listProjetosScroller);
-
-                        frame.setSize(windowX+150,windowY+200);
-                        frame.setLocationRelativeTo(null);
-                        selectProjectPanel.setVisible(true);
-                        frameCriaProjeto.setVisible(false);
-                        frame.setVisible(true);
-                    }
-                    catch (NumberFormatException ex){
-                        JOptionPane.showMessageDialog(null, "valor inválido de duração");
-                    }
-                }
-                else{
-                    JOptionPane.showMessageDialog(null, "Formato de data inválido");
-                }
-            }
+            concluirAdicionarProjeto();
         }
     }
 
@@ -295,7 +217,7 @@ public class GereProjetos{
             frameCriaProjeto.setVisible(false);
 
         }
-    } //feito e testado
+    }
 
     private class fecharAction implements ActionListener {
         @Override
@@ -304,14 +226,19 @@ public class GereProjetos{
             if(opcao==0){ //opção para sair selecionada
                 //DEBUG
                 System.out.println("sair\n");
+                /*for(Pessoa pessoa: pessoas){
+                    System.out.println(pessoa.getNome());
+                }*/
+
                 for (Projeto projeto:projetos){
-                    System.out.println(projetos);
+                    System.out.println(projeto.getNome());
                 }
-                //guardarFicheiro(/*FICHEIRO*/);
+
+                guardarFicheiro();
                 exit(0);
             }
         }
-    } //Falta adicionar o ficheiro; semi feito e testado
+    }
 
     private boolean verificarData(int[] data){
         if(data[1]>12 || data[0]<0 || data[2] < 2000){
@@ -327,13 +254,13 @@ public class GereProjetos{
         }
     }
 
-    private String formatoData(GregorianCalendar data){ //DÁ MAL!
+    private String formatoData(GregorianCalendar data){
         return data.get(Calendar.DAY_OF_MONTH)+"/"+data.get(Calendar.MONTH)+"/"+data.get(Calendar.YEAR);
     }
 
     private GregorianCalendar formatoGregorianCalendar(String data){
-        String[] dataSplit = data.split(":");
-        return new GregorianCalendar(Integer.parseInt(dataSplit[0]),Integer.parseInt(dataSplit[1]),Integer.parseInt(dataSplit[2]));
+        String[] dataSplit = data.split("-");
+        return new GregorianCalendar(Integer.parseInt(dataSplit[2]),Integer.parseInt(dataSplit[1]),Integer.parseInt(dataSplit[0]));
     }
 
     private DefaultListModel listaProjetos(){
@@ -344,31 +271,84 @@ public class GereProjetos{
         return list;
     }
 
-    /*public void lerFicheiro(){
-        String line;
+    private void concluirAdicionarProjeto(){
+        double duracao;
+        String nome, acron;
 
-        File ficheiro = new File("pathanemee");
+        GregorianCalendar dataFim, dataInicio;
+
+        if (inputNome.getText().isEmpty() || inputAcron.getText().isEmpty() || inputDataInicio.getText().isEmpty() || inputDuracao.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null,"Preencha todos os espaços");
+        }
+        else{
+            nome = inputNome.getText();
+            acron = inputAcron.getText();
+            String[] dataString = inputDataInicio.getText().split("/");
+            int[] dataInt = new int[3];
+            int flag = 0;
+            while (flag!=3) {
+                for (int i=0;i<3;i++){
+                    try{
+                        dataInt[i] = Integer.parseInt(dataString[i]);
+                        flag++;
+                    }
+                    catch(NumberFormatException ex){
+                        JOptionPane.showMessageDialog(null, "Formato de data inválido");
+                    }
+                }
+            }
+
+            if(verificarData(dataInt)) {
+                dataInicio = new GregorianCalendar(dataInt[2],dataInt[1],dataInt[0]);
+
+                try{
+                    duracao = Integer.parseInt(inputDuracao.getText());
+                    dataFim = dataInicio;
+
+                    double resto = duracao%1;
+                    int inteiro =  (int)(duracao - resto);
+
+                    //CORRIGIR
+                    dataFim.add(Calendar.MONTH,inteiro);
+                    dataFim.add(Calendar.DAY_OF_MONTH,(int)(resto*30));
+
+                    inputDataFim.setText(formatoData(dataFim));
+
+                    Projeto projeto = new Projeto(nome,acron,dataInicio,dataFim,duracao);
+                    projetos.add(projeto);
+                    JOptionPane.showMessageDialog(null,"Projeto criado com sucesso");
+                    //selectProjectPanel.removeAll();
+
+                    projetosBox.setModel(listaProjetos());
+
+                    frame.setSize(windowX+150,windowY+200);
+                    frame.setLocationRelativeTo(null);
+                    selectProjectPanel.setVisible(true);
+                    frameCriaProjeto.setVisible(false);
+                    frame.setVisible(true);
+                }
+                catch (NumberFormatException ex){
+                    JOptionPane.showMessageDialog(null, "valor inválido de duração");
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Formato de data inválido");
+            }
+        }
+    }
+
+    private void lerFicheiro() {
+        String line;
+        File ficheiroObjetos = new File("dados.obj");
         File textoPessoas = new File("TextoPessoas.txt");
         File textoProjetos = new File("TextoProjetos.txt");
 
-        if(ficheiro.exists() && ficheiro.isFile()){ //abre ficheiro de objetos
-            /*try{
-
-            }
-            catch (IOException ex) {
-                System.out.println("Erro a ler ficheiro.");
-            }
-            catch (ClassNotFoundException ex) {
-                System.out.println("Erro a converter objeto.");
-            }
-        }
-        else if (textoPessoas.isFile() && textoPessoas.exists() && textoProjetos.isFile() && textoProjetos.exists()) { //vai abrir o ficheiro de texto
-            //ler os vários parâmetros e guardar na lista ligada de pessoas
+        if (textoPessoas.isFile() && textoPessoas.exists()) { //vai abrir o ficheiro de texto
             try { //guardar pessoas
                 FileReader fr = new FileReader(textoPessoas);
                 BufferedReader br = new BufferedReader(fr);
                 while ((line = br.readLine()) != null) {
-                    String[] info = line.split("|");
+                    String[] info = line.split("<");
                     if (info[0].equalsIgnoreCase("Docente") && info.length == 5) {
                         pessoas.add(new Docente(info[1], info[2], Integer.parseInt(info[3]), info[4]));
                     } else if (info[0].equalsIgnoreCase("Doutorado") && info.length == 6) {
@@ -380,43 +360,53 @@ public class GereProjetos{
                     }
                 }
                 br.close();
-            }
-            catch (IOException ex) {
+            } catch (IOException ex) {
                 System.out.println("Erro a ler ficheiro de texto.");
             }
+        }
+        if (ficheiroObjetos.exists() && ficheiroObjetos.isFile()) { //abre ficheiro de objetos
+            try {
+                FileInputStream fo = new FileInputStream(ficheiroObjetos);
+                ObjectInputStream ois = new ObjectInputStream(fo);
 
+                ArrayList<Projeto> projeto = (ArrayList<Projeto>) ois.readObject();
+                projetos = projeto;
+
+                ois.close();
+            } catch (IOException ex) {
+                System.out.println("Erro a ler ficheiro.");
+            } catch (ClassNotFoundException ex) {
+                System.out.println("Erro a converter objeto.");
+            }
+        }
+        else if (textoProjetos.isFile() && textoProjetos.exists()) { //vai abrir o ficheiro de texto
             try { //guardar projetos
                 FileReader fr = new FileReader(textoProjetos);
                 BufferedReader br = new BufferedReader(fr);
                 while ((line = br.readLine()) != null) {
-                    String[] projeto = line.split("|");
-                    if(line.length()==9){
-
-                        //converter tarefas em ArrayList
-
+                    String[] projeto = line.split("<");
+                    if (projeto.length == 8) {
                         String[] tarefasString = projeto[2].split("/");
                         ArrayList<Tarefa> tarefas = new ArrayList<Tarefa>();
 
-                        for(String tarefa: tarefasString){
+                        for (String tarefa : tarefasString) {
                             String[] tarefaInfo = tarefa.split(":");
                             if (tarefaInfo[0].equalsIgnoreCase("Desenvolvimento") && tarefaInfo.length == 4) {
-                                for(Pessoa pessoa:pessoas){
-                                    if(pessoa.getNome().equals(tarefaInfo[3])){
-                                        tarefas.add(new Desenvolvimento(formatoGregorianCalendar(tarefaInfo[1]),Integer.parseInt(tarefaInfo[2]),pessoa));
+                                for (Pessoa pessoa : pessoas) {
+                                    if (pessoa.getNome().equals(tarefaInfo[3]) && pessoa.getClass().toString().equals("class Docente")) {
+                                        tarefas.add(new Desenvolvimento(formatoGregorianCalendar(tarefaInfo[1]), Integer.parseInt(tarefaInfo[2]), pessoa));
                                     }
                                 }
-                            }
-                            else if (tarefaInfo[0].equalsIgnoreCase("Design") && tarefaInfo.length == 4) {
-                                for(Pessoa pessoa:pessoas){
-                                    if(pessoa.getNome().equals(tarefaInfo[3])){
-                                        tarefas.add(new Design(formatoGregorianCalendar(tarefaInfo[1]),Integer.parseInt(tarefaInfo[2]),pessoa));
+                            } else if (tarefaInfo[0].equalsIgnoreCase("Design") && tarefaInfo.length == 4) {
+                                for (Pessoa pessoa : pessoas) {
+                                    if (pessoa.getNome().equals(tarefaInfo[3]) && pessoa.getClass().toString().equals("class Docente")) {
+                                        tarefas.add(new Design(formatoGregorianCalendar(tarefaInfo[1]), Integer.parseInt(tarefaInfo[2]), pessoa));
                                     }
                                 }
-                            }
-                            else if (tarefaInfo[0].equalsIgnoreCase("Documentacao") && tarefaInfo.length == 4) {
-                                for(Pessoa pessoa:pessoas){
-                                    if(pessoa.getNome().equals(tarefaInfo[3])){
-                                        tarefas.add(new Documentacao(formatoGregorianCalendar(tarefaInfo[1]),Integer.parseInt(tarefaInfo[2]),pessoa));
+                            } else if (tarefaInfo[0].equalsIgnoreCase("Documentacao") && tarefaInfo.length == 4) {
+                                for (Pessoa pessoa : pessoas) {
+                                    if (pessoa.getNome().equals(tarefaInfo[3]) && pessoa.getClass().toString().equals("class Docente")) {
+                                        tarefas.add(new Documentacao(formatoGregorianCalendar(tarefaInfo[1]), Integer.parseInt(tarefaInfo[2]), pessoa));
                                     }
                                 }
                             }
@@ -424,10 +414,10 @@ public class GereProjetos{
 
                         String[] bolseirosString = projeto[3].split("/");
                         ArrayList<Pessoa> bolseiros = new ArrayList<Pessoa>();
-                        for(String bolseiro: bolseirosString){
+                        for (String bolseiro : bolseirosString) {
                             String[] bolseiroInfo = bolseiro.split(":");
-                            for(Pessoa pessoa:pessoas){
-                                if(pessoa.getNome().equals(bolseiroInfo[0]) && pessoa.getClass().toString()!="Docente"){
+                            for (Pessoa pessoa : pessoas) {
+                                if (pessoa.getNome().equals(bolseiroInfo[0]) && pessoa.getClass().toString() != "class Docente") {
                                     bolseiros.add(pessoa);
                                 }
                             }
@@ -435,55 +425,51 @@ public class GereProjetos{
 
                         String[] docentesString = projeto[4].split("/");
                         ArrayList<Pessoa> docentes = new ArrayList<Pessoa>();
-                        for(String docente: docentesString){
+                        for (String docente : docentesString) {
                             String[] docenteInfo = docente.split(":");
-                            for(Pessoa pessoa:pessoas){
-                                if(pessoa.getNome().equals(docenteInfo[0]) && pessoa.getClass().toString()=="Docente"){
+                            for (Pessoa pessoa : pessoas) {
+                                if (pessoa.getNome().equals(docenteInfo[0]) && pessoa.getClass().toString() == "class Docente") {
                                     docentes.add(pessoa);
                                 }
                             }
                         }
-                        projetos.add(new Projeto(projeto[0],projeto[1],tarefas,bolseiros,docentes,formatoGregorianCalendar(projeto[5]),formatoGregorianCalendar(projeto[6]),Double.parseDouble(projeto[6])));
+                        projetos.add(new Projeto(projeto[0], projeto[1], tarefas, bolseiros, docentes , formatoGregorianCalendar(projeto[5]), formatoGregorianCalendar(projeto[6]), Double.parseDouble(projeto[7])));
                     }
                 }
                 br.close();
-            }
-            catch (IOException ex) {
+            } catch (IOException ex) {
                 System.out.println("Erro a ler ficheiro de texto.");
             }
         }
         else{
-            System.out.println("Erro a ler ficheiro");
-            exit(1);
+            System.out.println("Erro a ler ficheiro.(final)");
         }
+    }
 
+    private void guardarFicheiro(){
+        File ficheiro = new File("dados.obj");
 
-    } //static?
+        try {
 
-    /* public static void guardarFicheiro(ArrayList<Projeto> projetos){
-         try {
-             FileInputStream dados = new FileInputStream(new File("dados.obj")); //?
-             FileOutputStream fos = new FileOutputStream(dados);
-             ObjectOutputStream oos = new ObjectOutputStream(fos);
-             oos.writeObject(projetos);
-             oos.close();
-         } catch (FileNotFoundException ex) {
-             System.out.println("Erro a criar ficheiro.");
-         } catch (IOException ex) {
-             System.out.println("Erro a escrever para o ficheiro.");
-         }
-     } //static?
- */
+            //limpar ficheiro
+            FileOutputStream limpar = new FileOutputStream(ficheiro);
+            limpar.write(("").getBytes());
+            limpar.close();
+
+            FileOutputStream fos = new FileOutputStream(ficheiro);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+            oos.writeObject(projetos);
+
+            oos.close();
+        } catch (FileNotFoundException ex) {
+            System.out.println("Erro a criar ficheiro.");
+        } catch (IOException ex) {
+            System.out.println("Erro a escrever para o ficheiro.");
+        }
+    }
 
     public static void main(String[] args) {
-        //FileInputStream dados = new FileInputStream(new File("dados.obj"));
-        //ler o ficheiro com os projetos; criar array list de projetos e adicioá-los lá
         GereProjetos test = new GereProjetos();
-        for(Projeto projeto: test.projetos){
-            System.out.println(projeto);
-        }
-        for(Pessoa pessoa: test.pessoas){
-            System.out.println(pessoa);
-        }
     }
 }
