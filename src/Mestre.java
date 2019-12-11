@@ -1,7 +1,8 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class Mestre extends Formando {
+public class Mestre extends Formando implements Serializable {
 
     public Mestre(String nome, String email, int diaFim, int mesFim, int anoFim){
         super(nome,email,diaFim,mesFim,anoFim);

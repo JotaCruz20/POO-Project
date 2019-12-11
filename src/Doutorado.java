@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.Calendar;
 
-public class Doutorado extends Bolseiro {
+public class Doutorado extends Bolseiro implements Serializable {
 
     public Doutorado(String nome, String email, int diaFim, int mesFim, int anoFim){
         super(nome,email,diaFim,mesFim,anoFim);

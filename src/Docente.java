@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Docente extends Pessoa {
+public class Docente extends Pessoa implements Serializable {
     private int numMecanografico;
     private String areaInvestigacao;
     private ArrayList<Formando> formandos;

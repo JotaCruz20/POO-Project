@@ -1,6 +1,11 @@
+import java.io.Serializable;
 import java.util.GregorianCalendar;
 
-public class Tarefa {
+/**
+ * @param "Classe Tarefa"
+ */
+
+public class Tarefa implements Serializable {
     protected GregorianCalendar dataInicio;
     protected double duracao;
     protected GregorianCalendar dataFim;

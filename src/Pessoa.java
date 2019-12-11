@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
-abstract class Pessoa {
+abstract class Pessoa implements Serializable {
     protected String nome;
     protected String email;
     protected double esforco;

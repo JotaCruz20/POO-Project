@@ -1,3 +1,4 @@
+import javax.print.Doc;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -17,9 +18,10 @@ public class Projeto implements Serializable {
     private int concluir;
     private GregorianCalendar dataFim;
     private ArrayList<Tarefa> tarefas=new ArrayList<>();
-    private Pessoa investigadrPrincipal;
-    private ArrayList<Pessoa> docentes;
-    private ArrayList<Pessoa> bolseiros;
+    private Pessoa investigadorPrincipal;
+    private ArrayList<Docente> docentes;
+    private ArrayList<Formando> formandos;
+    private ArrayList<Doutorado> doutorados;
     //gui main
     private JFrame frame;
     private JButton buttonCriaTarefa,buttonEliminaTarefa,buttonListaTarefaNConcluidas,buttonListaTarefasNaoIniciadas,buttonCusto,buttonConclusao,buttonAtualizarConclusao,buttonAtribuiTarefa;
@@ -61,19 +63,42 @@ public class Projeto implements Serializable {
         this.dataInicio = dataInicio;
         this.duracao = duracao;
         this.dataFim = dataFim;
-        docentes = new ArrayList<Pessoa>(); //CORRIGIR
-        bolseiros = new ArrayList<Pessoa>();
+        docentes = new ArrayList<Docente>();
+        formandos = new ArrayList<Formando>();
+        doutorados = new ArrayList<Doutorado>();
     }
 
-    public Projeto(String nome, String acron,ArrayList<Tarefa> tarefas, ArrayList<Pessoa> bolseiros, ArrayList<Pessoa> docentes, GregorianCalendar dataInicio, GregorianCalendar dataFim, double duracao){
+    public Projeto(String nome, String acron,Pessoa investigadorPrincipal,ArrayList<Tarefa> tarefas, ArrayList<Formando> formandos,ArrayList<Doutorado> doutorados, ArrayList<Docente> docentes, GregorianCalendar dataInicio, GregorianCalendar dataFim, double duracao){
         this.nome=nome;
         this.acron = acron;
+        this.investigadorPrincipal = investigadorPrincipal;
         this.dataInicio = dataInicio;
         this.duracao = duracao;
         this.dataFim = dataFim;
         this.docentes = docentes;
-        this.bolseiros = bolseiros;
+        this.doutorados = doutorados;
+        this.formandos = formandos;
         this.tarefas = tarefas;
+    }
+
+    public void setInvestigadorPrincipal(Pessoa investigadorPrincipal) {
+        this.investigadorPrincipal = investigadorPrincipal;
+    }
+
+    public ArrayList<Docente> getDocentes() {
+        return docentes;
+    }
+
+    public ArrayList<Doutorado> getDoutorados() {
+        return doutorados;
+    }
+
+    public ArrayList<Formando> getFormandos() {
+        return formandos;
+    }
+
+    public Pessoa getInvestigadorPrincipal() {
+        return investigadorPrincipal;
     }
 
     /**
@@ -85,6 +110,7 @@ public class Projeto implements Serializable {
         frame.setLayout(new BorderLayout(30,200));
         panel=new JPanel();
         panel.setLayout(new GridLayout(8,1,10,10));
+
 
         //adicionar a escolhas
         c.add("Design");
@@ -266,7 +292,7 @@ public class Projeto implements Serializable {
      */
     public DefaultListModel listaPessoas(){
         DefaultListModel list=new DefaultListModel();
-        //list.addElement(investigadrPrincipal.toString());
+        //list.addElement(investigadorPrincipal.toString());
         for(int i=0;i<bolseiros.size();i++){
             if(tarefas.get(i).getPerConclusao()>0){
                 list.addElement(bolseiros.get(i).toString());
@@ -450,7 +476,7 @@ public class Projeto implements Serializable {
                                     JOptionPane.showMessageDialog(null, "Demasiadas Pessoas Selecionadas!");
                                 } else {
                                     if (listaPessoas.getSelectedIndex() == 1) {
-                                        pessoa = investigadrPrincipal;
+                                        pessoa = investigadorPrincipal;
                                         if (pessoa.getEsforco() == 1) {
                                             JOptionPane.showMessageDialog(null, "Pessoa tem o esforço no maximo");
                                             return;
@@ -633,7 +659,7 @@ public class Projeto implements Serializable {
             }
             else {
                 if (listaPessoas.getSelectedIndex() == 1) {
-                    pessoa = investigadrPrincipal;
+                    pessoa = investigadorPrincipal;
                     if (pessoa.getEsforco() == 1) {
                         JOptionPane.showMessageDialog(null, "Pessoa tem o esforço no maximo");
                         return;
@@ -811,7 +837,7 @@ public class Projeto implements Serializable {
      */
     private class buttonPrintCusto implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            if(bolseiros.size()==0){
+            if(formandos.size()==0 || doutorados.size()==0){
                 JOptionPane.showMessageDialog(null, "Não tem nenhum Bolseiro no projeto, custo 0.", "ERRO", JOptionPane.PLAIN_MESSAGE);
             }
             else {

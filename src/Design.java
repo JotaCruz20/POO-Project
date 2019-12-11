@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.GregorianCalendar;
 
-public class Design extends Tarefa {
+public class Design extends Tarefa implements Serializable {
 
     public Design(GregorianCalendar dataInicio, double duracao, Pessoa pessoaResponsavel){
         this.dataInicio=dataInicio;

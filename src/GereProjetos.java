@@ -1,8 +1,11 @@
+import javax.print.Doc;
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -16,14 +19,17 @@ public class GereProjetos implements Serializable{
     private ArrayList<Pessoa> pessoas;
 
     //GUI Menu
-    private JFrame frame;
+    private JFrame framePrincipal,localFrame;
     private JPanel selectProjectPanel;
     private JButton nextButton;
     private JList projetosBox;
     private int windowX, windowY;
 
+    private JComboBox opcaoAssocia;
+    JList listaProjetos, listaPessoas;
+
     //gui CriaProjeto
-    private JFrame frameCriaProjeto;
+    private JFrame framePrincipalCriaProjeto;
     private JTextField inputNome, inputAcron, inputDataInicio,inputDuracao,inputDataFim;
 
     public GereProjetos() {
@@ -38,11 +44,11 @@ public class GereProjetos implements Serializable{
         int width = windowX - 2 * (windowX / 10);
         int height = width - width / 10;
 
-        frame = new JFrame();
-        frame.setTitle("Menu Inicial");
-        frame.setSize(windowX, windowY);
-        frame.setLayout(new BorderLayout());
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        framePrincipal = new JFrame();
+        framePrincipal.setTitle("Menu Inicial");
+        framePrincipal.setSize(windowX, windowY);
+        framePrincipal.setLayout(new BorderLayout());
+        framePrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //optionPanel
         JPanel optionPanel = new JPanel();
@@ -51,9 +57,13 @@ public class GereProjetos implements Serializable{
         JLabel label = new JLabel("Escolha uma das seguintes opções");
         label.setSize(width, height);
 
-        JButton addProjectButton = new JButton("Adicionar projeto");
-        addProjectButton.setSize(width, height);
-        addProjectButton.addActionListener(new addProjectAction());
+        JButton addProjetoButton = new JButton("Adicionar projeto");
+        addProjetoButton.setSize(width, height);
+        addProjetoButton.addActionListener(new addProjectAction());
+
+        JButton addPessoaButton = new JButton("Associar pessoa ao projeto");
+        addPessoaButton.setSize(width, height);
+        addPessoaButton.addActionListener(new addPessoaAction());
 
         //DefaultListModel listaProjetosCriados = listaProjetos();
 
@@ -62,7 +72,8 @@ public class GereProjetos implements Serializable{
         selecionaProjecto.addActionListener(new selecionarProjecto());
 
         optionPanel.add(label);
-        optionPanel.add(addProjectButton);
+        optionPanel.add(addProjetoButton);
+        optionPanel.add(addPessoaButton);
         optionPanel.add(selecionaProjecto);
 
 
@@ -88,14 +99,14 @@ public class GereProjetos implements Serializable{
 
         selectProjectPanel.add(listProjetosScroller);
 
-        frame.add(optionPanel,BorderLayout.NORTH);
-        frame.add(selectProjectPanel,BorderLayout.CENTER);
-        frame.add(nextPanel,BorderLayout.SOUTH);
+        framePrincipal.add(optionPanel,BorderLayout.NORTH);
+        framePrincipal.add(selectProjectPanel,BorderLayout.CENTER);
+        framePrincipal.add(nextPanel,BorderLayout.SOUTH);
         //selectProjectPanel.setVisible(tru);
-        frame.setSize(500,500);
-        frame.setLocationRelativeTo(null);
+        framePrincipal.setSize(500,500);
+        framePrincipal.setLocationRelativeTo(null);
 
-        frame.setVisible(true);
+        framePrincipal.setVisible(true);
     }
 
     private class selecionarProjecto implements ActionListener{
@@ -124,7 +135,7 @@ public class GereProjetos implements Serializable{
                             data[2] = Integer.parseInt(keep_data[2]);
                         }
                         projetos.get(projetosBox.getSelectedIndex()).gui(data[0], data[1], data[2]);
-                        frame.setVisible(false);
+                        framePrincipal.setVisible(false);
                     } catch (NumberFormatException ex) {
                         JOptionPane.showMessageDialog(null, "Ponha uma data correta entre /", "ERROR!", JOptionPane.PLAIN_MESSAGE);
 
@@ -137,6 +148,80 @@ public class GereProjetos implements Serializable{
         }
     }
 
+    private class addPessoaAction implements ActionListener{
+        public void actionPerformed(ActionEvent e) {
+
+            framePrincipal.setVisible(false);
+
+            windowX = 300;
+            windowY = 300;
+            int width = windowX - 2 * (windowX / 10);
+            int height = width - width / 10;
+
+            localFrame = new JFrame();
+            localFrame.setTitle("Associar pessoa");
+            localFrame.setSize(windowX, windowY);
+            localFrame.setLayout(new GridLayout(2,1));
+            //localFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+            JLabel selecionarLabel = new JLabel("Selecione uma pessoa para associar ao projeto");
+
+            JButton atualizarButton = new JButton("Atualizar");
+            atualizarButton.setSize(width,height);
+            atualizarButton.addActionListener(new atualizarAction());
+
+            JButton associarButton = new JButton("Associar a projeto");
+            associarButton.setSize(width,height);
+            associarButton.addActionListener(new associarAction());
+
+            JButton voltarButton = new JButton("Voltar");
+            voltarButton.setSize(width,height);
+            voltarButton.addActionListener(new voltarMenuAction());
+
+            JPanel listaPanel = new JPanel();
+            listaPanel.setLayout(new GridLayout(1,2));
+
+            listaPessoas = new JList(listaDocentes());
+            projetosBox.setVisibleRowCount(3);
+            projetosBox.setFixedCellWidth(windowX/2 -2);
+
+            JScrollPane listPessoasScroller = new JScrollPane(listaPessoas);
+
+            listaProjetos = new JList(listaProjetos());
+            projetosBox.setVisibleRowCount(3);
+            projetosBox.setFixedCellWidth(windowX/2 -2);
+            JScrollPane listProjetosScroller = new JScrollPane(listaProjetos);
+
+
+            String[] opcao= {"Investigador Principal", "Docente","Bolseiro"};
+            opcaoAssocia= new JComboBox(opcao);
+            opcaoAssocia.setSize(30,15);
+
+            JPanel panel = new JPanel();
+            panel.setLayout(new GridLayout(0,1));
+            JPanel panelButtons = new JPanel();
+
+            panel.add(selecionarLabel);
+            panel.add(opcaoAssocia);
+
+            listaPanel.add(listaPessoas);
+            listaPanel.add(listPessoasScroller);
+            listaPanel.add(listaProjetos);
+            listaPanel.add(listProjetosScroller);
+
+            panel.add(listaPanel);
+
+            panelButtons.add(atualizarButton);
+            panelButtons.add(associarButton);
+            panelButtons.add(voltarButton);
+
+            localFrame.add(panel,BorderLayout.NORTH);
+            localFrame.add(panelButtons,BorderLayout.SOUTH);
+
+            localFrame.setVisible(true);
+        }
+    }
+
     private class addProjectAction implements ActionListener {
         @Override
         public void actionPerformed (ActionEvent e) {
@@ -144,13 +229,13 @@ public class GereProjetos implements Serializable{
             GregorianCalendar dataInicio, dataFim;
             double duracao;
 
-            frame.setVisible(false);
+            framePrincipal.setVisible(false);
 
-            frameCriaProjeto = new JFrame();
-            frameCriaProjeto.setTitle("Criar projeto novo");
-            frameCriaProjeto.setSize(350,320);
-            frameCriaProjeto.setLayout(new BorderLayout());
-            frameCriaProjeto.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            framePrincipalCriaProjeto = new JFrame();
+            framePrincipalCriaProjeto.setTitle("Criar projeto novo");
+            framePrincipalCriaProjeto.setSize(350,320);
+            framePrincipalCriaProjeto.setLayout(new BorderLayout());
+            framePrincipalCriaProjeto.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
             JPanel panelButoes = new JPanel();
             JPanel panelInfo = new JPanel();
@@ -196,10 +281,178 @@ public class GereProjetos implements Serializable{
             panelInfo.add(labelDataFim);
             panelInfo.add(inputDataFim);
 
-            frameCriaProjeto.add(panelInfo,BorderLayout.NORTH);
-            frameCriaProjeto.add(panelButoes,BorderLayout.SOUTH);
+            framePrincipalCriaProjeto.add(panelInfo,BorderLayout.NORTH);
+            framePrincipalCriaProjeto.add(panelButoes,BorderLayout.SOUTH);
 
-            frameCriaProjeto.setVisible(true);
+            framePrincipalCriaProjeto.setVisible(true);
+        }
+    }
+
+    private class atualizarAction implements ActionListener {
+        @Override
+        public void actionPerformed (ActionEvent e) {
+            if(opcaoAssocia.getSelectedIndex() ==0 || opcaoAssocia.getSelectedIndex()==1 ){
+                listaPessoas.setModel(listaDocentes());
+            }
+            else if(opcaoAssocia.getSelectedIndex()==2){
+                listaPessoas.setModel(listaBolseiros());
+            }
+            else{
+                JOptionPane.showMessageDialog(null,"Opção inválida");
+            }
+        }
+    }
+
+    private class associarAction implements ActionListener {
+        @Override
+        public void actionPerformed (ActionEvent e) {
+            int opcao = 1;
+            //testar se tanto projeto como pessoa estão selecionados
+
+            if(listaPessoas.getSelectedIndex()<0 || listaProjetos.getSelectedIndex()<0 ) {
+                JOptionPane.showMessageDialog(null, "Tem dados em falta");
+                localFrame.setVisible(true);
+            }
+            else{
+                if(opcaoAssocia.getSelectedIndex()==0){
+                    //fazer verificação se não tem já investigador, se tiver, perguntar se quer mudar ou não
+                    if(projetos.get(listaProjetos.getSelectedIndex()).getInvestigadorPrincipal()!=null){ //já tem investigador!
+                        opcao = JOptionPane.showConfirmDialog(null,"Já tem um Investigador Principal associado a este projeto. Deseja mudar?","Sair",JOptionPane.YES_NO_OPTION);
+                    }
+                    if (opcao==1) {
+                        //mudar investigador
+                        Pessoa investigador = null;
+                        for (Pessoa pessoa : pessoas) {
+                            if (pessoa.getNome().equals(listaPessoas.getSelectedValue())) {
+                                investigador = pessoa;
+                            }
+                        }
+                        if (investigador == null) {
+                            JOptionPane.showMessageDialog(null, "Parece ter havido algum erro... Selecione outro investigador");
+                        } else {
+                            projetos.get(listaProjetos.getSelectedIndex()).setInvestigadorPrincipal(investigador);
+                        }
+                    }
+                } //investigador principal
+                else if(opcaoAssocia.getSelectedIndex()==1 ){
+                    //verifica se pessoa não está já associada, se estiver, manda-se mensagem a avisar; pergunta-se se se quer tirar
+                    int flag=0;
+                    if(projetos.get(listaProjetos.getSelectedIndex()).getDocentes().size()>0){
+                        for(Pessoa pessoa: projetos.get(listaProjetos.getSelectedIndex()).getDocentes()) {
+                            if (listaPessoas.getSelectedValue().equals(pessoa.getNome())) {
+                                JOptionPane.showMessageDialog(null, "Investigador já pertence ao projeto");
+                                flag = 1;
+                            }
+                        }
+                        if(flag==0){
+                            Docente docente = null;
+
+                            for(Pessoa pessoaDocente: pessoas){
+                                if(pessoaDocente.getNome().equals(listaPessoas.getSelectedValue().toString())){
+                                    docente = (Docente)pessoaDocente;
+                                }
+                            }
+                            if (docente == null) {
+                                JOptionPane.showMessageDialog(null, "Parece ter havido algum erro... Selecione outro investigador");
+                            } else {
+                                System.out.println("adicionou!");
+                                projetos.get(listaProjetos.getSelectedIndex()).getDocentes().add(docente);
+                            }
+                        }
+                    }
+                    else{ //se não tiver nenhum seleciona logo!
+                        Docente docente = null;
+
+                        for(Pessoa pessoaDocente: pessoas){
+                            System.out.println(pessoaDocente.getNome() +" "+listaPessoas.getSelectedValue().toString()+" "+pessoaDocente.getNome().equals(listaPessoas.getSelectedValue().toString()));
+                            if(pessoaDocente.getNome().equals(listaPessoas.getSelectedValue().toString())){
+                                docente = (Docente)pessoaDocente;
+                            }
+                        }
+                        System.out.println(docente);
+                        if (docente == null) {
+                            JOptionPane.showMessageDialog(null, "Parece ter havido algum erro... Selecione outro investigador");
+                        } else {
+                            projetos.get(listaProjetos.getSelectedIndex()).getDocentes().add(docente);
+                        }
+                    }
+
+
+
+                } //docentes
+                else if(opcaoAssocia.getSelectedIndex()==2){
+                    int flag=0;
+                    if(projetos.get(listaProjetos.getSelectedIndex()).getFormandos().size()>0 || projetos.get(listaProjetos.getSelectedIndex()).getDoutorados().size()>0){ //já existe no projeto
+                        for(Pessoa pessoa: projetos.get(listaProjetos.getSelectedIndex()).getFormandos()) {
+                            if (listaPessoas.getSelectedValue().equals(pessoa.getNome())) {
+                                JOptionPane.showMessageDialog(null, "Bolseiro já pertence ao projeto");
+                                flag = 1;
+                            }
+                        }
+                        for(Pessoa pessoa: projetos.get(listaProjetos.getSelectedIndex()).getDoutorados()) {
+                            if (listaPessoas.getSelectedValue().equals(pessoa.getNome())) {
+                                JOptionPane.showMessageDialog(null, "Bolseiro já pertence ao projeto");
+                                flag = 1;
+                            }
+                        }
+                        if(flag==0){
+                            Bolseiro bolseiro = null;
+                            for(Pessoa pessoaBolseiro: pessoas){
+                                if(pessoaBolseiro.getNome().equals(listaPessoas.getSelectedValue().toString())){
+                                    bolseiro = (Bolseiro)pessoaBolseiro;
+                                }
+                            }
+                            if (bolseiro == null) {
+                                JOptionPane.showMessageDialog(null, "Parece ter havido algum erro... Selecione outro investigador");
+                            } else {
+                                System.out.println(bolseiro.getClass());
+                                if(bolseiro.getClass().getSuperclass().equals(Formando.class)){ //se for formando
+                                    Formando formando = (Formando)bolseiro;
+                                    //verificar se já tem projeto
+                                    if(formando.getProjeto()!=null) { //verificar se tem algum projeto
+                                        JOptionPane.showMessageDialog(null, "Já existe projeto associado a formando");
+                                    }
+                                    else{ //se não tiver projeto
+                                        //verificar se tem algum docente
+                                        if(projetos.get(listaProjetos.getSelectedIndex()).getDocentes().size()>0 || projetos.get(listaProjetos.getSelectedIndex()).getInvestigadorPrincipal()!=null){
+                                            projetos.get(listaProjetos.getSelectedIndex()).getFormandos().add(formando);
+                                            formando.setProjeto(projetos.get(listaProjetos.getSelectedIndex()));
+                                        }
+                                        else{
+                                            JOptionPane.showMessageDialog(null, "Não existe nenhum oriente atribuído ao projeto. Selecione um antes de adicionar Formando.");
+                                        }
+                                    }
+
+                                }
+                                else if(bolseiro.getClass().getSuperclass().equals(Doutorado.class)) {
+                                    Doutorado doutorado = (Doutorado)bolseiro; //cast
+                                    projetos.get(listaProjetos.getSelectedIndex()).getDoutorados().add(doutorado);
+                                }
+
+
+
+                            }
+                        }
+                    }
+
+
+                    //é formando?
+                    //se sim tem docente? ; já tem projeto associado?
+
+                } // bolseiros
+                else{
+                    JOptionPane.showMessageDialog(null,"Opção inválida");
+                }
+            }
+
+        }
+    } //ACABAR
+
+    private class voltarMenuAction implements ActionListener {
+        @Override
+        public void actionPerformed (ActionEvent e) {
+            localFrame.setVisible(false);
+            framePrincipal.setVisible(true);
         }
     }
 
@@ -213,8 +466,8 @@ public class GereProjetos implements Serializable{
     private class voltarAction implements ActionListener {
         @Override
         public void actionPerformed (ActionEvent e) {
-            frame.setVisible(true);
-            frameCriaProjeto.setVisible(false);
+            framePrincipal.setVisible(true);
+            framePrincipalCriaProjeto.setVisible(false);
 
         }
     }
@@ -234,7 +487,7 @@ public class GereProjetos implements Serializable{
                     System.out.println(projeto.getNome());
                 }
 
-                guardarFicheiro();
+                guardar();
                 exit(0);
             }
         }
@@ -267,6 +520,26 @@ public class GereProjetos implements Serializable{
         DefaultListModel list=new DefaultListModel();
         for(Projeto projeto: projetos){
             list.addElement(projeto.getNome());
+        }
+        return list;
+    }
+
+    private DefaultListModel listaBolseiros(){
+        DefaultListModel list=new DefaultListModel();
+        for(Pessoa pesssoa: pessoas){
+            if(pesssoa.getClass().getSuperclass().getSuperclass().equals(Bolseiro.class)) {
+                list.addElement(pesssoa.getNome());
+            }
+        }
+        return list;
+    }
+
+    private DefaultListModel listaDocentes(){
+        DefaultListModel list=new DefaultListModel();
+        for(Pessoa pesssoa: pessoas){
+            if(pesssoa.getClass().equals(Docente.class)) {
+                list.addElement(pesssoa.getNome());
+            }
         }
         return list;
     }
@@ -321,11 +594,11 @@ public class GereProjetos implements Serializable{
 
                     projetosBox.setModel(listaProjetos());
 
-                    frame.setSize(windowX+150,windowY+200);
-                    frame.setLocationRelativeTo(null);
+                    framePrincipal.setSize(windowX+150,windowY+200);
+                    framePrincipal.setLocationRelativeTo(null);
                     selectProjectPanel.setVisible(true);
-                    frameCriaProjeto.setVisible(false);
-                    frame.setVisible(true);
+                    framePrincipalCriaProjeto.setVisible(false);
+                    framePrincipal.setVisible(true);
                 }
                 catch (NumberFormatException ex){
                     JOptionPane.showMessageDialog(null, "valor inválido de duração");
@@ -339,11 +612,27 @@ public class GereProjetos implements Serializable{
 
     private void lerFicheiro() {
         String line;
-        File ficheiroObjetos = new File("dados.obj");
+        File ficheiroProjetos = new File("projetos.obj");
+        File ficheiroPessoas = new File("pessoas.obj");
         File textoPessoas = new File("TextoPessoas.txt");
         File textoProjetos = new File("TextoProjetos.txt");
 
-        if (textoPessoas.isFile() && textoPessoas.exists()) { //vai abrir o ficheiro de texto
+        if (ficheiroPessoas.exists() && ficheiroPessoas.isFile()) { //abre ficheiro de objetos
+            try {
+                FileInputStream fo = new FileInputStream(ficheiroPessoas);
+                ObjectInputStream ois = new ObjectInputStream(fo);
+
+                ArrayList<Pessoa> pessoaObjeto = (ArrayList<Pessoa>) ois.readObject();
+                pessoas = pessoaObjeto;
+
+                ois.close();
+            } catch (IOException ex) {
+                System.out.println("Erro a ler ficheiro.");
+            } catch (ClassNotFoundException ex) {
+                System.out.println("Erro a converter objeto.");
+            }
+        }
+        else if (textoPessoas.isFile() && textoPessoas.exists()) { //vai abrir o ficheiro de texto
             try { //guardar pessoas
                 FileReader fr = new FileReader(textoPessoas);
                 BufferedReader br = new BufferedReader(fr);
@@ -364,13 +653,16 @@ public class GereProjetos implements Serializable{
                 System.out.println("Erro a ler ficheiro de texto.");
             }
         }
-        if (ficheiroObjetos.exists() && ficheiroObjetos.isFile()) { //abre ficheiro de objetos
+        else{
+            System.out.println("Erro a ler ficheiro de Pessoas");
+        }
+        if (ficheiroProjetos.exists() && ficheiroProjetos.isFile()) { //abre ficheiro de objetos
             try {
-                FileInputStream fo = new FileInputStream(ficheiroObjetos);
+                FileInputStream fo = new FileInputStream(ficheiroProjetos);
                 ObjectInputStream ois = new ObjectInputStream(fo);
 
-                ArrayList<Projeto> projeto = (ArrayList<Projeto>) ois.readObject();
-                projetos = projeto;
+                ArrayList<Projeto> projetoObjeto = (ArrayList<Projeto>) ois.readObject();
+                projetos = projetoObjeto;
 
                 ois.close();
             } catch (IOException ex) {
@@ -386,7 +678,15 @@ public class GereProjetos implements Serializable{
                 while ((line = br.readLine()) != null) {
                     String[] projeto = line.split("<");
                     if (projeto.length == 8) {
-                        String[] tarefasString = projeto[2].split("/");
+
+                        Pessoa investigadorPrincipal = null;
+                        for (Pessoa pessoa : pessoas) {
+                            if (pessoa.getNome().equals(projeto[2]) && pessoa.getClass().toString() != "class Docente") {
+                                investigadorPrincipal = pessoa;
+                            }
+                        }
+
+                        String[] tarefasString = projeto[4].split("/");
                         ArrayList<Tarefa> tarefas = new ArrayList<Tarefa>();
 
                         for (String tarefa : tarefasString) {
@@ -412,7 +712,7 @@ public class GereProjetos implements Serializable{
                             }
                         }
 
-                        String[] bolseirosString = projeto[3].split("/");
+                        String[] bolseirosString = projeto[5].split("/");
                         ArrayList<Pessoa> bolseiros = new ArrayList<Pessoa>();
                         for (String bolseiro : bolseirosString) {
                             String[] bolseiroInfo = bolseiro.split(":");
@@ -423,7 +723,7 @@ public class GereProjetos implements Serializable{
                             }
                         }
 
-                        String[] docentesString = projeto[4].split("/");
+                        String[] docentesString = projeto[6].split("/");
                         ArrayList<Pessoa> docentes = new ArrayList<Pessoa>();
                         for (String docente : docentesString) {
                             String[] docenteInfo = docente.split(":");
@@ -433,7 +733,7 @@ public class GereProjetos implements Serializable{
                                 }
                             }
                         }
-                        projetos.add(new Projeto(projeto[0], projeto[1], tarefas, bolseiros, docentes , formatoGregorianCalendar(projeto[5]), formatoGregorianCalendar(projeto[6]), Double.parseDouble(projeto[7])));
+                        //projetos.add(new Projeto(projeto[0], projeto[1],investigadorPrincipal, tarefas, bolseiros, docentes , formatoGregorianCalendar(projeto[6]), formatoGregorianCalendar(projeto[7]), Double.parseDouble(projeto[8])));
                     }
                 }
                 br.close();
@@ -442,19 +742,15 @@ public class GereProjetos implements Serializable{
             }
         }
         else{
-            System.out.println("Erro a ler ficheiro.(final)");
+            System.out.println("Erro a ler ficheiro de Projetos");
         }
     }
 
-    private void guardarFicheiro(){
-        File ficheiro = new File("dados.obj");
+    private void guardar(){
+        File ficheiro = new File("projetos.obj");
+        File ficheiroPessoas = new File("pessoas.obj");
 
         try {
-
-            //limpar ficheiro
-            FileOutputStream limpar = new FileOutputStream(ficheiro);
-            limpar.write(("").getBytes());
-            limpar.close();
 
             FileOutputStream fos = new FileOutputStream(ficheiro);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -465,7 +761,20 @@ public class GereProjetos implements Serializable{
         } catch (FileNotFoundException ex) {
             System.out.println("Erro a criar ficheiro.");
         } catch (IOException ex) {
-            System.out.println("Erro a escrever para o ficheiro.");
+            System.out.println("Erro a escrever para o ficheiro de Projetos.");
+        }
+
+        try {
+            FileOutputStream fos = new FileOutputStream(ficheiroPessoas);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+            oos.writeObject(pessoas);
+
+            oos.close();
+        } catch (FileNotFoundException ex) {
+            System.out.println("Erro a criar ficheiro.");
+        } catch (IOException ex) {
+            System.out.println("Erro a escrever para o ficheiro de Pessoas.");
         }
     }
 
