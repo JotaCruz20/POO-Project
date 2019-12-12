@@ -40,8 +40,6 @@ public class Projeto implements Serializable {
     private JButton buttonCria;
     //gui lista
     private JFrame frameLista=new JFrame();
-    //gui elimina
-
     //gui atualiza
     private JFrame frameAtualiza=new JFrame();
     private JPanel panelAtualiza=new JPanel();

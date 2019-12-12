@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c5b9c3db-397d-4596-80e3-ec51db7d752d" name="Default Changelist" comment="">
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Bolseiro.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/Bolseiro.class" afterDir="false" />
@@ -32,6 +33,10 @@
       <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Projeto.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/Projeto.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Bolseiro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bolseiro.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GereProjetos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GereProjetos.java" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/src/GereProjetos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GereProjetos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Projeto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Projeto.java" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -58,7 +63,23 @@
     <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
+<<<<<<< Updated upstream
     <leaf>
+=======
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Bolseiro.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="16" selection-start-line="16" selection-end-line="22" selection-end-column="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+>>>>>>> Stashed changes
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/GereProjetos.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -142,6 +163,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Projeto.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
             <state relative-caret-position="306">
               <caret line="41" column="43" selection-start-line="41" selection-start-column="43" selection-end-line="41" selection-end-column="43" />
             </state>
@@ -157,6 +179,12 @@
                 <element signature="imports" expanded="true" />
                 <element signature="e#1167#1168#0" expanded="true" />
                 <element signature="e#1205#1206#0" expanded="true" />
+=======
+            <state relative-caret-position="527">
+              <caret line="41" column="43" selection-start-line="41" selection-start-column="43" selection-end-line="41" selection-end-column="43" />
+              <folding>
+                <element signature="imports" expanded="true" />
+>>>>>>> Stashed changes
               </folding>
             </state>
           </provider>
@@ -165,8 +193,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Tarefa.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
             <state relative-caret-position="144">
               <caret line="15" selection-start-line="15" selection-end-line="15" />
+=======
+            <state relative-caret-position="136">
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
+>>>>>>> Stashed changes
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#toString#0;class#Tarefa#0" />
@@ -252,9 +285,16 @@
         <option value="$PROJECT_DIR$/src/Licenciado.java" />
         <option value="$PROJECT_DIR$/src/Docente.java" />
         <option value="$PROJECT_DIR$/src/Formando.java" />
+<<<<<<< Updated upstream
         <option value="$PROJECT_DIR$/src/Projeto.java" />
         <option value="$PROJECT_DIR$/src/Bolseiro.java" />
         <option value="$PROJECT_DIR$/src/GereProjetos.java" />
+=======
+        <option value="$PROJECT_DIR$/src/Mestre.java" />
+        <option value="$PROJECT_DIR$/src/Licenciado.java" />
+        <option value="$PROJECT_DIR$/src/GereProjetos.java" />
+        <option value="$PROJECT_DIR$/src/Projeto.java" />
+>>>>>>> Stashed changes
       </list>
     </option>
   </component>
@@ -272,8 +312,11 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+<<<<<<< Updated upstream
       <pane id="Scope" />
       <pane id="PackagesPane" />
+=======
+>>>>>>> Stashed changes
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -281,15 +324,20 @@
               <item name="POOProject" type="b2602c69:ProjectViewProjectNode" />
               <item name="POOProject" type="462c0819:PsiDirectoryNode" />
             </path>
+<<<<<<< Updated upstream
             <path>
               <item name="POOProject" type="b2602c69:ProjectViewProjectNode" />
               <item name="POOProject" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
+=======
+>>>>>>> Stashed changes
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -389,6 +437,12 @@
       <workItem from="1576093863998" duration="11078000" />
       <workItem from="1576147524187" duration="60000" />
       <workItem from="1576157804793" duration="2508000" />
+<<<<<<< Updated upstream
+=======
+      <workItem from="1576164836973" duration="120000" />
+      <workItem from="1576165021455" duration="7743000" />
+      <workItem from="1576179713739" duration="2000" />
+>>>>>>> Stashed changes
     </task>
     <task id="LOCAL-00001" summary="push?">
       <created>1574542376348</created>
@@ -415,6 +469,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< Updated upstream
     <option name="totallyTimeSpent" value="160442000" />
   </component>
   <component name="ToolWindowManager">
@@ -422,6 +477,14 @@
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.24966443" />
+=======
+    <option name="totallyTimeSpent" value="162679000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18649696" />
+>>>>>>> Stashed changes
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -431,7 +494,11 @@
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
+<<<<<<< Updated upstream
       <window_info anchor="bottom" id="Run" order="2" weight="0.28611898" />
+=======
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32829374" />
+>>>>>>> Stashed changes
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39956802" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -571,6 +638,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/src/Doutorado.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -582,6 +650,11 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Licenciado.java">
+=======
+    <entry file="jar://C:/Program Files/Java/jdk-12.0.1/lib/src.zip!/java.desktop/java/awt/EventQueue.java" />
+    <entry file="jar://C:/Program Files/Java/jdk-12.0.1/lib/src.zip!/java.base/java/security/AccessController.java" />
+    <entry file="file://$PROJECT_DIR$/TextoPessoas.txt">
+>>>>>>> Stashed changes
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
@@ -629,6 +702,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="386">
@@ -637,6 +711,9 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Tarefa.java">
+=======
+    <entry file="file://$PROJECT_DIR$/src/Licenciado.java">
+>>>>>>> Stashed changes
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="15" selection-start-line="15" selection-end-line="15" />
@@ -666,10 +743,57 @@
         </state>
       </provider>
     </entry>
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/TextoPessoas.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="56" selection-start-line="9" selection-start-column="56" selection-end-line="9" selection-end-column="56" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/GereProjetos.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="648" column="27" lean-forward="true" selection-start-line="648" selection-start-column="27" selection-end-line="648" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#GereProjetos#0;class#GereProjetos#0" />
+            <element signature="class#selecionarProjecto#0;class#GereProjetos#0" />
+            <element signature="class#addPessoaAction#0;class#GereProjetos#0" />
+            <element signature="class#addProjectAction#0;class#GereProjetos#0" />
+            <element signature="class#atualizarAction#0;class#GereProjetos#0" />
+            <element signature="class#voltarMenuAction#0;class#GereProjetos#0" />
+            <element signature="class#concluirAction#0;class#GereProjetos#0" />
+            <element signature="class#voltarAction#0;class#GereProjetos#0" />
+            <element signature="class#fecharAction#0;class#GereProjetos#0" />
+            <element signature="method#verificarData#0;class#GereProjetos#0" />
+            <element signature="method#formatoData#0;class#GereProjetos#0" />
+            <element signature="method#formatoGregorianCalendar#0;class#GereProjetos#0" />
+            <element signature="method#listaProjetos#0;class#GereProjetos#0" />
+            <element signature="method#listaBolseiros#0;class#GereProjetos#0" />
+            <element signature="method#listaDocentes#0;class#GereProjetos#0" />
+            <element signature="method#concluirAdicionarProjeto#0;class#GereProjetos#0" />
+            <element signature="method#guardar#0;class#GereProjetos#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Bolseiro.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="16" selection-start-line="16" selection-end-line="22" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Mestre.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+>>>>>>> Stashed changes
         </state>
       </provider>
     </entry>
@@ -682,6 +806,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GereProjetos.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
         <state relative-caret-position="1267">
           <caret line="782" column="7" lean-forward="true" selection-start-line="782" selection-start-column="7" selection-end-line="782" selection-end-column="7" />
           <folding>
@@ -745,6 +870,12 @@
             <element signature="e#39315#39382#0" />
             <element signature="e#39315#39917#0" />
             <element signature="e#43157#43158#0" expanded="true" />
+=======
+        <state relative-caret-position="527">
+          <caret line="41" column="43" selection-start-line="41" selection-start-column="43" selection-end-line="41" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+>>>>>>> Stashed changes
           </folding>
         </state>
       </provider>

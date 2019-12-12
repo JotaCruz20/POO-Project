@@ -881,7 +881,6 @@ public class GereProjetos implements Serializable {
                 while ((line = br.readLine()) != null) {
                     String[] projeto = line.split("<");
                     if (projeto.length == 8) {
-
                         Pessoa investigadorPrincipal = null;
                         for (Pessoa pessoa : pessoas) {
                             if (pessoa.getNome().equals(projeto[2]) && pessoa.getClass().toString() != "class Docente") {
