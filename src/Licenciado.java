@@ -6,6 +6,7 @@ public class Licenciado extends Formando implements Serializable {
 
     public Licenciado(String nome, String email, int diaFim, int mesFim, int anoFim){
         super(nome,email,diaFim,mesFim,anoFim);
+        this.docentes=null;
     }
 
     public double getCusto(){

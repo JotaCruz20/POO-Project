@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Formando extends Bolseiro implements Serializable {
     Projeto projeto;
+    ArrayList<Pessoa> docentes=new ArrayList<>();
 
     public Formando(String nome, String email, int diaFim, int mesFim, int anoFim){
         super(nome,email,diaFim,mesFim,anoFim);

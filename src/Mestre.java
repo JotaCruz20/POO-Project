@@ -6,7 +6,7 @@ public class Mestre extends Formando implements Serializable {
 
     public Mestre(String nome, String email, int diaFim, int mesFim, int anoFim){
         super(nome,email,diaFim,mesFim,anoFim);
-        docentes = null;
+        this.docentes = null;
     }
 
     public double getCusto(){
