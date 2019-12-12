@@ -8,8 +8,8 @@ abstract class Bolseiro extends Pessoa implements Serializable {
     protected GregorianCalendar dataFim;
     protected Projeto projeto;
 
-    public Bolseiro(String nome, String email, int diaFim, int mesFim, int anoFim){
-        super(nome,email);
+    public Bolseiro(String nome, String email, int diaFim, int mesFim, int anoFim){super(nome,email);}
+       /* super(nome,email);
         boolean invalido;
         Scanner sc = new Scanner(System.in);
         GregorianCalendar dataInicioLocal = new GregorianCalendar();
@@ -25,7 +25,7 @@ abstract class Bolseiro extends Pessoa implements Serializable {
         this.dataFim = dataFimLocal;
         this.projeto = null;
 
-    }
+    }*/
 
     public abstract double getCusto();
 
