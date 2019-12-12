@@ -50,7 +50,7 @@ public class Projeto implements Serializable {
     private JButton buttonAtualiza;
 
     /**
-     * Construtor de um Projeto que recebe os dados necessários para criar um novo projeto
+     * Construtor de um Projeto que recebe os dados necessários para criar um novo projeto nulo
      * @param nome Nome do projeto
      * @param acron Nome do acronimo do projeto
      * @param dataInicio Data de inicio do projeto
@@ -68,6 +68,19 @@ public class Projeto implements Serializable {
         doutorados = new ArrayList<Doutorado>();
     }
 
+    /**
+     * Construtor de um Projeto que recebe os dados necessários para criar um novo projeto
+     * @param nome Nome do projeto
+     * @param acron Nome do acronimo do projeto
+     * @param investigadorPrincipal Docente Principal
+     * @param tarefas Lista de Tarefas a fazer no projeto
+     * @param formandos Lista de ambos Licenciados e Mestres do Projeto
+     * @param doutorados Lista dos Doutorados do Projecto
+     * @param docentes Lista dos Docentes do Projeto
+     * @param dataInicio Data de inicio do projeto
+     * @param dataFim Data de fim do Projeto
+     * @param duracao Duração estimada do projeto
+     */
     public Projeto(String nome, String acron,Pessoa investigadorPrincipal,ArrayList<Tarefa> tarefas, ArrayList<Formando> formandos,ArrayList<Doutorado> doutorados, ArrayList<Docente> docentes, GregorianCalendar dataInicio, GregorianCalendar dataFim, double duracao){
         this.nome=nome;
         this.acron = acron;
@@ -79,26 +92,6 @@ public class Projeto implements Serializable {
         this.doutorados = doutorados;
         this.formandos = formandos;
         this.tarefas = tarefas;
-    }
-
-    public void setInvestigadorPrincipal(Pessoa investigadorPrincipal) {
-        this.investigadorPrincipal = investigadorPrincipal;
-    }
-
-    public ArrayList<Docente> getDocentes() {
-        return docentes;
-    }
-
-    public ArrayList<Doutorado> getDoutorados() {
-        return doutorados;
-    }
-
-    public ArrayList<Formando> getFormandos() {
-        return formandos;
-    }
-
-    public Pessoa getInvestigadorPrincipal() {
-        return investigadorPrincipal;
     }
 
     /**
@@ -247,6 +240,26 @@ public class Projeto implements Serializable {
         return nome;
     }
 
+    public void setInvestigadorPrincipal(Pessoa investigadorPrincipal) {
+        this.investigadorPrincipal = investigadorPrincipal;
+    }
+
+    public ArrayList<Docente> getDocentes() {
+        return docentes;
+    }
+
+    public ArrayList<Doutorado> getDoutorados() {
+        return doutorados;
+    }
+
+    public ArrayList<Formando> getFormandos() {
+        return formandos;
+    }
+
+    public Pessoa getInvestigadorPrincipal() {
+        return investigadorPrincipal;
+    }
+
     /**
      * Serve para testar a validade da Data inserida pelo user
      * @param dia Dia
@@ -293,10 +306,11 @@ public class Projeto implements Serializable {
     public DefaultListModel listaPessoas(){
         DefaultListModel list=new DefaultListModel();
         //list.addElement(investigadorPrincipal.toString());
-        for(int i=0;i<bolseiros.size();i++){
-            if(tarefas.get(i).getPerConclusao()>0){
-                list.addElement(bolseiros.get(i).toString());
-            }
+        for(int i=0;i<doutorados.size();i++){
+            list.addElement(doutorados.get(i).toString());
+        }
+        for(int i=0;i<formandos.size();i++){
+            list.addElement(formandos.get(i).toString());
         }
         for (int i = 0; i <docentes.size() ; i++) {
             list.addElement(docentes.get(i).toString());
@@ -363,16 +377,15 @@ public class Projeto implements Serializable {
 
     /**
      * Cria uma nova Tarefa
-     * @param pessoa1 Pessoa a qual vai ser associada a Tarefa
+     * @param pessoa Pessoa a qual vai ser associada a Tarefa
      * @param duracaoEstimada Duração estimada da duraçao da tarefa
      * @param dia Dia do mes da data Inicial
      * @param mes  Mes da data Inicial
      * @param ano  Ano da data Inicial
      * @param opcao Que tipo de tarefa é, Design,Documentação ou Desenvolvimento
      */
-    public void criaTarefa(Pessoa pessoa1,double duracaoEstimada,int dia,int mes,int ano,int opcao) {
+    public void criaTarefa(Pessoa pessoa,double duracaoEstimada,int dia,int mes,int ano,int opcao) {
         GregorianCalendar data;
-        Pessoa pessoa = new Docente("Jose", "mail", 12, "Poop");
         Tarefa tarefa;
         data = new GregorianCalendar(ano, mes, dia);
         if(pessoa==null) {
@@ -430,8 +443,11 @@ public class Projeto implements Serializable {
      */
     public double custo(){
         double total=0;
-        for (int i = 0; i <bolseiros.size() ; i++) {
-            total+=bolseiros.get(i).getCusto()*bolseiros.get(i).getEsforco()*bolseiros.get(i).duracaoTarefas();
+        for (int i = 0; i <doutorados.size() ; i++) {
+            total+=doutorados.get(i).getCusto();
+        }
+        for (int i = 0; i <doutorados.size() ; i++) {
+            total+=doutorados.get(i).getCusto();
         }
         return total;
     }
@@ -481,15 +497,22 @@ public class Projeto implements Serializable {
                                             JOptionPane.showMessageDialog(null, "Pessoa tem o esforço no maximo");
                                             return;
                                         }
-                                    } else if (listaPessoas.getSelectedIndex() > 1 & listaPessoas.getSelectedIndex() < 1 + bolseiros.size()) {
-                                        pessoa = bolseiros.get(listaPessoas.getSelectedIndex() - 1);
+                                    } else if (listaPessoas.getSelectedIndex() > 1 & listaPessoas.getSelectedIndex() < 1 + formandos.size()) {
+                                        pessoa = formandos.get(listaPessoas.getSelectedIndex() - 2);
                                         if (pessoa.getEsforco() == 1) {
                                             JOptionPane.showMessageDialog(null, "Pessoa tem o esforço no maximo");
                                             return;
                                         }
                                         //falta ver se a tarefa pode ser feita ou nao
-                                    } else {
-                                        pessoa = docentes.get(listaPessoas.getSelectedIndex() - 1 - bolseiros.size());
+                                    } else if(listaPessoas.getSelectedIndex()>1+formandos.size() & listaPessoas.getSelectedIndex()<1+formandos.size()+doutorados.size()) {
+                                        pessoa = doutorados.get(listaPessoas.getSelectedIndex() - 2 - formandos.size());
+                                        if (pessoa.getEsforco() == 1) {
+                                            JOptionPane.showMessageDialog(null, "Pessoa tem o esforço no maximo");
+                                            return;
+                                        }
+                                    }
+                                    else{
+                                        pessoa=docentes.get(listaPessoas.getSelectedIndex()-2-formandos.size()-doutorados.size());
                                         if (pessoa.getEsforco() == 1) {
                                             JOptionPane.showMessageDialog(null, "Pessoa tem o esforço no maximo");
                                             return;
@@ -664,14 +687,22 @@ public class Projeto implements Serializable {
                         JOptionPane.showMessageDialog(null, "Pessoa tem o esforço no maximo");
                         return;
                     }
-                } else if (listaPessoas.getSelectedIndex() > 1 & listaPessoas.getSelectedIndex() < 1 + bolseiros.size()) {
-                    pessoa = bolseiros.get(listaPessoas.getSelectedIndex() - 1);
+                } else if (listaPessoas.getSelectedIndex() > 1 & listaPessoas.getSelectedIndex() < 1 + formandos.size()) {
+                    pessoa = formandos.get(listaPessoas.getSelectedIndex() - 2);
                     if (pessoa.getEsforco() == 1) {
                         JOptionPane.showMessageDialog(null, "Pessoa tem o esforço no maximo");
                         return;
                     }
-                } else {
-                    pessoa = docentes.get(listaPessoas.getSelectedIndex() - 1 - bolseiros.size());
+                    //falta ver se a tarefa pode ser feita ou nao
+                } else if(listaPessoas.getSelectedIndex()>1+formandos.size() & listaPessoas.getSelectedIndex()<1+formandos.size()+doutorados.size()) {
+                    pessoa = doutorados.get(listaPessoas.getSelectedIndex() - 2 - formandos.size());
+                    if (pessoa.getEsforco() == 1) {
+                        JOptionPane.showMessageDialog(null, "Pessoa tem o esforço no maximo");
+                        return;
+                    }
+                }
+                else{
+                    pessoa=docentes.get(listaPessoas.getSelectedIndex()-2-formandos.size()-doutorados.size());
                     if (pessoa.getEsforco() == 1) {
                         JOptionPane.showMessageDialog(null, "Pessoa tem o esforço no maximo");
                         return;
