@@ -1,3 +1,4 @@
+import javax.print.Doc;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -17,7 +18,7 @@ public class GereProjetos implements Serializable{
     private ArrayList<Pessoa> pessoas;
 
     //GUI Menu
-    private JFrame framePrincipal,localFrame;
+    private JFrame framePrincipal,localFrame, listaFrame;
     private JPanel selectProjectPanel;
     private JButton nextButton;
     private JList projetosBox;
@@ -62,6 +63,10 @@ public class GereProjetos implements Serializable{
         JButton addPessoaButton = new JButton("Associar pessoa ao projeto");
         addPessoaButton.setSize(width, height);
         addPessoaButton.addActionListener(new addPessoaAction());
+
+        JButton projetosConcluidosButton = new JButton("Projetos Concluidos");
+        projetosConcluidosButton.setSize(width, height);
+        projetosConcluidosButton.addActionListener(new projetosConcluidosAction());
 
         //DefaultListModel listaProjetosCriados = listaProjetos();
 
@@ -174,22 +179,25 @@ public class GereProjetos implements Serializable{
 
             JButton voltarButton = new JButton("Voltar");
             voltarButton.setSize(width,height);
-            voltarButton.addActionListener(new voltarMenuAction());
+            voltarButton.addActionListener(new voltarAction());
 
             JPanel listaPanel = new JPanel();
             listaPanel.setLayout(new GridLayout(1,2));
 
-            listaPessoas = new JList(listaDocentes());
-            projetosBox.setVisibleRowCount(3);
-            projetosBox.setFixedCellWidth(windowX/2 -2);
 
+            listaPessoas = new JList(listaDocentes());
+            listaPessoas.setVisibleRowCount(3);
+            listaPessoas.setFixedCellWidth(windowX/2 -2);
+            listaPanel.add(listaPessoas);
             JScrollPane listPessoasScroller = new JScrollPane(listaPessoas);
+            listaPanel.add(listPessoasScroller);
 
             listaProjetos = new JList(listaProjetos());
-            projetosBox.setVisibleRowCount(3);
-            projetosBox.setFixedCellWidth(windowX/2 -2);
+            listaProjetos.setVisibleRowCount(3);
+            listaProjetos.setFixedCellWidth(windowX/2 -2);
+            listaPanel.add(listaProjetos);
             JScrollPane listProjetosScroller = new JScrollPane(listaProjetos);
-
+            listaPanel.add(listProjetosScroller);
 
             String[] opcao= {"Investigador Principal", "Docente","Bolseiro"};
             opcaoAssocia= new JComboBox(opcao);
@@ -201,11 +209,6 @@ public class GereProjetos implements Serializable{
 
             panel.add(selecionarLabel);
             panel.add(opcaoAssocia);
-
-            listaPanel.add(listaPessoas);
-            listaPanel.add(listPessoasScroller);
-            listaPanel.add(listaProjetos);
-            listaPanel.add(listProjetosScroller);
 
             panel.add(listaPanel);
 
@@ -242,10 +245,10 @@ public class GereProjetos implements Serializable{
 
             JButton buttonConcluir = new JButton("Concluir");
             buttonConcluir.addActionListener(new concluirAction());
-            JButton buttonVoltar = new JButton("Voltar");
-            buttonVoltar.addActionListener(new voltarAction());
+            JButton voltarButton = new JButton("Voltar");
+            voltarButton.addActionListener(new voltarAction());
 
-            panelButoes.add(buttonVoltar);
+            panelButoes.add(voltarButton);
             panelButoes.add(buttonConcluir);
 
             JLabel labelTitulo = new JLabel("Criar novo projeto");
@@ -298,6 +301,51 @@ public class GereProjetos implements Serializable{
             else{
                 JOptionPane.showMessageDialog(null,"Opção inválida");
             }
+        }
+    }
+
+    private class projetosConcluidosAction implements ActionListener {
+        @Override
+        public void actionPerformed (ActionEvent e) {
+            //abre frame com uma lista de projetos concluidos
+            //TO DO: BOTÃO PARA FECHAR
+            //BOTÃO PARA VER MAIS DEFINIÇÕES DO PROJETO
+
+
+            listaFrame = new JFrame();
+            JPanel listaPanel = new JPanel(new GridLayout(0,1));
+
+            framePrincipal.setTitle("Projetos Concluidos");
+            framePrincipal.setSize(windowX, windowY);
+            framePrincipal.setLayout(new BorderLayout());
+            framePrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+            JButton voltarButton = new JButton("Voltar");
+            voltarButton.addActionListener(new voltarAction());
+
+            JButton maisButton = new JButton("Mais Informações dobre o projeto");
+
+            JLabel titulo = new JLabel("Projetos concluídos");
+            listaPanel.add(titulo);
+            JLabel espaco = new JLabel(" ");
+            listaPanel.add(espaco);
+
+            for (Projeto projeto: projetos){
+                listaPanel.add(new JLabel(projeto.getNome()));
+                //ter botão para mais definições
+            }
+
+            JPanel botoesPanel = new JPanel();
+            botoesPanel.add(voltarButton);
+            botoesPanel.add(maisButton);
+            listaPanel.add(botoesPanel);
+
+            listaFrame.add(listaPanel);
+            listaFrame.add(botoesPanel);
+
+            listaFrame.setVisible(true);
+
+
         }
     }
 
@@ -446,14 +494,6 @@ public class GereProjetos implements Serializable{
         }
     } //ACABAR
 
-    private class voltarMenuAction implements ActionListener {
-        @Override
-        public void actionPerformed (ActionEvent e) {
-            localFrame.setVisible(false);
-            framePrincipal.setVisible(true);
-        }
-    }
-
     private class concluirAction implements ActionListener { //Após os dados terem sido inseridos, se esta opção for acionado, são verificados os dados e se estiverem criados é gerado um novo projeto, que é adicionado ao arrayList
         @Override
         public void actionPerformed (ActionEvent e) {
@@ -464,8 +504,11 @@ public class GereProjetos implements Serializable{
     private class voltarAction implements ActionListener {
         @Override
         public void actionPerformed (ActionEvent e) {
-            framePrincipal.setVisible(true);
             framePrincipalCriaProjeto.setVisible(false);
+            listaFrame.setVisible(false);
+            localFrame.setVisible(false);
+            framePrincipal.setVisible(true);
+            
 
         }
     }
@@ -543,77 +586,130 @@ public class GereProjetos implements Serializable{
     }
 
     private void concluirAdicionarProjeto(){
-        double duracao;
-        String nome, acron;
 
-        GregorianCalendar dataFim, dataInicio;
 
         if (inputNome.getText().isEmpty() || inputAcron.getText().isEmpty() || inputDataInicio.getText().isEmpty() || inputDuracao.getText().isEmpty()){
             JOptionPane.showMessageDialog(null,"Preencha todos os espaços");
         }
         else{
-            nome = inputNome.getText();
-            acron = inputAcron.getText();
-            String[] dataString = inputDataInicio.getText().split("/");
-            int[] dataInt = new int[3];
-            int flag = 0;
-            while (flag!=3) {
-                for (int i=0;i<3;i++){
-                    try{
-                        dataInt[i] = Integer.parseInt(dataString[i]);
-                        flag++;
-                    }
-                    catch(NumberFormatException ex){
-                        JOptionPane.showMessageDialog(null, "Formato de data inválido");
-                    }
-                }
+            int retorno = criarProjeto(inputNome.getText(),inputAcron.getText(),inputDataInicio.getText().split("/"),Double.parseDouble(inputDuracao.getText()));
+            if(retorno == 1){
+                JOptionPane.showMessageDialog(null,"Projeto criado com sucesso");
             }
-
-            if(verificarData(dataInt)) {
-                dataInicio = new GregorianCalendar(dataInt[2],dataInt[1],dataInt[0]);
-
-                try{
-                    duracao = Integer.parseInt(inputDuracao.getText());
-                    dataFim = dataInicio;
-
-                    double resto = duracao%1;
-                    int inteiro =  (int)(duracao - resto);
-
-                    //CORRIGIR
-                    dataFim.add(Calendar.MONTH,inteiro);
-                    dataFim.add(Calendar.DAY_OF_MONTH,(int)(resto*30));
-
-                    inputDataFim.setText(formatoData(dataFim));
-
-                    Projeto projeto = new Projeto(nome,acron,dataInicio,dataFim,duracao);
-                    projetos.add(projeto);
-                    JOptionPane.showMessageDialog(null,"Projeto criado com sucesso");
-                    //selectProjectPanel.removeAll();
-
-                    projetosBox.setModel(listaProjetos());
-
-                    framePrincipal.setSize(windowX+150,windowY+200);
-                    framePrincipal.setLocationRelativeTo(null);
-                    selectProjectPanel.setVisible(true);
-                    framePrincipalCriaProjeto.setVisible(false);
-                    framePrincipal.setVisible(true);
-                }
-                catch (NumberFormatException ex){
-                    JOptionPane.showMessageDialog(null, "valor inválido de duração");
-                }
+            else if(retorno == 2){
+                JOptionPane.showMessageDialog(null, "valor inválido de duração","ERRO",JOptionPane.ERROR_MESSAGE);
+            }
+            else if(retorno == 3){
+                JOptionPane.showMessageDialog(null, "Formato de data inválido","ERRO",JOptionPane.ERROR_MESSAGE);
+            }
+            else if(retorno == 4){
+                JOptionPane.showMessageDialog(null, "Formato de data inválido","ERRO",JOptionPane.ERROR_MESSAGE);
             }
             else{
-                JOptionPane.showMessageDialog(null, "Formato de data inválido");
+                JOptionPane.showMessageDialog(null, "Não foi possível criar projeto","ERRO",JOptionPane.ERROR_MESSAGE);
             }
+        }
+
+
+            //CORRIGIR!
+            //inputDataFim.setText(formatoData(formatoGregorianCalendar(definirDataFim(inputDataInicio.getText().split("/")),Double.parseDouble(inputDuracao.getText())));
+
+            projetosBox.setModel(listaProjetos());
+
+            framePrincipal.setSize(windowX + 150, windowY + 200);
+            framePrincipal.setLocationRelativeTo(null);
+            selectProjectPanel.setVisible(true);
+            framePrincipalCriaProjeto.setVisible(false);
+            framePrincipal.setVisible(true);
+    }
+
+    /**
+     *
+     * @param nome Nome do projeto
+     * @param acron Acrónimo atribuído ao projeto
+     * @param dataString Data de início, no formato String[]
+     * @param duracao duração do projeto
+     * @return Retorna 1, se projeto tiver sido criado, e 2, 3 ou 4 se tiver ocorrido um erro
+     */
+    private int criarProjeto(String nome, String acron, String[] dataString, double duracao){
+        int[] dataInt = new int[3];
+        int flag = 0;
+        while (flag!=3) {
+            for (int i=0;i<3;i++){
+                try{
+                    dataInt[i] = Integer.parseInt(dataString[i]);
+                    flag++;
+                }
+                catch(NumberFormatException ex){
+                    return 4;
+                }
+            }
+        }
+
+        if(verificarData(dataInt)) {
+            GregorianCalendar dataInicio = new GregorianCalendar(dataInt[2],dataInt[1],dataInt[0]);
+
+            try{
+                duracao = Double.parseDouble(inputDuracao.getText());
+
+                GregorianCalendar dataFim = definirDataFim(dataInicio,duracao);
+                inputDataFim.setText(formatoData(dataFim));
+
+                Projeto projeto = new Projeto(nome,acron,dataInicio,dataFim,duracao);
+                projetos.add(projeto);
+                return 1;
+            }
+            catch (NumberFormatException ex){
+                return 2;
+            }
+        }
+        else{
+            return 3;
         }
     }
 
+    /**
+     * Esta função retorna a data após uma certa duração, a partir da data de início
+     * @param dataInicio
+     * @param duracao
+     * @return Retorna o valor da data de Início somado com a duração
+     */
+    private GregorianCalendar definirDataFim(GregorianCalendar dataInicio, double duracao){
+        GregorianCalendar dataFim = dataInicio;
+
+        int resto = (int)duracao%1;
+        int inteiro =  (int)(duracao - resto);
+
+        dataFim.add(Calendar.MONTH,inteiro);
+        dataFim.add(Calendar.DAY_OF_MONTH,(resto*30));
+
+        return dataFim;
+    }
+
+    /**
+     * Carrega os dados dos ficheiros (de texto ou de objetos)
+     */
     private void lerFicheiro() {
-        String line;
-        File ficheiroProjetos = new File("projetos.obj");
         File ficheiroPessoas = new File("pessoas.obj");
         File textoPessoas = new File("TextoPessoas.txt");
+        File ficheiroProjetos = new File("projetos.obj");
         File textoProjetos = new File("TextoProjetos.txt");
+
+        if(!(lerPessoa(ficheiroPessoas, textoPessoas) && lerProjeto(ficheiroProjetos,textoProjetos))){
+            System.out.println("Erro a ler ficheiro de Projetos");
+            exit(0);
+        }
+
+    }
+
+    /**
+     * Função para ler ficheiro (de objeto ou de texto, se o primeiro não existir) e guardar os dados das pessoas na estrutura
+     * @param ficheiroPessoas Ficheiro do tipo .obj com informações sobre as pessoas
+     * @param textoPessoas Ficheiro do tipo .txt com informações sobre as pessoas; Este ficheiro apeas é utilizado no caso do primeiro não existir
+     * @return Retorna "true" se for possível extrair os dados de algum dos ficheiros. Se não, retorna "false"
+     */
+    private boolean lerPessoa(File ficheiroPessoas,File textoPessoas ){
+        String line;
 
         if (ficheiroPessoas.exists() && ficheiroPessoas.isFile()) { //abre ficheiro de objetos
             try {
@@ -626,8 +722,10 @@ public class GereProjetos implements Serializable{
                 ois.close();
             } catch (IOException ex) {
                 System.out.println("Erro a ler ficheiro.");
+                return false;
             } catch (ClassNotFoundException ex) {
                 System.out.println("Erro a converter objeto.");
+                return false;
             }
         }
         else if (textoPessoas.isFile() && textoPessoas.exists()) { //vai abrir o ficheiro de texto
@@ -649,11 +747,24 @@ public class GereProjetos implements Serializable{
                 br.close();
             } catch (IOException ex) {
                 System.out.println("Erro a ler ficheiro de texto.");
+                return false;
             }
         }
         else{
             System.out.println("Erro a ler ficheiro de Pessoas");
+            return false;
         }
+        return true;
+    }
+
+    /**
+     * Função para ler ficheiro (de objeto ou de texto, se o primeiro não existir) e guardar os dados dos projetos na estrutura
+     * @param ficheiroProjetos Ficheiro do tipo .obj com informações sobre os projetos
+     * @param textoProjetos Ficheiro do tipo .txt com informações sobre os projetos; Este ficheiro apeas é utilizado no caso do primeiro não existir
+     * @return Retorna "true" se for possível extrair os dados de algum dos ficheiros. Se não, retorna "false"
+     */
+    private boolean lerProjeto(File ficheiroProjetos ,File textoProjetos){
+        String line;
         if (ficheiroProjetos.exists() && ficheiroProjetos.isFile()) { //abre ficheiro de objetos
             try {
                 FileInputStream fo = new FileInputStream(ficheiroProjetos);
@@ -665,8 +776,10 @@ public class GereProjetos implements Serializable{
                 ois.close();
             } catch (IOException ex) {
                 System.out.println("Erro a ler ficheiro.");
+                return false;
             } catch (ClassNotFoundException ex) {
                 System.out.println("Erro a converter objeto.");
+                return false;
             }
         }
         else if (textoProjetos.isFile() && textoProjetos.exists()) { //vai abrir o ficheiro de texto
@@ -709,44 +822,78 @@ public class GereProjetos implements Serializable{
                                 }
                             }
                         }
-
                         String[] bolseirosString = projeto[5].split("/");
-                        ArrayList<Pessoa> bolseiros = new ArrayList<Pessoa>();
+                        ArrayList<Formando> formandos = new ArrayList<Formando>();
+                        ArrayList<Doutorado> doutorados = new ArrayList<>();
                         for (String bolseiro : bolseirosString) {
                             String[] bolseiroInfo = bolseiro.split(":");
                             for (Pessoa pessoa : pessoas) {
-                                if (pessoa.getNome().equals(bolseiroInfo[0]) && pessoa.getClass().toString() != "class Docente") {
-                                    bolseiros.add(pessoa);
+                                if (pessoa.getNome().equals(bolseiroInfo[0]) && pessoa.getClass().getSuperclass().toString().equals("class Formando")) {
+                                    formandos.add((Formando)pessoa);
+                                    System.out.println(pessoa);
+                                }
+                                else if(pessoa.getNome().equals(bolseiroInfo[0]) && pessoa.getClass().toString().equals("class Doutorado")){
+                                    doutorados.add((Doutorado)pessoa);
+                                    System.out.println(pessoa);
                                 }
                             }
                         }
 
                         String[] docentesString = projeto[6].split("/");
-                        ArrayList<Pessoa> docentes = new ArrayList<Pessoa>();
+                        ArrayList<Docente> docentes = new ArrayList<Docente>();
                         for (String docente : docentesString) {
                             String[] docenteInfo = docente.split(":");
                             for (Pessoa pessoa : pessoas) {
                                 if (pessoa.getNome().equals(docenteInfo[0]) && pessoa.getClass().toString() == "class Docente") {
-                                    docentes.add(pessoa);
+                                    docentes.add((Docente)pessoa);
                                 }
                             }
                         }
-                        //projetos.add(new Projeto(projeto[0], projeto[1],investigadorPrincipal, tarefas, bolseiros, docentes , formatoGregorianCalendar(projeto[6]), formatoGregorianCalendar(projeto[7]), Double.parseDouble(projeto[8])));
+                        projetos.add(new Projeto(projeto[0], projeto[1],investigadorPrincipal, tarefas, formandos, doutorados, docentes , formatoGregorianCalendar(projeto[6]), formatoGregorianCalendar(projeto[7]), Double.parseDouble(projeto[8])));
                     }
                 }
                 br.close();
             } catch (IOException ex) {
                 System.out.println("Erro a ler ficheiro de texto.");
+                return false;
             }
         }
-        else{
-            System.out.println("Erro a ler ficheiro de Projetos");
+        return true;
+    }
+
+
+    /**
+     * Guarda todos os dados nos ficheiro de Objetos, de modo a poderem ser utilizados na próxima utilização do programa
+     */
+    private void guardar(){
+        guardarPessoas();
+        guardarProjetos();
+    }
+
+    /**
+     * Guarda os objetos Pessoa no ficheiro de Objetos
+     */
+    private void guardarPessoas(){
+        File ficheiroPessoas = new File("pessoas.obj");
+        try {
+            FileOutputStream fos = new FileOutputStream(ficheiroPessoas);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+            oos.writeObject(pessoas);
+
+            oos.close();
+        } catch (FileNotFoundException ex) {
+            System.out.println("Erro a criar ficheiro.");
+        } catch (IOException ex) {
+            System.out.println("Erro a escrever para o ficheiro de Pessoas.");
         }
     }
 
-    private void guardar(){
+    /**
+     * Guarda os objetos Projeto no ficheiro de Objetos
+     */
+    private void guardarProjetos(){
         File ficheiro = new File("projetos.obj");
-        File ficheiroPessoas = new File("pessoas.obj");
 
         try {
 
@@ -760,19 +907,6 @@ public class GereProjetos implements Serializable{
             System.out.println("Erro a criar ficheiro.");
         } catch (IOException ex) {
             System.out.println("Erro a escrever para o ficheiro de Projetos.");
-        }
-
-        try {
-            FileOutputStream fos = new FileOutputStream(ficheiroPessoas);
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
-
-            oos.writeObject(pessoas);
-
-            oos.close();
-        } catch (FileNotFoundException ex) {
-            System.out.println("Erro a criar ficheiro.");
-        } catch (IOException ex) {
-            System.out.println("Erro a escrever para o ficheiro de Pessoas.");
         }
     }
 

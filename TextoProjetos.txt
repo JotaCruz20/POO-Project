@@ -1,3 +1,2 @@
-Projeto1<proj1<Maria António<Design:10-11-2005:1:Pascoal Bonito/Documentacao:30-5-2005:5:Maria António<Pascoal Bonito/Ana Patrício<Maria António<1-5-2005<1-12-2005<7
-Projeto2<proj2<Maria António<Design:10-11-2005:1:Pascoal Bonito/Documentacao:30-5-2005:5:Maria António<Pascoal Bonito/Ana Patrício<Maria António<1-6-2005<1-12-2005<8
-Projeto3<proj3<Maria António<Design:10-11-2005:1:Pascoal Bonito/Documentacao:30-5-2005:5:Maria António<Pascoal Bonito/Ana Patrício<Maria António<1-6-2005<1-12-2005<8
+Inteligência Artificial<AI<Maria António<Design:10-11-2020:4:Pascoal Bonito/Documentacao:30-5-2020:5:Ana Patrício<Pascoal Bonito/Ana Patrício<Osvaldo Daniel<1-5-2020<1-12-2020<7
+Fauna em Portugal<FP<Rita Oliveira<Design:1-5-2021:10:Pascoal Bonito/Documentacao:1-5-2021:11:Rita Oliveira/Documentacao:30-5-2005:7:Pedro Ferreira<Pedro Ferreira/Carlos Arraial/Ana Patrício<Maria António<1-4-2021<1-4-2021<12

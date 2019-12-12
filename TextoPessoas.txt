@@ -6,6 +6,10 @@ Docente<Rita Oliveira<oliveiral@mail.com<002<Biologia
 Licenciado<Pascoal Bonito<soubonito@mail.com<18<5<2021
 Doutorado<Angela Gonçalves<angelangela@quentemail.com<16<8<2025
 Mestre<Matilde Fernandes<matildx@maumail.com<11<3<2021
-Doutorado<Miguel Joelho<joanetes@mail.com
-Docente<Osvaldo Daniel<olvado@quentemail.com<003<Física
-Licenciado<Isabel Marques<isabelinha@meumail.com
+Doutorado<Miguel Joelho<joanetes@mail.com<9<10<2022
+Docente<Osvaldo Daniel<osvaldo@quentemail.com<003<Física
+Licenciado<Isabel Marques<isabelinha@meumail.com<22<4<2019
+Docente<Carolina Fonseca<fonseca123@meumail.com<Informática
+Licenciado<Pedro Ferreira<ferreirinha@meumail.com<1<1<2020
+Mestre<Gabriel Henriques<gabriel@maumail.com<17<8<2021
+Docente<João Carvalheira<carvalheirajoao@mail.com<002<Química
