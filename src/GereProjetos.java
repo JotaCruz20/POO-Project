@@ -1,3 +1,4 @@
+
 import javax.print.Doc;
 import javax.swing.*;
 import java.awt.*;
@@ -15,7 +16,8 @@ import static java.lang.System.setOut;
 public class GereProjetos implements Serializable {
 
     private ArrayList<Projeto> projetos;
-    private ArrayList<Pessoa> pessoas;
+    private ArrayList<Docente> docentes;
+    private ArrayList<Bolseiro> bolseiros;
 
     //GUI Menu
     private JFrame framePrincipal, frameAssocia, listaFrame;
@@ -36,7 +38,8 @@ public class GereProjetos implements Serializable {
         windowY = 150;
 
         projetos = new ArrayList<>();
-        pessoas = new ArrayList<>();
+        bolseiros = new ArrayList<>();
+        docentes = new ArrayList<>();;
 
         lerFicheiro();
 
@@ -156,9 +159,11 @@ public class GereProjetos implements Serializable {
         }
     }
 
-
-
     //MELHORAR DESIGN
+
+    /**
+     * Ação do botão para verificar e adicionar ao ArrayList de projetos o projeto com as informações fornecidas pelo utlizador
+     */
     private class addPessoaAction implements ActionListener {
         public void actionPerformed(ActionEvent e) {
 
@@ -230,8 +235,6 @@ public class GereProjetos implements Serializable {
             frameAssocia.setVisible(true);
         }
     }
-
-
 
     /**
      * GUI para pedir dados e adicionar projeto novo
@@ -384,7 +387,7 @@ public class GereProjetos implements Serializable {
     } //TESTAR
 
     /**
-     *
+     *Ação do Botão para associar pessoa pretendida ao projeto selecionado
      */
     private class associarAction implements ActionListener {
         @Override
@@ -405,9 +408,9 @@ public class GereProjetos implements Serializable {
                     if (opcao==1) {
                         //mudar investigador
                         Pessoa investigador = null;
-                        for (Pessoa pessoa : pessoas) {
-                            if (pessoa.getNome().equals(listaPessoas.getSelectedValue())) {
-                                investigador = pessoa;
+                        for (Docente docente : docentes) {
+                            if (docente.getNome().equals(listaPessoas.getSelectedValue())) {
+                                investigador = docente;
                             }
                         }
                         if (investigador == null) {
@@ -421,8 +424,8 @@ public class GereProjetos implements Serializable {
                     //verifica se pessoa não está já associada, se estiver, manda-se mensagem a avisar; pergunta-se se se quer tirar
                     int flag=0;
                     if(projetos.get(listaProjetos.getSelectedIndex()).getDocentes().size()>0){
-                        for(Pessoa pessoa: projetos.get(listaProjetos.getSelectedIndex()).getDocentes()) {
-                            if (listaPessoas.getSelectedValue().equals(pessoa.getNome())) {
+                        for(Docente docente : projetos.get(listaProjetos.getSelectedIndex()).getDocentes()) {
+                            if (listaPessoas.getSelectedValue().equals(docente.getNome())) {
                                 JOptionPane.showMessageDialog(null, "Investigador já pertence ao projeto");
                                 flag = 1;
                             }
@@ -430,29 +433,25 @@ public class GereProjetos implements Serializable {
                         if(flag==0){
                             Docente docente = null;
 
-                            for(Pessoa pessoaDocente: pessoas){
+                            for(Docente pessoaDocente: docentes){
                                 if(pessoaDocente.getNome().equals(listaPessoas.getSelectedValue().toString())){
-                                    docente = (Docente)pessoaDocente;
+                                    docente = pessoaDocente;
                                 }
                             }
                             if (docente == null) {
                                 JOptionPane.showMessageDialog(null, "Parece ter havido algum erro... Selecione outro investigador");
                             } else {
-                                System.out.println("adicionou!");
                                 projetos.get(listaProjetos.getSelectedIndex()).getDocentes().add(docente);
                             }
                         }
                     }
                     else{ //se não tiver nenhum seleciona logo!
                         Docente docente = null;
-
-                        for(Pessoa pessoaDocente: pessoas){
-                            System.out.println(pessoaDocente.getNome() +" "+listaPessoas.getSelectedValue().toString()+" "+pessoaDocente.getNome().equals(listaPessoas.getSelectedValue().toString()));
+                        for(Docente pessoaDocente: docentes){
                             if(pessoaDocente.getNome().equals(listaPessoas.getSelectedValue().toString())){
-                                docente = (Docente)pessoaDocente;
+                                docente = pessoaDocente;
                             }
                         }
-                        System.out.println(docente);
                         if (docente == null) {
                             JOptionPane.showMessageDialog(null, "Parece ter havido algum erro... Selecione outro investigador");
                         } else {
@@ -465,50 +464,55 @@ public class GereProjetos implements Serializable {
                 } //docentes
                 else if(opcaoAssocia.getSelectedIndex()==2){
                     int flag=0;
-                    if(projetos.get(listaProjetos.getSelectedIndex()).getFormandos().size()>0 || projetos.get(listaProjetos.getSelectedIndex()).getDoutorados().size()>0) { //já existe no projeto
-                        for (Pessoa pessoa : projetos.get(listaProjetos.getSelectedIndex()).getFormandos()) {
-                            if (listaPessoas.getSelectedValue().equals(pessoa.getNome())) {
-                                JOptionPane.showMessageDialog(null, "Bolseiro já pertence ao projeto");
-                                flag = 1;
-                            }
-                        }
-                        for (Pessoa pessoa : projetos.get(listaProjetos.getSelectedIndex()).getDoutorados()) {
-                            if (listaPessoas.getSelectedValue().equals(pessoa.getNome())) {
-                                JOptionPane.showMessageDialog(null, "Bolseiro já pertence ao projeto");
-                                flag = 1;
-                            }
-                        }
+                    if(bolseiros.get(listaPessoas.getSelectedIndex()).getClass().equals(Docente.class)){
+                        JOptionPane.showMessageDialog(null, "É necessário atualizar a lista.","ERRO",JOptionPane.ERROR_MESSAGE);
                     }
-                    if(flag==0){
-                        Bolseiro bolseiro = null;
-                        for(Pessoa pessoaBolseiro: pessoas){
-                            if(pessoaBolseiro.getNome().equals(listaPessoas.getSelectedValue().toString())){
-                                bolseiro = (Bolseiro)pessoaBolseiro;
+                    else{
+                        if(projetos.get(listaProjetos.getSelectedIndex()).getFormandos().size()>0 || projetos.get(listaProjetos.getSelectedIndex()).getDoutorados().size()>0) { //já existe no projeto
+                            for (Bolseiro bolseiro : projetos.get(listaProjetos.getSelectedIndex()).getFormandos()) {
+                                if (listaPessoas.getSelectedValue().equals(bolseiro.getNome())) {
+                                    JOptionPane.showMessageDialog(null, "Bolseiro já pertence ao projeto");
+                                    flag = 1;
+                                }
+                            }
+                            for (Bolseiro bolseiro : projetos.get(listaProjetos.getSelectedIndex()).getDoutorados()) {
+                                if (listaPessoas.getSelectedValue().equals(bolseiro.getNome())) {
+                                    JOptionPane.showMessageDialog(null, "Bolseiro já pertence ao projeto");
+                                    flag = 1;
+                                }
                             }
                         }
-                        if (bolseiro == null) {
-                            JOptionPane.showMessageDialog(null, "Parece ter havido algum erro... Selecione outro investigador");
-                        } else {
-                            if (bolseiro.getClass().getSuperclass().equals(Formando.class)) { //se for formando
-                                Formando formando = (Formando) bolseiro;
-                                if (formando.getProjeto() != null) { //verificar se tem algum projeto
-                                    JOptionPane.showMessageDialog(null, "Já existe projeto associado a formando");
-                                } else { //se não tiver projeto
-                                    //verificar se tem algum docente
-                                    if (projetos.get(listaProjetos.getSelectedIndex()).getDocentes().size() > 0 || projetos.get(listaProjetos.getSelectedIndex()).getInvestigadorPrincipal() != null) {
-                                        projetos.get(listaProjetos.getSelectedIndex()).getFormandos().add(formando);
-                                        formando.setProjeto(projetos.get(listaProjetos.getSelectedIndex()));
-                                    } else {
-                                        JOptionPane.showMessageDialog(null, "Não existe nenhum oriente atribuído ao projeto. Selecione um antes de adicionar Formando.");
+                        if(flag==0){
+                            Bolseiro bolseiro = null;
+                            for(Bolseiro pessoaBolseiro: bolseiros){
+                                if(pessoaBolseiro.getNome().equals(listaPessoas.getSelectedValue().toString())){
+                                    bolseiro = pessoaBolseiro;
+                                }
+                            }
+                            if (bolseiro == null) {
+                                JOptionPane.showMessageDialog(null, "Parece ter havido algum erro... Selecione outro investigador");
+                            } else {
+                                if (bolseiro.getClass().getSuperclass().equals(Formando.class)) { //se for formando
+                                    Formando formando = (Formando) bolseiro;
+                                    if (formando.getProjeto() != null) { //verificar se tem algum projeto
+                                        JOptionPane.showMessageDialog(null, "Já existe projeto associado a formando");
+                                    } else { //se não tiver projeto
+                                        //verificar se tem algum docente
+                                        if (projetos.get(listaProjetos.getSelectedIndex()).getDocentes().size() > 0 || projetos.get(listaProjetos.getSelectedIndex()).getInvestigadorPrincipal() != null) {
+                                            projetos.get(listaProjetos.getSelectedIndex()).getFormandos().add(formando);
+                                            formando.setProjeto(projetos.get(listaProjetos.getSelectedIndex()));
+                                        } else {
+                                            JOptionPane.showMessageDialog(null, "Não existe nenhum oriente atribuído ao projeto. Selecione um antes de adicionar Formando.");
+                                        }
                                     }
+
+                                } else if (bolseiro.getClass().equals(Doutorado.class)) {
+                                    Doutorado doutorado = (Doutorado) bolseiro; //cast
+                                    projetos.get(listaProjetos.getSelectedIndex()).getDoutorados().add(doutorado);
                                 }
 
-                            } else if (bolseiro.getClass().equals(Doutorado.class)) {
-                                Doutorado doutorado = (Doutorado) bolseiro; //cast
-                                projetos.get(listaProjetos.getSelectedIndex()).getDoutorados().add(doutorado);
+
                             }
-
-
                         }
                     }
                 }
@@ -629,8 +633,7 @@ public class GereProjetos implements Serializable {
     }
 
     /**
-     * ,Double.parseDouble(inputDuracao.getText()
-     *
+     *Criar lista do tipo DefaultListModel para as JLists
      * @return lista de Projetos
      */
     private DefaultListModel listaProjetos() {
@@ -648,10 +651,8 @@ public class GereProjetos implements Serializable {
      */
     private DefaultListModel listaBolseiros() {
         DefaultListModel list = new DefaultListModel();
-        for (Pessoa pesssoa : pessoas) {
-            if (pesssoa.getClass().getSuperclass().getSuperclass().equals(Bolseiro.class) || pesssoa.getClass().getSuperclass().equals(Bolseiro.class)) {
-                list.addElement(pesssoa.getNome());
-            }
+        for (Bolseiro bolseiro : bolseiros) {
+            list.addElement(bolseiro.getNome());
         }
         return list;
     }
@@ -663,10 +664,8 @@ public class GereProjetos implements Serializable {
      */
     private DefaultListModel listaDocentes() {
         DefaultListModel list = new DefaultListModel();
-        for (Pessoa pesssoa : pessoas) {
-            if (pesssoa.getClass().equals(Docente.class)) {
-                list.addElement(pesssoa.getNome());
-            }
+        for (Docente docente : docentes) {
+            list.addElement(docente.getNome());
         }
         return list;
     }
@@ -688,7 +687,7 @@ public class GereProjetos implements Serializable {
 
     /**
      * Função adiciona projetos após dados terem sido insiridos na janela
-     */
+     */ //INCOMPLETO!
     private void concluirAdicionarProjeto() {
         if (inputNome.getText().isEmpty() || inputAcron.getText().isEmpty() || inputDataInicio.getText().isEmpty() || inputDuracao.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Preencha todos os espaços");
@@ -749,7 +748,7 @@ public class GereProjetos implements Serializable {
                 GregorianCalendar dataFim = definirDataFim(dataInicio, duracao);
                 inputDataFim.setText(formatoData(dataFim));
 
-                Projeto projeto = new Projeto(nome, acron, dataInicio, dataFim, duracao);
+                Projeto projeto = new Projeto(nome, acron, dataInicio, dataFim, duracao,framePrincipal);
                 projetos.add(projeto);
                 return 1;
             } catch (NumberFormatException ex) {
@@ -769,7 +768,7 @@ public class GereProjetos implements Serializable {
      * @param bolseiroSelectedValue pessoa pretendida
      * @return Retorna 1 se tiver sido associado o Bolseiro, e 2, 3, 4 ou 5 se tiver ocorrido algum erro
      */
-    private int associarBolseiro(int projetoSelectedIndex, int bolseiroSelectedIndex, Projeto projetoSelectedValue, Bolseiro bolseiroSelectedValue) {
+    /*private int associarBolseiro(int projetoSelectedIndex, int bolseiroSelectedIndex, Projeto projetoSelectedValue, Bolseiro bolseiroSelectedValue) {
         int flag = 0;
 
         System.out.println(projetos.get(projetoSelectedIndex).getFormandos().size());
@@ -828,7 +827,7 @@ public class GereProjetos implements Serializable {
         }
         return 0;
     }
-
+*/
     /**
      * Função para associar um Docente a um projeto
      * @param projetoSelectedIndex Index do projeto pretendido na JList
@@ -837,7 +836,7 @@ public class GereProjetos implements Serializable {
      * @param docenteSelectedValue pessoa pretendida
      * @return Retorna 1 se tiver sido associado o Bolseiro, e 2, 3 ou 4 se tiver ocorrido algum erro
      */
-    private int associarDocente(int projetoSelectedIndex, int docenteSelectedIndex, Projeto projetoSelectedValue, Docente docenteSelectedValue) {
+    /*private int associarDocente(int projetoSelectedIndex, int docenteSelectedIndex, Projeto projetoSelectedValue, Docente docenteSelectedValue) {
         //verifica se pessoa não está já associada, se estiver, manda-se mensagem a avisar; pergunta-se se se quer tirar
         int flag = 0;
         if (projetos.get(projetoSelectedIndex).getDocentes().size() > 0) {
@@ -880,7 +879,7 @@ public class GereProjetos implements Serializable {
         }
         return 0;
     }
-
+*/
     /**
      * Função para associar um Ivestigador a um projeto
      * @param projetoSelectedIndex Index do projeto pretendido na JList
@@ -889,7 +888,7 @@ public class GereProjetos implements Serializable {
      * @param docenteSelectedValue pessoa pretendida
      * @return Retorna 1 se tiver sido associado o Bolseiro, e 2, 3 ou 4 se tiver ocorrido algum erro
      */
-    private int associarInvestigador(int projetoSelectedIndex, int docenteSelectedIndex, Projeto projetoSelectedValue, Docente docenteSelectedValue){
+    /*private int associarInvestigador(int projetoSelectedIndex, int docenteSelectedIndex, Projeto projetoSelectedValue, Docente docenteSelectedValue){
         if(projetos.get(projetoSelectedIndex).getInvestigadorPrincipal()!=null){ //já tem investigador!
             return 2;
         }
@@ -906,6 +905,7 @@ public class GereProjetos implements Serializable {
                 return 1;
         }
     }
+    */
 
     /**
      * Esta função retorna a data após uma certa duração, a partir da data de início
@@ -929,12 +929,13 @@ public class GereProjetos implements Serializable {
      * Carrega os dados dos ficheiros (de texto ou de objetos)
      */
     private void lerFicheiro() {
-        File ficheiroPessoas = new File("pessoas.obj");
+        File ficheiroFormandos = new File("formandos.obj");
+        File ficheiroDocentes = new File("docentes.obj");
         File textoPessoas = new File("TextoPessoas.txt");
         File ficheiroProjetos = new File("projetos.obj");
         File textoProjetos = new File("TextoProjetos.txt");
 
-        if(!(lerPessoa(ficheiroPessoas, textoPessoas) && lerProjeto(ficheiroProjetos,textoProjetos))){
+        if(!(lerPessoa(ficheiroFormandos,ficheiroDocentes, textoPessoas) && lerProjeto(ficheiroProjetos,textoProjetos))){
             System.out.println("Erro a ler ficheiro");
             exit(0);
         }
@@ -943,21 +944,34 @@ public class GereProjetos implements Serializable {
 
     /**
      * Função para ler ficheiro (de objeto ou de texto, se o primeiro não existir) e guardar os dados das pessoas na estrutura
-     * @param ficheiroPessoas Ficheiro do tipo .obj com informações sobre as pessoas
+     * @param ficheiroBolseiros Ficheiro do tipo .obj com informações sobre os bolseiros
+     * @param ficheiroDocentes Ficheiro do tipo .obj com informações sobre os docentes
      * @param textoPessoas Ficheiro do tipo .txt com informações sobre as pessoas; Este ficheiro apeas é utilizado no caso do primeiro não existir
      * @return Retorna "true" se for possível extrair os dados de algum dos ficheiros. Se não, retorna "false"
      */
-    private boolean lerPessoa(File ficheiroPessoas,File textoPessoas ){
+    private boolean lerPessoa(File ficheiroBolseiros, File ficheiroDocentes,File textoPessoas ){
         String line;
-        if (ficheiroPessoas.exists() && ficheiroPessoas.isFile()) { //abre ficheiro de objetos
+
+        if (ficheiroBolseiros.exists() && ficheiroBolseiros.isFile() && ficheiroDocentes.exists() && ficheiroDocentes.isFile()) { //abre ficheiro de objetos
             try {
-                FileInputStream fo = new FileInputStream(ficheiroPessoas);
-                ObjectInputStream ois = new ObjectInputStream(fo);
+                //guardar focentes
+                FileInputStream fo_docente = new FileInputStream(ficheiroDocentes);
+                ObjectInputStream ois_docente = new ObjectInputStream(fo_docente);
 
-                ArrayList<Pessoa> pessoaObjeto = (ArrayList<Pessoa>) ois.readObject();
-                pessoas = pessoaObjeto;
+                ArrayList<Docente> docenteObjeto = (ArrayList<Docente>) ois_docente.readObject();
+                docentes = docenteObjeto;
 
-                ois.close();
+                ois_docente.close();
+
+                FileInputStream fo_bolseiro = new FileInputStream(ficheiroDocentes);
+                ObjectInputStream ois_bolseiro = new ObjectInputStream(fo_bolseiro);
+
+                ArrayList<Bolseiro> bolseiroObjeto = (ArrayList<Bolseiro>) ois_bolseiro.readObject();
+                bolseiros = bolseiroObjeto;
+
+                ois_bolseiro.close();
+
+
             } catch (IOException ex) {
                 System.out.println("Erro a ler ficheiro.");
                 return false;
@@ -973,13 +987,13 @@ public class GereProjetos implements Serializable {
                 while ((line = br.readLine()) != null) {
                     String[] info = line.split("<");
                     if (info[0].equalsIgnoreCase("Docente") && info.length == 5) {
-                        pessoas.add(new Docente(info[1], info[2], Integer.parseInt(info[3]), info[4]));
-                    } else if (info[0].equalsIgnoreCase("Doutorado") && info.length == 6) {
-                        pessoas.add(new Doutorado(info[1], info[2], Integer.parseInt(info[3]), Integer.parseInt(info[4]), Integer.parseInt(info[5])));
-                    } else if (info[0].equalsIgnoreCase("Mestre") && info.length == 6) {
-                        pessoas.add(new Mestre(info[1], info[2], Integer.parseInt(info[3]), Integer.parseInt(info[4]), Integer.parseInt(info[5])));
-                    } else if (info[0].equalsIgnoreCase("Licenciado") && info.length == 6) {
-                        pessoas.add(new Licenciado(info[1], info[2], Integer.parseInt(info[3]), Integer.parseInt(info[4]), Integer.parseInt(info[5])));
+                        docentes.add(new Docente(info[1], info[2], Integer.parseInt(info[3]), info[4]));
+                    } else if (info[0].equalsIgnoreCase("Doutorado") && info.length == 5) {
+                        bolseiros.add(new Doutorado(info[1], info[2], formatoGregorianCalendar(info[3]),formatoGregorianCalendar(info[4])));
+                    } else if (info[0].equalsIgnoreCase("Mestre") && info.length ==5) {
+                        bolseiros.add(new Mestre(info[1], info[2], formatoGregorianCalendar(info[3]),formatoGregorianCalendar(info[4])));
+                    } else if (info[0].equalsIgnoreCase("Licenciado") && info.length == 5) {
+                        bolseiros.add(new Licenciado(info[1], info[2], formatoGregorianCalendar(info[3]),formatoGregorianCalendar(info[4])));
                     }
                 }
                 br.close();
@@ -995,6 +1009,8 @@ public class GereProjetos implements Serializable {
         return true;
     }
 
+
+    //INCOMPLETO
     /**
      * Função para ler ficheiro (de objeto ou de texto, se o primeiro não existir) e guardar os dados dos projetos na estrutura
      * @param ficheiroProjetos Ficheiro do tipo .obj com informações sobre os projetos
@@ -1028,68 +1044,71 @@ public class GereProjetos implements Serializable {
                     System.out.println(line);
                     String[] projeto = line.split("<");
                     if (projeto.length == 9) {
-                        Pessoa investigadorPrincipal = null;
-                        for (Pessoa pessoa : pessoas) {
-                            if (pessoa.getNome().equals(projeto[2]) && pessoa.getClass().toString() != "class Docente") {
-                                investigadorPrincipal = pessoa;
+                        Docente investigadorPrincipal = null;
+                        for (Docente docente : docentes) {
+                            if (docente.getNome().equals(projeto[2])) {
+                                investigadorPrincipal = docente;
                             }
                         }
 
                         String[] tarefasString = projeto[3].split("/");
-                        ArrayList<Tarefa> tarefas = new ArrayList<Tarefa>();
+                        ArrayList<Tarefa> tarefas = new ArrayList<>();
 
-                        for (String tarefa : tarefasString) {
+                        for (String tarefa : tarefasString) { //vai percorrer todas as strings com informações das tarefas
                             String[] tarefaInfo = tarefa.split(":");
                             if (tarefaInfo[0].equalsIgnoreCase("Desenvolvimento") && tarefaInfo.length == 4) {
-                                for (Pessoa pessoa : pessoas) {
-                                    if (pessoa.getNome().equals(tarefaInfo[3]) && pessoa.getClass().equals(Docente.class)) {
-                                        System.out.println("oi");
-                                        tarefas.add(new Desenvolvimento(formatoGregorianCalendar(tarefaInfo[1]), Integer.parseInt(tarefaInfo[2]), pessoa));
+                                for (Docente docente : docentes) {
+                                    if (docente.getNome().equals(tarefaInfo[3])) {
+                                        tarefas.add(new Desenvolvimento(formatoGregorianCalendar(tarefaInfo[1]), Double.parseDouble(tarefaInfo[2]), docente));
                                     }
                                 }
                             } else if (tarefaInfo[0].equalsIgnoreCase("Design") && tarefaInfo.length == 4) {
-                                for (Pessoa pessoa : pessoas) {
-                                    if (pessoa.getNome().equals(tarefaInfo[3]) && pessoa.getClass().equals(Docente.class)) {
-                                        System.out.println("oi");
-                                        tarefas.add(new Design(formatoGregorianCalendar(tarefaInfo[1]), Integer.parseInt(tarefaInfo[2]), pessoa));
+                                for (Docente docente : docentes) {
+                                    if (docente.getNome().equals(tarefaInfo[3])) {
+                                        tarefas.add(new Design(formatoGregorianCalendar(tarefaInfo[1]), Double.parseDouble(tarefaInfo[2]), docente));
                                     }
                                 }
                             } else if (tarefaInfo[0].equalsIgnoreCase("Documentacao") && tarefaInfo.length == 4) {
-                                for (Pessoa pessoa : pessoas) {
-                                    if (pessoa.getNome().equals(tarefaInfo[3]) && pessoa.getClass().equals(Docente.class)) {
-                                        System.out.println("oi");
-                                        tarefas.add(new Documentacao(formatoGregorianCalendar(tarefaInfo[1]), Integer.parseInt(tarefaInfo[2]), pessoa));
+                                for (Docente docente : docentes) {
+                                    if (docente.getNome().equals(tarefaInfo[3])) {
+                                        tarefas.add(new Documentacao(formatoGregorianCalendar(tarefaInfo[1]), Double.parseDouble(tarefaInfo[2]), docente));
                                     }
                                 }
                             }
                         }
-                        String[] bolseirosString = projeto[4].split("/");
-                        ArrayList<Formando> formandos = new ArrayList<Formando>();
+
+                        String[] formandosString = projeto[4].split("/");
+                        ArrayList<Formando> formandos = new ArrayList<>();
+                        for (String formando : formandosString) {
+                            for (Bolseiro bolseiro : bolseiros) {
+                                if (bolseiro.getNome().equals(formando) && bolseiro.getClass().getSuperclass().equals(Formando.class)) {
+                                    formandos.add((Formando)bolseiro);
+                                }
+                            }
+                        }
+
+                        String[] doutoradosString = projeto[5].split("/");
                         ArrayList<Doutorado> doutorados = new ArrayList<>();
-                        for (String bolseiro : bolseirosString) {
-                            String[] bolseiroInfo = bolseiro.split(":");
-                            for (Pessoa pessoa : pessoas) {
-                                if (pessoa.getNome().equals(bolseiroInfo[0]) && pessoa.getClass().getSuperclass().toString().equals("class Formando")) {
-                                    formandos.add((Formando)pessoa);
-                                }
-                                else if(pessoa.getNome().equals(bolseiroInfo[0]) && pessoa.getClass().toString().equals("class Doutorado")){
-                                    doutorados.add((Doutorado)pessoa);
+                        for (String doutorado : doutoradosString) {
+                            for (Bolseiro bolseiro : bolseiros) {
+                                if(bolseiro.getNome().equals(doutorado) && bolseiro.getClass().getSuperclass().equals(Doutorado.class)){
+                                    doutorados.add((Doutorado)bolseiro);
                                 }
                             }
                         }
 
-                        String[] docentesString = projeto[5].split("/");
-                        ArrayList<Docente> docentes = new ArrayList<Docente>();
+
+                        String[] docentesString = projeto[6].split("/");
+                        ArrayList<Docente> docentes = new ArrayList<>();
                         for (String docente : docentesString) {
-                            String[] docenteInfo = docente.split(":");
-                            for (Pessoa pessoa : pessoas) {
-                                if (pessoa.getNome().equals(docenteInfo[0]) && pessoa.getClass().toString() == "class Docente") {
-                                    docentes.add((Docente)pessoa);
+                            for (Docente docenteLista : docentes) {
+                                if (docenteLista.getNome().equals(docente) && docenteLista.getClass().equals(Docente.class)) {
+                                    docentes.add(docenteLista);
                                 }
                             }
-                        }
+                        } //TESTAR!
 
-                        projetos.add(new Projeto(projeto[0], projeto[1],investigadorPrincipal, tarefas, formandos, doutorados, docentes , formatoGregorianCalendar(projeto[6]), formatoGregorianCalendar(projeto[7]), Double.parseDouble(projeto[8])));
+                        projetos.add(new Projeto(projeto[0], projeto[1],investigadorPrincipal, tarefas,framePrincipal, formandos, doutorados, docentes , formatoGregorianCalendar(projeto[6]), formatoGregorianCalendar(projeto[7]), Double.parseDouble(projeto[8])));
                     }
                 }
                 br.close();
@@ -1101,6 +1120,7 @@ public class GereProjetos implements Serializable {
         return true;
     }
 
+    //COMPLETO A PARTIR DAQUI!!
     /**
      * Guarda todos os dados nos ficheiro de Objetos, de modo a poderem ser utilizados na próxima utilização do programa
      */
@@ -1113,14 +1133,23 @@ public class GereProjetos implements Serializable {
      * Guarda os objetos Pessoa no ficheiro de Objetos
      */
     private void guardarPessoas(){
-        File ficheiroPessoas = new File("pessoas.obj");
+        File ficheiroBolseiros = new File("bolseiros.obj");
+        File ficheiroDocentes = new File("docentes.obj");
         try {
-            FileOutputStream fos = new FileOutputStream(ficheiroPessoas);
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            FileOutputStream fos_docente = new FileOutputStream(ficheiroDocentes);
+            ObjectOutputStream oos_docente = new ObjectOutputStream(fos_docente);
 
-            oos.writeObject(pessoas);
+            oos_docente.writeObject(docentes);
 
-            oos.close();
+            oos_docente.close();
+
+            FileOutputStream fos_bolseiro = new FileOutputStream(ficheiroBolseiros);
+            ObjectOutputStream oos_bolseiro = new ObjectOutputStream(fos_bolseiro);
+
+            oos_bolseiro.writeObject(bolseiros);
+
+            oos_docente.close();
+
         } catch (FileNotFoundException ex) {
             System.out.println("Erro a criar ficheiro.");
         } catch (IOException ex) {
