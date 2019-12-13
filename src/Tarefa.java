@@ -34,6 +34,9 @@ public class Tarefa implements Serializable {
         return duracao;
     }
 
+    public void setDataFim(GregorianCalendar dataFim) {
+        this.dataFim = dataFim;
+    }
 
     public GregorianCalendar getDataInicio() {
         return dataInicio;

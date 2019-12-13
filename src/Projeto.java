@@ -1,4 +1,3 @@
-import javax.print.Doc;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -117,6 +116,7 @@ public class Projeto implements Serializable {
 
         //butoes main
         buttonFecharFrame=new JButton("Voltar Atras");
+        buttonFecharFrame.addActionListener(new fecharFrame());
         buttonAtualizaData=new JButton("Atualizar Data");
         buttonAtualizaData.addActionListener(new atualizaData());
         buttonCriaTarefa= new JButton("Criar Tarefa");
@@ -146,6 +146,7 @@ public class Projeto implements Serializable {
         panel.add(buttonAtualizarConclusao);
         panel.add(buttonAtualizaData);
         panel.add(buttonConclusao);
+        panel.add(buttonFecharFrame);
 
         labelInformacaoDataAtual=new JLabel("Data Atual: "+dia+"/"+mes+"/"+ano);
         labelInformacaoDataAtual.setFont(labelInformacaoDataAtual.getFont().deriveFont(20.0f));
@@ -402,6 +403,15 @@ public class Projeto implements Serializable {
     }
 
     //nao sei se esta certo tough
+    /**
+     * Verifica se é possivel adicionar a tarefa no mes certo
+     * @param dataInicial Data Inicial da Tarefa a comparar
+     * @param dataFinalTarefa Data Final da Tarefa a comparar
+     * @param dataFinalTarefaLista Data Inicial da tarefa a criar/atribuir
+     * @param dataInicialTarefaLista Data Final da tarefa a criar/atribuir
+     * @param tarefa Tarefa a adicionar
+     * @return Taxa de esforço da tarefa
+     */
     public double verificaEsforço(GregorianCalendar dataInicial,GregorianCalendar dataFinalTarefa,GregorianCalendar dataFinalTarefaLista,GregorianCalendar dataInicialTarefaLista,Tarefa tarefa){
         if(dataInicialTarefaLista.after(dataInicial) & dataFinalTarefa.before(dataFinalTarefa)){
             return tarefa.getTaxaEsforco();
@@ -425,6 +435,9 @@ public class Projeto implements Serializable {
      */
     public void criaTarefa(Pessoa pessoa,double duracaoEstimada,int dia,int mes,int ano,int opcao) {
         GregorianCalendar data;
+        double esforco;
+        GregorianCalendar dataFinalTarefaAtribuir,dataFinalTarefa;
+        int durTarefa,durTarefaFinal;
         Tarefa tarefa;
         data = new GregorianCalendar(ano, mes, dia);
         if(pessoa==null) {
@@ -442,14 +455,56 @@ public class Projeto implements Serializable {
         else{
             if (opcao==0) {
                 tarefa = new Desenvolvimento(data, duracaoEstimada, pessoa);
+                durTarefa=(int)Math.ceil(tarefa.getDuracao());
+                esforco=tarefa.getTaxaEsforco();
+                dataFinalTarefaAtribuir=tarefa.getDataInicio();
+                dataFinalTarefaAtribuir.add(GregorianCalendar.MONTH,durTarefa);
+                for (int i = 0; i <pessoa.getTarefas().size() ; i++) {
+                    durTarefaFinal=(int)Math.ceil(pessoa.getTarefas().get(i).getDuracao());
+                    dataFinalTarefa=pessoa.getTarefas().get(i).getDataInicio();
+                    dataFinalTarefa.add(GregorianCalendar.MONTH,durTarefaFinal);
+                    esforco+=verificaEsforço(pessoa.getTarefas().get(i).getDataInicio(),dataFinalTarefa,tarefa.getDataInicio(),dataFinalTarefaAtribuir,pessoa.getTarefas().get(i));
+                    if(esforco>1){
+                        JOptionPane.showMessageDialog(null, "Pessoa com taxa de Esforço ao máximo!");
+                        return;
+                    }
+                }
                 tarefas.add(tarefa);
                 pessoa.addTarefa(tarefa);
             } else if (opcao==1) {
                 tarefa = new Design(data, duracaoEstimada, pessoa);
+                durTarefa=(int)Math.ceil(tarefa.getDuracao());
+                esforco=tarefa.getTaxaEsforco();
+                dataFinalTarefaAtribuir=tarefa.getDataInicio();
+                dataFinalTarefaAtribuir.add(GregorianCalendar.MONTH,durTarefa);
+                for (int i = 0; i <pessoa.getTarefas().size() ; i++) {
+                    durTarefaFinal=(int)Math.ceil(pessoa.getTarefas().get(i).getDuracao());
+                    dataFinalTarefa=pessoa.getTarefas().get(i).getDataInicio();
+                    dataFinalTarefa.add(GregorianCalendar.MONTH,durTarefaFinal);
+                    esforco+=verificaEsforço(pessoa.getTarefas().get(i).getDataInicio(),dataFinalTarefa,tarefa.getDataInicio(),dataFinalTarefaAtribuir,pessoa.getTarefas().get(i));
+                    if(esforco>1){
+                        JOptionPane.showMessageDialog(null, "Pessoa com taxa de Esforço ao máximo!");
+                        return;
+                    }
+                }
                 tarefas.add(tarefa);
                 pessoa.addTarefa(tarefa);
             } else {
                 tarefa = new Documentacao(data, duracaoEstimada, pessoa);
+                durTarefa=(int)Math.ceil(tarefa.getDuracao());
+                esforco=tarefa.getTaxaEsforco();
+                dataFinalTarefaAtribuir=tarefa.getDataInicio();
+                dataFinalTarefaAtribuir.add(GregorianCalendar.MONTH,durTarefa);
+                for (int i = 0; i <pessoa.getTarefas().size() ; i++) {
+                    durTarefaFinal=(int)Math.ceil(pessoa.getTarefas().get(i).getDuracao());
+                    dataFinalTarefa=pessoa.getTarefas().get(i).getDataInicio();
+                    dataFinalTarefa.add(GregorianCalendar.MONTH,durTarefaFinal);
+                    esforco+=verificaEsforço(pessoa.getTarefas().get(i).getDataInicio(),dataFinalTarefa,tarefa.getDataInicio(),dataFinalTarefaAtribuir,pessoa.getTarefas().get(i));
+                    if(esforco>1){
+                        JOptionPane.showMessageDialog(null, "Pessoa com taxa de Esforço ao máximo!");
+                        return;
+                    }
+                }
                 tarefas.add(tarefa);
                 pessoa.addTarefa(tarefa);
             }
@@ -494,11 +549,16 @@ public class Projeto implements Serializable {
      * @param perConclusao Percentagem de Conclusão a meter na tarefa
      */
     public void atualizaConclusao(Tarefa tarefa, double perConclusao){
+        GregorianCalendar dataFim;
+        String data=labelInformacaoDataAtual.getText();
+        String[] data_list=data.split(" ");
+        data_list=data_list[1].split("/");
+        dataFim=new GregorianCalendar(Integer.parseInt(data_list[0]),Integer.parseInt(data_list[1]),Integer.parseInt(data_list[2]));
         tarefa.setPerConclusao(perConclusao);
         if(perConclusao==100){
             Pessoa pessoa=tarefa.getPessoaResponsavel();
             pessoa.setEsforco(pessoa.getEsforco() - tarefa.getTaxaEsforco());
-            tarefa.setD
+            tarefa.setDataFim(dataFim);
         }
     }
 
@@ -518,6 +578,9 @@ public class Projeto implements Serializable {
     }
 
     //butoes
+    /**
+     * Butão que vai atualizar a Data Atual
+     */
     private class atualizaData implements ActionListener{
         public void actionPerformed(ActionEvent actionEvent){
             String value = JOptionPane.showInputDialog(null, "Introduza a data", "Data", JOptionPane.QUESTION_MESSAGE);
@@ -732,6 +795,9 @@ public class Projeto implements Serializable {
         }
     }
 
+    /**
+     * Fecha a frame e abre a dos projetos
+     */
     private class fecharFrame implements ActionListener{
         public void actionPerformed(ActionEvent e) {
             frame.setVisible(false);
@@ -983,13 +1049,29 @@ public class Projeto implements Serializable {
      */
     private class buttonConcluir implements ActionListener{
         public void actionPerformed(ActionEvent e){
+            GregorianCalendar dateFim,dataAtual;
+            int dur=(int)Math.ceil(duracao);
+            String[] data=labelInformacaoDataAtual.getText().split(" ");
+            data=data[1].split("/");
+            dataAtual=new GregorianCalendar(Integer.parseInt(data[0]),Integer.parseInt(data[1]),Integer.parseInt(data[2]));
+            dateFim = dataAtual;
+            dateFim.add(GregorianCalendar.MONTH,dur);
             for (int i = 0; i < tarefas.size() ; i++) {
                 if(tarefas.get(i).perConclusao!=100){
                     JOptionPane.showMessageDialog(null, "Há tarefas por concluir não pode acabar o projeto", "Concluir Tarefas", JOptionPane.PLAIN_MESSAGE);
                     return;
                 }
             }
-            concluir=1;
+            if(dataAtual.after(dateFim)) {
+                concluir = 1;
+                frame.setVisible(false);
+                frameOriginal.setVisible(true);
+
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Ainda não passou o tempo necessário para acabar a tarefa!", "Concluir Tarefas", JOptionPane.PLAIN_MESSAGE);
+            }
+
         }
     }
 
