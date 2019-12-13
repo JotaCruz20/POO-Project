@@ -21,7 +21,7 @@ public class GereProjetos implements Serializable {
     private JFrame framePrincipal, frameAssocia, listaFrame;
     private JPanel selectProjectPanel;
     private JButton nextButton;
-    private JList projetosBox;
+    private JList projetosBox,concluidosBox;
     private int windowX, windowY;
 
     private JComboBox opcaoAssocia;
@@ -51,7 +51,7 @@ public class GereProjetos implements Serializable {
 
         //optionPanel
         JPanel optionPanel = new JPanel();
-        optionPanel.setLayout(new GridLayout(4, 1));
+        optionPanel.setLayout(new GridLayout(6, 1));
 
         JLabel label = new JLabel("Escolha uma das seguintes opções");
         label.setSize(width, height);
@@ -59,6 +59,10 @@ public class GereProjetos implements Serializable {
         JButton addProjetoButton = new JButton("Adicionar projeto");
         addProjetoButton.setSize(width, height);
         addProjetoButton.addActionListener(new addProjectAction());
+
+        JButton delProjetoButton = new JButton("Eliminar Projeto");
+        delProjetoButton.setSize(width, height);
+        delProjetoButton.addActionListener(new delProjectAction());
 
         JButton addPessoaButton = new JButton("Associar pessoa ao projeto");
         addPessoaButton.setSize(width, height);
@@ -76,7 +80,9 @@ public class GereProjetos implements Serializable {
 
         optionPanel.add(label);
         optionPanel.add(addProjetoButton);
+        optionPanel.add(delProjetoButton);
         optionPanel.add(addPessoaButton);
+        optionPanel.add(projetosConcluidosButton);
         optionPanel.add(selecionaProjecto);
 
 
@@ -112,6 +118,10 @@ public class GereProjetos implements Serializable {
         framePrincipal.setVisible(true);
     }
 
+
+    /**
+     * Ação do botão para selecionar um projeto
+     */
     private class selecionarProjecto implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             String value;
@@ -150,6 +160,9 @@ public class GereProjetos implements Serializable {
         }
     }
 
+
+
+    //MELHORAR DESIGN
     private class addPessoaAction implements ActionListener {
         public void actionPerformed(ActionEvent e) {
 
@@ -222,6 +235,11 @@ public class GereProjetos implements Serializable {
         }
     }
 
+
+
+    /**
+     * GUI para pedir dados e adicionar projeto novo
+     */
     private class addProjectAction implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -288,6 +306,21 @@ public class GereProjetos implements Serializable {
         }
     }
 
+    /**
+     * GUI para pedir dados e adicionar projeto novo
+     */
+    private class delProjectAction implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            projetos.remove(projetosBox.getSelectedIndex());
+            projetosBox.setModel(listaProjetos());
+
+        }
+    }
+
+    /**
+     * Ação do botão para atualizar a lista de pessoas, na frame de adicionar a projeto
+     */
     private class atualizarAction implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -301,6 +334,12 @@ public class GereProjetos implements Serializable {
         }
     }
 
+
+
+
+
+
+    //ACABAR
     private class projetosConcluidosAction implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -311,90 +350,204 @@ public class GereProjetos implements Serializable {
             listaFrame = new JFrame();
             JPanel listaPanel = new JPanel(new GridLayout(0, 1));
 
-            framePrincipal.setTitle("Projetos Concluidos");
-            framePrincipal.setSize(windowX, windowY);
-            framePrincipal.setLayout(new BorderLayout());
-            framePrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            listaFrame.setTitle("Projetos Concluidos");
+            listaFrame.setSize(windowX, windowY);
+            listaFrame.setLayout(new BorderLayout());
+            listaFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
             JButton voltarButton = new JButton("Voltar");
             voltarButton.addActionListener(new voltar2Action());
 
             JButton maisButton = new JButton("Mais Informações dobre o projeto");
-            //maisButton.addActionListener(/*new voltar2Action()*/);
+            maisButton.addActionListener(new infoAction());
 
             JLabel titulo = new JLabel("Projetos concluídos");
             listaPanel.add(titulo);
             JLabel espaco = new JLabel(" ");
             listaPanel.add(espaco);
 
-            for (Projeto projeto : projetos) {
-                listaPanel.add(new JLabel(projeto.getNome()));
+            if(listaConcluidos().size()>0){
+                concluidosBox = new JList(listaConcluidos());
+                concluidosBox.setVisibleRowCount(3);
+                concluidosBox.setFixedCellWidth(windowX - 2 * (windowX / 10));
+                listaPanel.add(concluidosBox);
+
+                JScrollPane listProjetosScroller = new JScrollPane(concluidosBox);
+
+                listaPanel.add(listProjetosScroller);
+
+                JPanel botoesPanel = new JPanel();
+                botoesPanel.add(voltarButton);
+                botoesPanel.add(maisButton);
+                listaPanel.add(botoesPanel);
+
+                listaFrame.add(listaPanel);
+                listaFrame.add(botoesPanel);
+
+                listaFrame.setVisible(true);
+
             }
-
-            JPanel botoesPanel = new JPanel();
-            botoesPanel.add(voltarButton);
-            botoesPanel.add(maisButton);
-            listaPanel.add(botoesPanel);
-
-            listaFrame.add(listaPanel);
-            listaFrame.add(botoesPanel);
-
-            listaFrame.setVisible(true);
-
-
+            else{
+                JOptionPane.showMessageDialog(null, "Não existem projetos Concluidos");
+            }
         }
     }
+    //ACABAR
 
 
+
+
+
+
+    /**
+     *
+     */
     private class associarAction implements ActionListener {
         @Override
-        public void actionPerformed(ActionEvent e) {
+        public void actionPerformed (ActionEvent e) {
             int opcao = 1;
             //testar se tanto projeto como pessoa estão selecionados
 
-            if (listaPessoas.getSelectedIndex() < 0 || listaProjetos.getSelectedIndex() < 0) {
+            if(listaPessoas.getSelectedIndex()<0 || listaProjetos.getSelectedIndex()<0 ) {
                 JOptionPane.showMessageDialog(null, "Tem dados em falta");
                 frameAssocia.setVisible(true);
-            } else {
-                if (opcaoAssocia.getSelectedIndex() == 0) {
-                    int retorno = associarInvestigador(listaProjetos.getSelectedIndex(), listaPessoas.getSelectedIndex(), (Projeto) listaProjetos.getSelectedValue(), (Docente) listaPessoas.getSelectedValue());
-                    if (retorno == 2) {
-                        JOptionPane.showConfirmDialog(null, "Já tem um Investigador Principal associado a este projeto. Deseja mudar?", "Sair", JOptionPane.YES_NO_OPTION);
-                    } else if (retorno == 3) {
-                        JOptionPane.showMessageDialog(null, "Parece ter havido algum erro... Selecione outro investigador");
+            }
+            else{
+                if(opcaoAssocia.getSelectedIndex()==0){
+                    //fazer verificação se não tem já investigador, se tiver, perguntar se quer mudar ou não
+                    if(projetos.get(listaProjetos.getSelectedIndex()).getInvestigadorPrincipal()!=null){ //já tem investigador!
+                        opcao = JOptionPane.showConfirmDialog(null,"Já tem um Investigador Principal associado a este projeto. Deseja mudar?","Sair",JOptionPane.YES_NO_OPTION);
+                    }
+                    if (opcao==1) {
+                        //mudar investigador
+                        Pessoa investigador = null;
+                        for (Pessoa pessoa : pessoas) {
+                            if (pessoa.getNome().equals(listaPessoas.getSelectedValue())) {
+                                investigador = pessoa;
+                            }
+                        }
+                        if (investigador == null) {
+                            JOptionPane.showMessageDialog(null, "Parece ter havido algum erro... Selecione outro investigador");
+                        } else {
+                            projetos.get(listaProjetos.getSelectedIndex()).setInvestigadorPrincipal(investigador);
+                        }
                     }
                 } //investigador principal
-                else if (opcaoAssocia.getSelectedIndex() == 1) {
-                    int retorno = associarDocente(listaProjetos.getSelectedIndex(), listaPessoas.getSelectedIndex(), (Projeto) listaProjetos.getSelectedValue(), (Docente) listaPessoas.getSelectedValue());
-                    if (retorno == 2) {
-                        JOptionPane.showMessageDialog(null, "Investigador já pertence ao projeto");
-                    } else if (retorno == 3) {
-                        JOptionPane.showMessageDialog(null, "Parece ter havido algum erro... Selecione outro investigador");
-                    } else if (retorno == 4) {
-                        JOptionPane.showMessageDialog(null, "Parece ter havido algum erro... Selecione outro investigador");
+                else if(opcaoAssocia.getSelectedIndex()==1 ){
+                    //verifica se pessoa não está já associada, se estiver, manda-se mensagem a avisar; pergunta-se se se quer tirar
+                    int flag=0;
+                    if(projetos.get(listaProjetos.getSelectedIndex()).getDocentes().size()>0){
+                        for(Pessoa pessoa: projetos.get(listaProjetos.getSelectedIndex()).getDocentes()) {
+                            if (listaPessoas.getSelectedValue().equals(pessoa.getNome())) {
+                                JOptionPane.showMessageDialog(null, "Investigador já pertence ao projeto");
+                                flag = 1;
+                            }
+                        }
+                        if(flag==0){
+                            Docente docente = null;
+
+                            for(Pessoa pessoaDocente: pessoas){
+                                if(pessoaDocente.getNome().equals(listaPessoas.getSelectedValue().toString())){
+                                    docente = (Docente)pessoaDocente;
+                                }
+                            }
+                            if (docente == null) {
+                                JOptionPane.showMessageDialog(null, "Parece ter havido algum erro... Selecione outro investigador");
+                            } else {
+                                System.out.println("adicionou!");
+                                projetos.get(listaProjetos.getSelectedIndex()).getDocentes().add(docente);
+                            }
+                        }
                     }
+                    else{ //se não tiver nenhum seleciona logo!
+                        Docente docente = null;
+
+                        for(Pessoa pessoaDocente: pessoas){
+                            System.out.println(pessoaDocente.getNome() +" "+listaPessoas.getSelectedValue().toString()+" "+pessoaDocente.getNome().equals(listaPessoas.getSelectedValue().toString()));
+                            if(pessoaDocente.getNome().equals(listaPessoas.getSelectedValue().toString())){
+                                docente = (Docente)pessoaDocente;
+                            }
+                        }
+                        System.out.println(docente);
+                        if (docente == null) {
+                            JOptionPane.showMessageDialog(null, "Parece ter havido algum erro... Selecione outro investigador");
+                        } else {
+                            projetos.get(listaProjetos.getSelectedIndex()).getDocentes().add(docente);
+                        }
+                    }
+
+
+
                 } //docentes
-                else if (opcaoAssocia.getSelectedIndex() == 2) {
-                    int retorno = associarBolseiro(listaProjetos.getSelectedIndex(), listaPessoas.getSelectedIndex(), (Projeto) listaProjetos.getSelectedValue(), (Bolseiro) listaPessoas.getSelectedValue());
-                    if (retorno == 5) {
-                        JOptionPane.showMessageDialog(null, "Não existe nenhum orientador atribuído ao projeto. Selecione um antes de adicionar Formando.", "ERROR", JOptionPane.ERROR_MESSAGE);
-                    } else if (retorno == 2) {
-                        JOptionPane.showMessageDialog(null, "Já existe projeto associado a formando", "ERROR", JOptionPane.ERROR_MESSAGE);
+                else if(opcaoAssocia.getSelectedIndex()==2){
+                    int flag=0;
+                    if(projetos.get(listaProjetos.getSelectedIndex()).getFormandos().size()>0 || projetos.get(listaProjetos.getSelectedIndex()).getDoutorados().size()>0) { //já existe no projeto
+                        for (Pessoa pessoa : projetos.get(listaProjetos.getSelectedIndex()).getFormandos()) {
+                            if (listaPessoas.getSelectedValue().equals(pessoa.getNome())) {
+                                JOptionPane.showMessageDialog(null, "Bolseiro já pertence ao projeto");
+                                flag = 1;
+                            }
+                        }
+                        for (Pessoa pessoa : projetos.get(listaProjetos.getSelectedIndex()).getDoutorados()) {
+                            if (listaPessoas.getSelectedValue().equals(pessoa.getNome())) {
+                                JOptionPane.showMessageDialog(null, "Bolseiro já pertence ao projeto");
+                                flag = 1;
+                            }
+                        }
                     }
-                    if (retorno == 3) {
-                        JOptionPane.showMessageDialog(null, "Parece ter havido algum erro... Selecione outro investigador", "ERROR", JOptionPane.ERROR_MESSAGE);
+                    if(flag==0){
+                        Bolseiro bolseiro = null;
+                        for(Pessoa pessoaBolseiro: pessoas){
+                            if(pessoaBolseiro.getNome().equals(listaPessoas.getSelectedValue().toString())){
+                                bolseiro = (Bolseiro)pessoaBolseiro;
+                            }
+                        }
+                        if (bolseiro == null) {
+                            JOptionPane.showMessageDialog(null, "Parece ter havido algum erro... Selecione outro investigador");
+                        } else {
+                            if (bolseiro.getClass().getSuperclass().equals(Formando.class)) { //se for formando
+                                Formando formando = (Formando) bolseiro;
+                                if (formando.getProjeto() != null) { //verificar se tem algum projeto
+                                    JOptionPane.showMessageDialog(null, "Já existe projeto associado a formando");
+                                } else { //se não tiver projeto
+                                    //verificar se tem algum docente
+                                    if (projetos.get(listaProjetos.getSelectedIndex()).getDocentes().size() > 0 || projetos.get(listaProjetos.getSelectedIndex()).getInvestigadorPrincipal() != null) {
+                                        projetos.get(listaProjetos.getSelectedIndex()).getFormandos().add(formando);
+                                        formando.setProjeto(projetos.get(listaProjetos.getSelectedIndex()));
+                                    } else {
+                                        JOptionPane.showMessageDialog(null, "Não existe nenhum oriente atribuído ao projeto. Selecione um antes de adicionar Formando.");
+                                    }
+                                }
+
+                            } else if (bolseiro.getClass().equals(Doutorado.class)) {
+                                Doutorado doutorado = (Doutorado) bolseiro; //cast
+                                projetos.get(listaProjetos.getSelectedIndex()).getDoutorados().add(doutorado);
+                            }
+
+
+                        }
                     }
-                    if (retorno == 4) {
-                        JOptionPane.showMessageDialog(null, "Bolseiro já pertence ao projeto", "ERROR", JOptionPane.ERROR_MESSAGE);
-                    }
-                } // bolseiros
-                else {
-                    JOptionPane.showMessageDialog(null, "Opção inválida");
+                }
+                else{
+                    JOptionPane.showMessageDialog(null,"Opção inválida");
                 }
             }
 
         }
     } //ACABAR
+
+    //FUNÇÃO NÃO TESTADA!!!
+    /**
+     * Ação do botão para apresentar informações sobre Objeto conluido
+     */
+    private class infoAction implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String mensagem;
+            mensagem = "PROJETO\n"+"Nome: "+ projetos.get(concluidosBox.getSelectedIndex()).getNome()+"\nDuração: " + projetos.get(concluidosBox.getSelectedIndex()).getDuracao();
+            JOptionPane.showMessageDialog(null, mensagem);
+        }
+    }
 
     /**
      * Ação do botão para adicionar um projeto à ArrayList, chamando a função concluirAdicionarProjeto
@@ -447,13 +600,6 @@ public class GereProjetos implements Serializable {
         public void actionPerformed(ActionEvent e) {
             int opcao = JOptionPane.showConfirmDialog(null, "Tem a certeza que deseja sair?", "Sair", JOptionPane.YES_NO_OPTION);
             if (opcao == 0) { //opção para sair selecionada
-                //DEBUG
-                System.out.println("sair\n");
-
-                for (Projeto projeto : projetos) {
-                    System.out.println(projeto.getNome());
-                }
-
                 guardar();
                 exit(0);
             }
@@ -543,6 +689,21 @@ public class GereProjetos implements Serializable {
     }
 
     /**
+     * Criar lista do tipo DefaultListModel para as JLists
+     *
+     * @return lista de Projetos Concluidos
+     */
+    private DefaultListModel listaConcluidos() {
+        DefaultListModel list = new DefaultListModel();
+        for (Projeto projeto: projetos) {
+            if (projeto.getConcluir()==1) {
+                list.addElement(projeto.getNome());
+            }
+        }
+        return list;
+    }
+
+    /**
      * Função adiciona projetos após dados terem sido insiridos na janela
      */
     private void concluirAdicionarProjeto() {
@@ -606,7 +767,6 @@ public class GereProjetos implements Serializable {
                 inputDataFim.setText(formatoData(dataFim));
 
                 Projeto projeto = new Projeto(nome, acron, dataInicio, dataFim, duracao);
-                System.out.println("criei!");
                 projetos.add(projeto);
                 return 1;
             } catch (NumberFormatException ex) {
@@ -628,6 +788,10 @@ public class GereProjetos implements Serializable {
      */
     private int associarBolseiro(int projetoSelectedIndex, int bolseiroSelectedIndex, Projeto projetoSelectedValue, Bolseiro bolseiroSelectedValue) {
         int flag = 0;
+
+        System.out.println(projetos.get(projetoSelectedIndex).getFormandos().size());
+        System.out.println(projetos.get(projetoSelectedIndex).getDoutorados().size());
+
         if (projetos.get(projetoSelectedIndex).getFormandos().size() > 0 || projetos.get(projetoSelectedIndex).getDoutorados().size() > 0) { //já existe no projeto
             for (Pessoa pessoa : projetos.get(projetoSelectedIndex).getFormandos()) {
                 if (bolseiroSelectedValue.equals(pessoa.getNome())) {
@@ -649,11 +813,12 @@ public class GereProjetos implements Serializable {
                         bolseiro = (Bolseiro) pessoaBolseiro;
                     }
                 }
-                if (bolseiro == null) {
+                if (bolseiro == null) { //não encontrou a pessoa na opção das pessoas
                     return 3;
                 } else {
                     System.out.println(bolseiro.getClass());
                     if (bolseiro.getClass().getSuperclass().equals(Formando.class)) { //se for formando
+                        System.out.println("É bolseiro!");
                         Formando formando = (Formando) bolseiro;
                         //verificar se já tem projeto
                         if (formando.getProjeto() != null) { //verificar se tem algum projeto
@@ -662,20 +827,19 @@ public class GereProjetos implements Serializable {
                         } else { //se não tiver projeto
                             //verificar se tem algum docente
                             if (projetos.get(projetoSelectedIndex).getDocentes().size() > 0 || projetos.get(projetoSelectedIndex).getInvestigadorPrincipal() != null) {
-                                projetos.get(projetoSelectedIndex).getFormandos().add(formando);
+                                projetoSelectedValue.getFormandos().add(formando);
                                 formando.setProjeto(projetos.get(projetoSelectedIndex));
+                                System.out.println("Adicionou!");
                                 return 1;
                             } else {
                                 return 5;
                             }
                         }
 
-                    } else if (bolseiro.getClass().getSuperclass().equals(Doutorado.class)) {
+                    } else if (bolseiro.getClass().equals(Doutorado.class)) {
                         Doutorado doutorado = (Doutorado) bolseiro; //cast
                         projetos.get(projetoSelectedIndex).getDoutorados().add(doutorado);
                     }
-
-
                 }
             }
         }

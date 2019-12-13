@@ -61,6 +61,7 @@ public class Projeto implements Serializable {
         this.dataInicio = dataInicio;
         this.duracao = duracao;
         this.dataFim = dataFim;
+        investigadorPrincipal = null;
         docentes = new ArrayList<Docente>();
         formandos = new ArrayList<Formando>();
         doutorados = new ArrayList<Doutorado>();
@@ -220,6 +221,10 @@ public class Projeto implements Serializable {
      */
     public String getDataInicio() {
         return dataInicio.get(Calendar.DAY_OF_MONTH)+"/"+ dataInicio.get(Calendar.MONTH)+"/"+dataInicio.get(Calendar.YEAR);
+    }
+
+    public int getConcluir() {
+        return concluir;
     }
 
     /**

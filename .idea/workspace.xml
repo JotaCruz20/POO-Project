@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c5b9c3db-397d-4596-80e3-ec51db7d752d" name="Default Changelist" comment="">
-<<<<<<< Updated upstream
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Bolseiro.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/Bolseiro.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Docente.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/Docente.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Formando.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/Formando.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/POO-Project/GereProjetos$addPessoaAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/GereProjetos$addPessoaAction.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/POO-Project/GereProjetos$addProjectAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/GereProjetos$addProjectAction.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/POO-Project/GereProjetos$associarAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/GereProjetos$associarAction.class" afterDir="false" />
@@ -15,10 +10,7 @@
       <change beforePath="$PROJECT_DIR$/out/production/POO-Project/GereProjetos$concluirAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/GereProjetos$concluirAction.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/POO-Project/GereProjetos$fecharAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/GereProjetos$fecharAction.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/POO-Project/GereProjetos$selecionarProjecto.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/GereProjetos$selecionarProjecto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/GereProjetos$voltarAction.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/POO-Project/GereProjetos.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/GereProjetos.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Licenciado.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/Licenciado.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Mestre.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/Mestre.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Projeto$atualizaConclusao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/Projeto$atualizaConclusao.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Projeto$buttonAtribuiTarefa.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/Projeto$buttonAtribuiTarefa.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Projeto$buttonAtualizaConclusao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/Projeto$buttonAtualizaConclusao.class" afterDir="false" />
@@ -31,12 +23,8 @@
       <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Projeto$buttonVoltaAtras.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/Projeto$buttonVoltaAtras.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Projeto$criaTarefa.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/Projeto$criaTarefa.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Projeto.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/Projeto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Bolseiro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bolseiro.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GereProjetos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GereProjetos.java" afterDir="false" />
-=======
       <change beforePath="$PROJECT_DIR$/src/GereProjetos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GereProjetos.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Projeto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Projeto.java" afterDir="false" />
->>>>>>> Stashed changes
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -63,38 +51,29 @@
     <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-<<<<<<< Updated upstream
     <leaf>
-=======
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Bolseiro.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="16" selection-start-line="16" selection-end-line="22" selection-end-column="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
->>>>>>> Stashed changes
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/GereProjetos.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1267">
-              <caret line="782" column="7" lean-forward="true" selection-start-line="782" selection-start-column="7" selection-end-line="782" selection-end-column="7" />
+            <state relative-caret-position="385">
+              <caret line="517" column="82" lean-forward="true" selection-start-line="517" selection-start-column="82" selection-end-line="517" selection-end-column="82" />
               <folding>
+                <element signature="e#937#3812#0" />
+                <element signature="e#3831#3890#0" />
+                <element signature="e#3818#6063#0" />
+                <element signature="e#6077#8844#0" />
+                <element signature="e#8850#8914#0" />
+                <element signature="e#8850#11376#0" />
+                <element signature="e#11816#11880#0" />
+                <element signature="e#11816#14387#0" />
+                <element signature="e#11358#11457#0" />
+                <element signature="e#11328#11865#0" />
                 <element signature="e#11871#13376#0" />
-                <element signature="e#13384#18717#0" />
-                <element signature="e#13697#13834#1" />
-                <element signature="e#13909#14735#0" />
-                <element signature="e#20872#21049#1" />
-                <element signature="e#21082#21208#1" />
-                <element signature="e#21454#21602#1" />
-                <element signature="e#21510#21630#1" />
-                <element signature="e#21637#21730#1" />
+                <element signature="e#13721#13740#0" />
+                <element signature="e#14746#15970#0" />
+                <element signature="e#16056#18631#0" />
+                <element signature="e#17462#17544#0" />
+                <element signature="e#17475#17829#0" />
                 <element signature="e#21776#21890#0" />
                 <element signature="e#21776#22130#0" />
                 <element signature="e#22073#22074#0" expanded="true" />
@@ -119,14 +98,14 @@
                 <element signature="e#24244#24573#0" />
                 <element signature="e#24920#25005#0" />
                 <element signature="e#24579#24874#0" />
+                <element signature="e#21872#21982#0" />
+                <element signature="e#21872#22289#0" />
                 <element signature="e#25240#25325#0" />
                 <element signature="e#25221#27026#0" />
                 <element signature="e#23248#23590#0" />
                 <element signature="e#27067#28514#0" />
                 <element signature="e#24742#25172#0" />
                 <element signature="e#27106#30234#0" />
-                <element signature="e#27940#28103#1" />
-                <element signature="e#28189#28373#1" />
                 <element signature="e#27881#28296#0" />
                 <element signature="e#29622#32199#0" />
                 <element signature="e#30084#30416#0" />
@@ -145,7 +124,7 @@
                 <element signature="e#38700#39309#0" />
                 <element signature="e#39315#39382#0" />
                 <element signature="e#39315#39917#0" />
-                <element signature="e#43157#43158#0" expanded="true" />
+                <element signature="e#50474#50475#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -155,7 +134,7 @@
         <entry file="file://$PROJECT_DIR$/TextoProjetos.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="34">
-              <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+              <caret line="2" selection-start-line="2" selection-end-line="2" />
             </state>
           </provider>
         </entry>
@@ -163,9 +142,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Projeto.java">
           <provider selected="true" editor-type-id="text-editor">
-<<<<<<< Updated upstream
-            <state relative-caret-position="306">
-              <caret line="41" column="43" selection-start-line="41" selection-start-column="43" selection-end-line="41" selection-end-column="43" />
+            <state relative-caret-position="238">
+              <caret line="63" column="37" selection-start-line="63" selection-start-column="37" selection-end-line="63" selection-end-column="37" />
+              <folding>
+                <element signature="e#10027#10028#0" expanded="true" />
+                <element signature="e#10058#10059#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -179,12 +161,6 @@
                 <element signature="imports" expanded="true" />
                 <element signature="e#1167#1168#0" expanded="true" />
                 <element signature="e#1205#1206#0" expanded="true" />
-=======
-            <state relative-caret-position="527">
-              <caret line="41" column="43" selection-start-line="41" selection-start-column="43" selection-end-line="41" selection-end-column="43" />
-              <folding>
-                <element signature="imports" expanded="true" />
->>>>>>> Stashed changes
               </folding>
             </state>
           </provider>
@@ -193,13 +169,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Tarefa.java">
           <provider selected="true" editor-type-id="text-editor">
-<<<<<<< Updated upstream
             <state relative-caret-position="144">
               <caret line="15" selection-start-line="15" selection-end-line="15" />
-=======
-            <state relative-caret-position="136">
-              <caret line="10" selection-start-line="10" selection-end-line="10" />
->>>>>>> Stashed changes
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#toString#0;class#Tarefa#0" />
@@ -228,9 +199,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>/*</find>
-      <find>addProject</find>
-      <find>selecionarPro</find>
       <find>grid</find>
       <find>frame</find>
       <find>Pessoa pessoa: pessoas</find>
@@ -249,7 +217,6 @@
       <find>get</find>
       <find>data Inválida.</find>
       <find>Data inválida.Insira novos valores</find>
-      <find>sira novos valores</find>
       <find>Insira novos valores</find>
       <find>&quot;voltar&quot;</find>
       <find>voltarAc</find>
@@ -258,6 +225,10 @@
       <find>inputDataFim</find>
       <find>localF</find>
       <find>localFrame</find>
+      <find>associarActio</find>
+      <find>sira novos valores</find>
+      <find>4</find>
+      <find>(5,</find>
     </findStrings>
     <replaceStrings>
       <replace>ficheiroProjetos</replace>
@@ -285,24 +256,16 @@
         <option value="$PROJECT_DIR$/src/Licenciado.java" />
         <option value="$PROJECT_DIR$/src/Docente.java" />
         <option value="$PROJECT_DIR$/src/Formando.java" />
-<<<<<<< Updated upstream
-        <option value="$PROJECT_DIR$/src/Projeto.java" />
         <option value="$PROJECT_DIR$/src/Bolseiro.java" />
-        <option value="$PROJECT_DIR$/src/GereProjetos.java" />
-=======
-        <option value="$PROJECT_DIR$/src/Mestre.java" />
-        <option value="$PROJECT_DIR$/src/Licenciado.java" />
-        <option value="$PROJECT_DIR$/src/GereProjetos.java" />
         <option value="$PROJECT_DIR$/src/Projeto.java" />
->>>>>>> Stashed changes
+        <option value="$PROJECT_DIR$/src/GereProjetos.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="65" />
-    <option name="y" value="25" />
-    <option name="width" value="930" />
-    <option name="height" value="1055" />
+    <option name="x" value="-8" />
+    <option name="width" value="977" />
+    <option name="height" value="1038" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -312,11 +275,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-<<<<<<< Updated upstream
       <pane id="Scope" />
       <pane id="PackagesPane" />
-=======
->>>>>>> Stashed changes
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -324,20 +284,15 @@
               <item name="POOProject" type="b2602c69:ProjectViewProjectNode" />
               <item name="POOProject" type="462c0819:PsiDirectoryNode" />
             </path>
-<<<<<<< Updated upstream
             <path>
               <item name="POOProject" type="b2602c69:ProjectViewProjectNode" />
               <item name="POOProject" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
-=======
->>>>>>> Stashed changes
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -437,12 +392,6 @@
       <workItem from="1576093863998" duration="11078000" />
       <workItem from="1576147524187" duration="60000" />
       <workItem from="1576157804793" duration="2508000" />
-<<<<<<< Updated upstream
-=======
-      <workItem from="1576164836973" duration="120000" />
-      <workItem from="1576165021455" duration="7743000" />
-      <workItem from="1576179713739" duration="2000" />
->>>>>>> Stashed changes
     </task>
     <task id="LOCAL-00001" summary="push?">
       <created>1574542376348</created>
@@ -469,22 +418,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-<<<<<<< Updated upstream
-    <option name="totallyTimeSpent" value="160442000" />
+    <option name="totallyTimeSpent" value="163146000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.24966443" />
-=======
-    <option name="totallyTimeSpent" value="162679000" />
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
-    <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18649696" />
->>>>>>> Stashed changes
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -494,11 +434,7 @@
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-<<<<<<< Updated upstream
-      <window_info anchor="bottom" id="Run" order="2" weight="0.28611898" />
-=======
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32829374" />
->>>>>>> Stashed changes
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.28611898" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39956802" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -508,7 +444,7 @@
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.3286119" />
       <window_info anchor="bottom" id="Version Control" order="11" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.32577905" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.3252149" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -638,7 +574,6 @@
         </state>
       </provider>
     </entry>
-<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/src/Doutorado.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -650,11 +585,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Licenciado.java">
-=======
-    <entry file="jar://C:/Program Files/Java/jdk-12.0.1/lib/src.zip!/java.desktop/java/awt/EventQueue.java" />
-    <entry file="jar://C:/Program Files/Java/jdk-12.0.1/lib/src.zip!/java.base/java/security/AccessController.java" />
-    <entry file="file://$PROJECT_DIR$/TextoPessoas.txt">
->>>>>>> Stashed changes
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
@@ -702,7 +632,6 @@
         </state>
       </provider>
     </entry>
-<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="386">
@@ -711,9 +640,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Tarefa.java">
-=======
-    <entry file="file://$PROJECT_DIR$/src/Licenciado.java">
->>>>>>> Stashed changes
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="15" selection-start-line="15" selection-end-line="15" />
@@ -721,13 +647,6 @@
             <element signature="imports" expanded="true" />
             <element signature="method#toString#0;class#Tarefa#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Projeto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="41" column="43" selection-start-line="41" selection-start-column="43" selection-end-line="41" selection-end-column="43" />
         </state>
       </provider>
     </entry>
@@ -743,82 +662,52 @@
         </state>
       </provider>
     </entry>
-<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/TextoPessoas.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="56" selection-start-line="9" selection-start-column="56" selection-end-line="9" selection-end-column="56" />
-=======
-    <entry file="file://$PROJECT_DIR$/src/GereProjetos.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="648" column="27" lean-forward="true" selection-start-line="648" selection-start-column="27" selection-end-line="648" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#GereProjetos#0;class#GereProjetos#0" />
-            <element signature="class#selecionarProjecto#0;class#GereProjetos#0" />
-            <element signature="class#addPessoaAction#0;class#GereProjetos#0" />
-            <element signature="class#addProjectAction#0;class#GereProjetos#0" />
-            <element signature="class#atualizarAction#0;class#GereProjetos#0" />
-            <element signature="class#voltarMenuAction#0;class#GereProjetos#0" />
-            <element signature="class#concluirAction#0;class#GereProjetos#0" />
-            <element signature="class#voltarAction#0;class#GereProjetos#0" />
-            <element signature="class#fecharAction#0;class#GereProjetos#0" />
-            <element signature="method#verificarData#0;class#GereProjetos#0" />
-            <element signature="method#formatoData#0;class#GereProjetos#0" />
-            <element signature="method#formatoGregorianCalendar#0;class#GereProjetos#0" />
-            <element signature="method#listaProjetos#0;class#GereProjetos#0" />
-            <element signature="method#listaBolseiros#0;class#GereProjetos#0" />
-            <element signature="method#listaDocentes#0;class#GereProjetos#0" />
-            <element signature="method#concluirAdicionarProjeto#0;class#GereProjetos#0" />
-            <element signature="method#guardar#0;class#GereProjetos#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Bolseiro.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="16" selection-start-line="16" selection-end-line="22" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Mestre.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
->>>>>>> Stashed changes
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TextoProjetos.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
-          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Projeto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="63" column="37" selection-start-line="63" selection-start-column="37" selection-end-line="63" selection-end-column="37" />
+          <folding>
+            <element signature="e#10027#10028#0" expanded="true" />
+            <element signature="e#10058#10059#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GereProjetos.java">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< Updated upstream
-        <state relative-caret-position="1267">
-          <caret line="782" column="7" lean-forward="true" selection-start-line="782" selection-start-column="7" selection-end-line="782" selection-end-column="7" />
+        <state relative-caret-position="385">
+          <caret line="517" column="82" lean-forward="true" selection-start-line="517" selection-start-column="82" selection-end-line="517" selection-end-column="82" />
           <folding>
+            <element signature="e#937#3812#0" />
+            <element signature="e#3831#3890#0" />
+            <element signature="e#3818#6063#0" />
+            <element signature="e#6077#8844#0" />
+            <element signature="e#8850#8914#0" />
+            <element signature="e#8850#11376#0" />
+            <element signature="e#11816#11880#0" />
+            <element signature="e#11816#14387#0" />
+            <element signature="e#11358#11457#0" />
+            <element signature="e#11328#11865#0" />
             <element signature="e#11871#13376#0" />
-            <element signature="e#13384#18717#0" />
-            <element signature="e#13697#13834#1" />
-            <element signature="e#13909#14735#0" />
-            <element signature="e#20872#21049#1" />
-            <element signature="e#21082#21208#1" />
-            <element signature="e#21454#21602#1" />
-            <element signature="e#21510#21630#1" />
-            <element signature="e#21637#21730#1" />
+            <element signature="e#13721#13740#0" />
+            <element signature="e#14746#15970#0" />
+            <element signature="e#16056#18631#0" />
+            <element signature="e#17462#17544#0" />
+            <element signature="e#17475#17829#0" />
             <element signature="e#21776#21890#0" />
             <element signature="e#21776#22130#0" />
             <element signature="e#22073#22074#0" expanded="true" />
@@ -843,14 +732,14 @@
             <element signature="e#24244#24573#0" />
             <element signature="e#24920#25005#0" />
             <element signature="e#24579#24874#0" />
+            <element signature="e#21872#21982#0" />
+            <element signature="e#21872#22289#0" />
             <element signature="e#25240#25325#0" />
             <element signature="e#25221#27026#0" />
             <element signature="e#23248#23590#0" />
             <element signature="e#27067#28514#0" />
             <element signature="e#24742#25172#0" />
             <element signature="e#27106#30234#0" />
-            <element signature="e#27940#28103#1" />
-            <element signature="e#28189#28373#1" />
             <element signature="e#27881#28296#0" />
             <element signature="e#29622#32199#0" />
             <element signature="e#30084#30416#0" />
@@ -869,13 +758,7 @@
             <element signature="e#38700#39309#0" />
             <element signature="e#39315#39382#0" />
             <element signature="e#39315#39917#0" />
-            <element signature="e#43157#43158#0" expanded="true" />
-=======
-        <state relative-caret-position="527">
-          <caret line="41" column="43" selection-start-line="41" selection-start-column="43" selection-end-line="41" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
->>>>>>> Stashed changes
+            <element signature="e#50474#50475#0" expanded="true" />
           </folding>
         </state>
       </provider>
