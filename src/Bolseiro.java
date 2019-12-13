@@ -15,6 +15,7 @@ abstract class Bolseiro extends Pessoa implements Serializable {
         this.tarefas=new ArrayList<>();
     }
 
+
     public abstract double getCusto();
 
     public void adicionaProjeto(Projeto projeto){

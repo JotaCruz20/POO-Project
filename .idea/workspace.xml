@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c5b9c3db-397d-4596-80e3-ec51db7d752d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/TextoProjetos.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TextoProjetos.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Bolseiro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bolseiro.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Projeto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Projeto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Tarefa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tarefa.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -46,11 +47,21 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/TextoProjetos.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret selection-end-line="9" selection-end-column="190" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Projeto.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1990">
-              <caret line="1049" column="58" selection-start-line="1049" selection-start-column="58" selection-end-line="1049" selection-end-column="58" />
+            <state relative-caret-position="1087">
+              <caret line="232" column="4" selection-start-line="232" selection-start-column="4" selection-end-line="232" selection-end-column="4" />
               <folding>
+                <element signature="imports" expanded="true" />
                 <element signature="e#2105#2441#0" />
                 <element signature="e#2105#2963#0" />
                 <element signature="e#2969#3595#0" />
@@ -60,9 +71,14 @@
                 <element signature="e#10112#10190#0" />
                 <element signature="e#10259#10347#0" />
                 <element signature="e#10259#10513#0" />
+                <element signature="e#10495#10556#0" />
                 <element signature="e#10582#10662#0" />
                 <element signature="e#10727#10802#0" />
+                <element signature="e#10841#10925#0" />
                 <element signature="e#10865#10999#0" />
+                <element signature="e#10981#11031#0" />
+                <element signature="e#11143#11194#0" />
+                <element signature="e#11224#11274#0" />
                 <element signature="e#11340#11546#0" />
                 <element signature="e#11340#12202#0" />
                 <element signature="e#12233#12372#0" />
@@ -116,62 +132,6 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Bolseiro.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="39" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Docente.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Tarefa.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="37" column="8" lean-forward="true" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="8" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="docComment;class#Tarefa#0" />
-                <element signature="e#379#380#0" expanded="true" />
-                <element signature="e#419#420#0" expanded="true" />
-                <element signature="e#857#858#0" expanded="true" />
-                <element signature="e#895#896#0" expanded="true" />
-                <element signature="method#toString#0;class#Tarefa#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Doutorado.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#Doutorado#0;class#Doutorado#0" />
-                <element signature="method#getCusto#0;class#Doutorado#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -183,7 +143,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>voltarMenu</find>
       <find>atualizarAction</find>
       <find>dados em</find>
       <find>bolseir</find>
@@ -213,6 +172,7 @@
       <find>eliminaTarefa</find>
       <find>cria</find>
       <find>c</find>
+      <find>João Semente</find>
     </findStrings>
     <replaceStrings>
       <replace>ficheiroProjetos</replace>
@@ -232,24 +192,25 @@
         <option value="$PROJECT_DIR$/src/Desenvolvimento.java" />
         <option value="$PROJECT_DIR$/src/Design.java" />
         <option value="$PROJECT_DIR$/src/Documentacao.java" />
-        <option value="$PROJECT_DIR$/TextoProjetos.txt" />
         <option value="$PROJECT_DIR$/src/Pessoa.java" />
         <option value="$PROJECT_DIR$/src/Doutorado.java" />
         <option value="$PROJECT_DIR$/src/Licenciado.java" />
         <option value="$PROJECT_DIR$/src/Formando.java" />
         <option value="$PROJECT_DIR$/src/Mestre.java" />
         <option value="$PROJECT_DIR$/src/Docente.java" />
-        <option value="$PROJECT_DIR$/src/Bolseiro.java" />
         <option value="$PROJECT_DIR$/src/GereProjetos.java" />
         <option value="$PROJECT_DIR$/src/Tarefa.java" />
         <option value="$PROJECT_DIR$/src/Projeto.java" />
+        <option value="$PROJECT_DIR$/src/Bolseiro.java" />
+        <option value="$PROJECT_DIR$/TextoProjetos.txt" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="-9" />
-    <option name="width" value="978" />
-    <option name="height" value="1039" />
+    <option name="x" value="67" />
+    <option name="y" value="25" />
+    <option name="width" value="927" />
+    <option name="height" value="1055" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -376,7 +337,7 @@
       <workItem from="1576093863998" duration="11078000" />
       <workItem from="1576147524187" duration="60000" />
       <workItem from="1576157804793" duration="2508000" />
-      <workItem from="1576229417840" duration="11444000" />
+      <workItem from="1576229417840" duration="15191000" />
     </task>
     <task id="LOCAL-00001" summary="push?">
       <created>1574542376348</created>
@@ -410,13 +371,45 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="178090000" />
+    <option name="totallyTimeSpent" value="181837000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22302158" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.45743474" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Designer" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Learn" order="6" />
+      <window_info id="Favorites" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.28509718" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39956802" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.3286119" />
+      <window_info anchor="bottom" id="Version Control" order="11" weight="0.32937366" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.325054" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Theme Preview" order="4" />
+      <window_info anchor="right" id="Maven" order="5" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Database" order="8" weight="0.32982844" />
+    </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.45743474" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -437,38 +430,6 @@
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.3286119" />
       <window_info anchor="bottom" id="Version Control" order="11" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.325054" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Theme Preview" order="4" />
-      <window_info anchor="right" id="Maven" order="5" />
-      <window_info anchor="right" id="Capture Analysis" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Database" order="8" weight="0.32982844" />
-    </layout>
-    <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25235197" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Capture Tool" order="2" />
-      <window_info id="Image Layers" order="3" />
-      <window_info id="Designer" order="4" />
-      <window_info id="UI Designer" order="5" />
-      <window_info id="Learn" order="6" />
-      <window_info id="Favorites" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.28509718" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39956802" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.3286119" />
-      <window_info anchor="bottom" id="Version Control" order="11" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.3252149" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -594,39 +555,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TextoProjetos.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TextoPessoas.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Bolseiro.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="39" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GereProjetos.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2713">
-          <caret line="949" column="37" selection-start-line="949" selection-start-column="37" selection-end-line="949" selection-end-column="37" />
-          <folding>
-            <element signature="e#36899#37318#0" />
-            <element signature="e#49996#49997#0" expanded="true" />
-            <element signature="e#50050#50051#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -648,16 +580,6 @@
             <element signature="imports" expanded="true" />
             <element signature="method#Doutorado#0;class#Doutorado#0" />
             <element signature="method#getCusto#0;class#Doutorado#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Docente.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -685,11 +607,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Bolseiro.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Docente.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Projeto.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1990">
-          <caret line="1049" column="58" selection-start-line="1049" selection-start-column="58" selection-end-line="1049" selection-end-column="58" />
+        <state relative-caret-position="1087">
+          <caret line="232" column="4" selection-start-line="232" selection-start-column="4" selection-end-line="232" selection-end-column="4" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="e#2105#2441#0" />
             <element signature="e#2105#2963#0" />
             <element signature="e#2969#3595#0" />
@@ -699,9 +642,14 @@
             <element signature="e#10112#10190#0" />
             <element signature="e#10259#10347#0" />
             <element signature="e#10259#10513#0" />
+            <element signature="e#10495#10556#0" />
             <element signature="e#10582#10662#0" />
             <element signature="e#10727#10802#0" />
+            <element signature="e#10841#10925#0" />
             <element signature="e#10865#10999#0" />
+            <element signature="e#10981#11031#0" />
+            <element signature="e#11143#11194#0" />
+            <element signature="e#11224#11274#0" />
             <element signature="e#11340#11546#0" />
             <element signature="e#11340#12202#0" />
             <element signature="e#12233#12372#0" />
@@ -751,6 +699,25 @@
             <element signature="e#47775#47841#0" />
             <element signature="e#48297#49370#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GereProjetos.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2713">
+          <caret line="949" column="37" selection-start-line="949" selection-start-column="37" selection-end-line="949" selection-end-column="37" />
+          <folding>
+            <element signature="e#36899#37318#0" />
+            <element signature="e#49996#49997#0" expanded="true" />
+            <element signature="e#50050#50051#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TextoProjetos.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="9" selection-end-column="190" />
         </state>
       </provider>
     </entry>

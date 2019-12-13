@@ -230,6 +230,14 @@ public class Projeto implements Serializable {
         return dataInicio.get(Calendar.DAY_OF_MONTH)+"/"+ dataInicio.get(Calendar.MONTH)+"/"+dataInicio.get(Calendar.YEAR);
     }
 
+    /**
+     * Get data final do Projeto
+     * @return Data final do Projeto
+     */
+    public GregorianCalendar getDataFim() {
+        return dataFim;
+    }
+
     public int getConcluir() {
         return concluir;
     }
@@ -250,10 +258,18 @@ public class Projeto implements Serializable {
         return nome;
     }
 
+    /**
+     * Set do investigador Principal
+     * @param investigadorPrincipal Investigador Principal a meter no Projeto
+     */
     public void setInvestigadorPrincipal(Pessoa investigadorPrincipal) {
         this.investigadorPrincipal = investigadorPrincipal;
     }
 
+    /**
+     * Get dos Docentes
+     * @return Lista dos Docentes
+     */
     public ArrayList<Docente> getDocentes() {
         return docentes;
     }
@@ -262,10 +278,18 @@ public class Projeto implements Serializable {
         return doutorados;
     }
 
+    /**
+     * Get dos Formandos
+     * @return Lista de Formandos
+     */
     public ArrayList<Formando> getFormandos() {
         return formandos;
     }
 
+    /**
+     * Get Investigador
+     * @return Investigador Principal
+     */
     public Pessoa getInvestigadorPrincipal() {
         return investigadorPrincipal;
     }

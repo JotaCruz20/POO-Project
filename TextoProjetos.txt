@@ -1,2 +1,33 @@
 Inteligência Artificial<AI<Maria António<Design:10-11-2020:4:Pascoal Bonito/Documentacao:30-5-2020:5:Ana Patrício<Pascoal Bonito/Ana Patrício<Osvaldo Daniel<1-5-2020<1-12-2020<7
 Fauna em Portugal<FP<Rita Oliveira<Design:1-5-2021:10:Pascoal Bonito/Documentacao:1-5-2021:11:Rita Oliveira/Documentacao:30-5-2005:7:Pedro Ferreira<Pedro Ferreira/Carlos Arraial/Ana Patrício<Maria António<1-4-2021<1-4-2021<12
+Estudo sobre constelações<Const<Osvaldo Daniel<Design:10-11-2005:1:Pascoal Bonito/Documentacao:30-5-2005:5:Maria António<Pascoal Bonito/Ana Patrício<Maria António<1-6-2005<1-12-2005<8
+Python na vida atual<PtAtual<Maria António<Design:11-1-2010:1:Pascoal Bonito/Documentacao:30-5-2011:5:Maria António<Pascoal Bonito/Ana Patrício<Maria António<1-5-2009<1-12-2011<7
+Micro Plásticos<MicroPl<João Carvalheira<Design:15-5-2015:1:Pascoal Bonito/Design:10-5-2015:Matilde Fernandes:/Documentacao:30-5-2015:5:Maria António<Pascoal Bonito/Ana Patrício<Maria António<1-1-2015<1-12-2015<8
+Alcóois e seus derivados<Alc<Maria António<Design:20-5-2017:1:Pascoal Bonito/Documentacao:30-5-2017:5:Maria António<Pascoal Bonito/Ana Patrício<Maria António<2-6-20016<26-12-2017<8
+Curvatura Espaço-Tempo<proj1<Osvaldo Daniel<Design:5-9-2000:1:Pascoal Bonito/Documentacao:30-5-2000:5:Maria António<Pascoal Bonito/Ana Patrício<Maria António<23-5-1999<1-12-2001<7
+Analise Estatistica de Redes<AER<Rita Oliveira<Documentacao:10-10-2015:Angela Gonçalves/Design:15-1-2016:João Carvalheira<João Semente<Angela Gonçalves<Rita Oliveira<10-5-2015<23-6-2017
+Analise da Biodiversidade<AB<Osvaldo Daniel<Documentacao:23-2-2016:Isabel Marques/Desenvolvimento:20-1-2017:Miguel Joelho<Isabel Marques<Miguel Joelho<Maria António<20-2-2015<23-6-2018
+Sonares<SON<João Carvalheira<Design:26-5-2014:João Carvalheiro/Documentacao:Gabriel Henriques:13-2-2015<Gabriel Henriques<Angela Gonçalves<João Carvalheira/Osvaldo Daniel<1-2-2013<30-12-2019
+
+
+
+
+
+nome<acronimo<IP<tarefas<formandos<doutorados<docentes<docentes<dataI<dataF
+
+Docente<João Carvalheira<carvalheirajoao@mail.com<002<Química
+Docente<Osvaldo Daniel<osvaldo@quentemail.com<003<Física
+Docente<Rita Oliveira<oliveiral@mail.com<002<Biologia
+Docente<Maria António<antonieta@meumail.com<001<Informatica
+
+
+Licenciado<João Semente<joaosementedegirassol@quentemail.com<8<2<2020
+Doutorado<Angela Gonçalves<angelangela@quentemail.com<16<8<2025
+
+Mestre<Matilde Fernandes<matildx@maumail.com<11<3<2021
+
+Doutorado<Miguel Joelho<joanetes@mail.com<9<10<2022
+
+Licenciado<Isabel Marques<isabelinha@meumail.com<22<4<2019
+
+Mestre<Gabriel Henriques<gabriel@maumail.com<17<8<2021
