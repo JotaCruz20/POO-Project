@@ -85,10 +85,6 @@ public class GereProjetos implements Serializable {
         optionPanel.add(projetosConcluidosButton);
         optionPanel.add(selecionaProjecto);
 
-
-        //selectProjectPanel.add(selectProjectBox);
-        //selectProjectPanel.add(selectCreatedProjectButton);
-
         JButton closeButton = new JButton("Fechar");
         closeButton.setSize(width, height);
         closeButton.addActionListener(new fecharAction());
@@ -334,18 +330,12 @@ public class GereProjetos implements Serializable {
         }
     }
 
-
-
-
-
-
-    //ACABAR
+    /**
+     * Ação do botão para mostrar a lista de projetos concluídos
+     */
     private class projetosConcluidosAction implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            //abre frame com uma lista de projetos concluidos
-            //BOTÃO PARA VER MAIS DEFINIÇÕES DO PROJETO
-
 
             listaFrame = new JFrame();
             JPanel listaPanel = new JPanel(new GridLayout(0, 1));
@@ -358,7 +348,7 @@ public class GereProjetos implements Serializable {
             JButton voltarButton = new JButton("Voltar");
             voltarButton.addActionListener(new voltar2Action());
 
-            JButton maisButton = new JButton("Mais Informações dobre o projeto");
+            JButton maisButton = new JButton("Mais Informações sobre o projeto");
             maisButton.addActionListener(new infoAction());
 
             JLabel titulo = new JLabel("Projetos concluídos");
@@ -391,13 +381,7 @@ public class GereProjetos implements Serializable {
                 JOptionPane.showMessageDialog(null, "Não existem projetos Concluidos");
             }
         }
-    }
-    //ACABAR
-
-
-
-
-
+    } //TESTAR
 
     /**
      *
@@ -532,9 +516,8 @@ public class GereProjetos implements Serializable {
                     JOptionPane.showMessageDialog(null,"Opção inválida");
                 }
             }
-
         }
-    } //ACABAR
+    }
 
     //FUNÇÃO NÃO TESTADA!!!
     /**
@@ -1043,8 +1026,9 @@ public class GereProjetos implements Serializable {
                 FileReader fr = new FileReader(textoProjetos);
                 BufferedReader br = new BufferedReader(fr);
                 while ((line = br.readLine()) != null) {
+                    System.out.println(line);
                     String[] projeto = line.split("<");
-                    if (projeto.length == 8) {
+                    if (projeto.length == 9) {
                         Pessoa investigadorPrincipal = null;
                         for (Pessoa pessoa : pessoas) {
                             if (pessoa.getNome().equals(projeto[2]) && pessoa.getClass().toString() != "class Docente") {
@@ -1052,32 +1036,35 @@ public class GereProjetos implements Serializable {
                             }
                         }
 
-                        String[] tarefasString = projeto[4].split("/");
+                        String[] tarefasString = projeto[3].split("/");
                         ArrayList<Tarefa> tarefas = new ArrayList<Tarefa>();
 
                         for (String tarefa : tarefasString) {
                             String[] tarefaInfo = tarefa.split(":");
                             if (tarefaInfo[0].equalsIgnoreCase("Desenvolvimento") && tarefaInfo.length == 4) {
                                 for (Pessoa pessoa : pessoas) {
-                                    if (pessoa.getNome().equals(tarefaInfo[3]) && pessoa.getClass().toString().equals("class Docente")) {
+                                    if (pessoa.getNome().equals(tarefaInfo[3]) && pessoa.getClass().equals(Docente.class)) {
+                                        System.out.println("oi");
                                         tarefas.add(new Desenvolvimento(formatoGregorianCalendar(tarefaInfo[1]), Integer.parseInt(tarefaInfo[2]), pessoa));
                                     }
                                 }
                             } else if (tarefaInfo[0].equalsIgnoreCase("Design") && tarefaInfo.length == 4) {
                                 for (Pessoa pessoa : pessoas) {
-                                    if (pessoa.getNome().equals(tarefaInfo[3]) && pessoa.getClass().toString().equals("class Docente")) {
+                                    if (pessoa.getNome().equals(tarefaInfo[3]) && pessoa.getClass().equals(Docente.class)) {
+                                        System.out.println("oi");
                                         tarefas.add(new Design(formatoGregorianCalendar(tarefaInfo[1]), Integer.parseInt(tarefaInfo[2]), pessoa));
                                     }
                                 }
                             } else if (tarefaInfo[0].equalsIgnoreCase("Documentacao") && tarefaInfo.length == 4) {
                                 for (Pessoa pessoa : pessoas) {
-                                    if (pessoa.getNome().equals(tarefaInfo[3]) && pessoa.getClass().toString().equals("class Docente")) {
+                                    if (pessoa.getNome().equals(tarefaInfo[3]) && pessoa.getClass().equals(Docente.class)) {
+                                        System.out.println("oi");
                                         tarefas.add(new Documentacao(formatoGregorianCalendar(tarefaInfo[1]), Integer.parseInt(tarefaInfo[2]), pessoa));
                                     }
                                 }
                             }
                         }
-                        String[] bolseirosString = projeto[5].split("/");
+                        String[] bolseirosString = projeto[4].split("/");
                         ArrayList<Formando> formandos = new ArrayList<Formando>();
                         ArrayList<Doutorado> doutorados = new ArrayList<>();
                         for (String bolseiro : bolseirosString) {
@@ -1085,16 +1072,14 @@ public class GereProjetos implements Serializable {
                             for (Pessoa pessoa : pessoas) {
                                 if (pessoa.getNome().equals(bolseiroInfo[0]) && pessoa.getClass().getSuperclass().toString().equals("class Formando")) {
                                     formandos.add((Formando)pessoa);
-                                    System.out.println(pessoa);
                                 }
                                 else if(pessoa.getNome().equals(bolseiroInfo[0]) && pessoa.getClass().toString().equals("class Doutorado")){
                                     doutorados.add((Doutorado)pessoa);
-                                    System.out.println(pessoa);
                                 }
                             }
                         }
 
-                        String[] docentesString = projeto[6].split("/");
+                        String[] docentesString = projeto[5].split("/");
                         ArrayList<Docente> docentes = new ArrayList<Docente>();
                         for (String docente : docentesString) {
                             String[] docenteInfo = docente.split(":");
@@ -1104,6 +1089,7 @@ public class GereProjetos implements Serializable {
                                 }
                             }
                         }
+
                         projetos.add(new Projeto(projeto[0], projeto[1],investigadorPrincipal, tarefas, formandos, doutorados, docentes , formatoGregorianCalendar(projeto[6]), formatoGregorianCalendar(projeto[7]), Double.parseDouble(projeto[8])));
                     }
                 }

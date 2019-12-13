@@ -2,29 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c5b9c3db-397d-4596-80e3-ec51db7d752d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/GereProjetos$addPessoaAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/GereProjetos$addPessoaAction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/GereProjetos$addProjectAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/GereProjetos$addProjectAction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/GereProjetos$associarAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/GereProjetos$associarAction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/GereProjetos$atualizarAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/GereProjetos$atualizarAction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/GereProjetos$concluirAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/GereProjetos$concluirAction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/GereProjetos$fecharAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/GereProjetos$fecharAction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/GereProjetos$selecionarProjecto.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/GereProjetos$selecionarProjecto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/GereProjetos.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/GereProjetos.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Projeto$atualizaConclusao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/Projeto$atualizaConclusao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Projeto$buttonAtribuiTarefa.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/Projeto$buttonAtribuiTarefa.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Projeto$buttonAtualizaConclusao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/Projeto$buttonAtualizaConclusao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Projeto$buttonConcluir.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/Projeto$buttonConcluir.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Projeto$buttonEliminaTarefa.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/Projeto$buttonEliminaTarefa.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Projeto$buttonListaTarefasNaoConcluidas.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/Projeto$buttonListaTarefasNaoConcluidas.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Projeto$buttonListaTarefasNaoIniciadas.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/Projeto$buttonListaTarefasNaoIniciadas.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Projeto$buttonPrintCusto.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/Projeto$buttonPrintCusto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Projeto$buttonTarefa.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/Projeto$buttonTarefa.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Projeto$buttonVoltaAtras.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/Projeto$buttonVoltaAtras.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Projeto$criaTarefa.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/Projeto$criaTarefa.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/POO-Project/Projeto.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/POO-Project/Projeto.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GereProjetos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GereProjetos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Projeto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Projeto.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -55,8 +33,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/GereProjetos.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="385">
-              <caret line="517" column="82" lean-forward="true" selection-start-line="517" selection-start-column="82" selection-end-line="517" selection-end-column="82" />
+            <state relative-caret-position="181">
+              <caret line="1046" column="65" lean-forward="true" selection-start-line="1046" selection-start-column="65" selection-end-line="1046" selection-end-column="65" />
               <folding>
                 <element signature="e#937#3812#0" />
                 <element signature="e#3831#3890#0" />
@@ -64,12 +42,15 @@
                 <element signature="e#6077#8844#0" />
                 <element signature="e#8850#8914#0" />
                 <element signature="e#8850#11376#0" />
+                <element signature="e#8941#11370#0" />
                 <element signature="e#11816#11880#0" />
                 <element signature="e#11816#14387#0" />
                 <element signature="e#11358#11457#0" />
                 <element signature="e#11328#11865#0" />
-                <element signature="e#11871#13376#0" />
+                <element signature="e#12778#12854#0" />
+                <element signature="e#12778#14626#0" />
                 <element signature="e#13721#13740#0" />
+                <element signature="e#14200#22732#0" />
                 <element signature="e#14746#15970#0" />
                 <element signature="e#16056#18631#0" />
                 <element signature="e#17462#17544#0" />
@@ -117,14 +98,17 @@
                 <element signature="e#29233#29714#0" />
                 <element signature="e#29233#32170#0" />
                 <element signature="e#32176#32662#0" />
-                <element signature="e#32176#38468#0" />
+                <element signature="e#32827#33476#1" />
+                <element signature="e#36507#37327#1" />
+                <element signature="e#37544#37963#1" />
                 <element signature="e#38475#38607#0" />
                 <element signature="e#38475#38694#0" />
                 <element signature="e#38700#38766#0" />
                 <element signature="e#38700#39309#0" />
                 <element signature="e#39315#39382#0" />
                 <element signature="e#39315#39917#0" />
-                <element signature="e#50474#50475#0" expanded="true" />
+                <element signature="e#40358#40413#1" />
+                <element signature="e#50050#50051#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -133,8 +117,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TextoProjetos.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" selection-start-line="2" selection-end-line="2" />
+            <state>
+              <caret column="112" selection-start-column="112" selection-end-column="112" />
             </state>
           </provider>
         </entry>
@@ -169,21 +153,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Tarefa.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="15" selection-start-line="15" selection-end-line="15" />
+            <state relative-caret-position="255">
+              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#toString#0;class#Tarefa#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TextoPessoas.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="56" selection-start-line="9" selection-start-column="56" selection-end-line="9" selection-end-column="56" />
             </state>
           </provider>
         </entry>
@@ -199,7 +174,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>grid</find>
       <find>frame</find>
       <find>Pessoa pessoa: pessoas</find>
       <find>Pessoa pessoa:</find>
@@ -216,7 +190,6 @@
       <find>message</find>
       <find>get</find>
       <find>data Inválida.</find>
-      <find>Data inválida.Insira novos valores</find>
       <find>Insira novos valores</find>
       <find>&quot;voltar&quot;</find>
       <find>voltarAc</find>
@@ -229,6 +202,8 @@
       <find>sira novos valores</find>
       <find>4</find>
       <find>(5,</find>
+      <find>Data inválida.Insira novos valores</find>
+      <find>sair</find>
     </findStrings>
     <replaceStrings>
       <replace>ficheiroProjetos</replace>
@@ -246,7 +221,6 @@
         <option value="$PROJECT_DIR$/src/GUI.java" />
         <option value="$PROJECT_DIR$/TextoPessoas.txt" />
         <option value="$PROJECT_DIR$/src/Pessoa.java" />
-        <option value="$PROJECT_DIR$/TextoProjetos.txt" />
         <option value="$PROJECT_DIR$/src/Desenvolvimento.java" />
         <option value="$PROJECT_DIR$/src/Design.java" />
         <option value="$PROJECT_DIR$/src/Documentacao.java" />
@@ -258,14 +232,15 @@
         <option value="$PROJECT_DIR$/src/Formando.java" />
         <option value="$PROJECT_DIR$/src/Bolseiro.java" />
         <option value="$PROJECT_DIR$/src/Projeto.java" />
+        <option value="$PROJECT_DIR$/TextoProjetos.txt" />
         <option value="$PROJECT_DIR$/src/GereProjetos.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="width" value="977" />
-    <option name="height" value="1038" />
+    <option name="x" value="-9" />
+    <option name="width" value="978" />
+    <option name="height" value="1039" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -414,17 +389,23 @@
       <option name="project" value="LOCAL" />
       <updated>1576106344998</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="associa já funciona bem">
+      <created>1576202427030</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1576202427031</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="163146000" />
+    <option name="totallyTimeSpent" value="166646000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.24966443" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24966443" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -434,7 +415,7 @@
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.28611898" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.28611898" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39956802" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -495,7 +476,8 @@
     <MESSAGE value="push?" />
     <MESSAGE value="ficheiros completos; ainda não fiz a parte seguinte" />
     <MESSAGE value="separou-se os bolseiros" />
-    <option name="LAST_COMMIT_MESSAGE" value="separou-se os bolseiros" />
+    <MESSAGE value="associa já funciona bem" />
+    <option name="LAST_COMMIT_MESSAGE" value="associa já funciona bem" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/pessoa/src/Pessoa.java" />
@@ -639,17 +621,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Tarefa.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#toString#0;class#Tarefa#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Bolseiro.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -659,20 +630,6 @@
             <element signature="e#1167#1168#0" expanded="true" />
             <element signature="e#1205#1206#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TextoPessoas.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="56" selection-start-line="9" selection-start-column="56" selection-end-line="9" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TextoProjetos.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
         </state>
       </provider>
     </entry>
@@ -687,10 +644,35 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/TextoPessoas.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="39" lean-forward="true" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tarefa.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#toString#0;class#Tarefa#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TextoProjetos.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="112" selection-start-column="112" selection-end-column="112" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/GereProjetos.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="517" column="82" lean-forward="true" selection-start-line="517" selection-start-column="82" selection-end-line="517" selection-end-column="82" />
+        <state relative-caret-position="181">
+          <caret line="1046" column="65" lean-forward="true" selection-start-line="1046" selection-start-column="65" selection-end-line="1046" selection-end-column="65" />
           <folding>
             <element signature="e#937#3812#0" />
             <element signature="e#3831#3890#0" />
@@ -698,12 +680,15 @@
             <element signature="e#6077#8844#0" />
             <element signature="e#8850#8914#0" />
             <element signature="e#8850#11376#0" />
+            <element signature="e#8941#11370#0" />
             <element signature="e#11816#11880#0" />
             <element signature="e#11816#14387#0" />
             <element signature="e#11358#11457#0" />
             <element signature="e#11328#11865#0" />
-            <element signature="e#11871#13376#0" />
+            <element signature="e#12778#12854#0" />
+            <element signature="e#12778#14626#0" />
             <element signature="e#13721#13740#0" />
+            <element signature="e#14200#22732#0" />
             <element signature="e#14746#15970#0" />
             <element signature="e#16056#18631#0" />
             <element signature="e#17462#17544#0" />
@@ -751,14 +736,17 @@
             <element signature="e#29233#29714#0" />
             <element signature="e#29233#32170#0" />
             <element signature="e#32176#32662#0" />
-            <element signature="e#32176#38468#0" />
+            <element signature="e#32827#33476#1" />
+            <element signature="e#36507#37327#1" />
+            <element signature="e#37544#37963#1" />
             <element signature="e#38475#38607#0" />
             <element signature="e#38475#38694#0" />
             <element signature="e#38700#38766#0" />
             <element signature="e#38700#39309#0" />
             <element signature="e#39315#39382#0" />
             <element signature="e#39315#39917#0" />
-            <element signature="e#50474#50475#0" expanded="true" />
+            <element signature="e#40358#40413#1" />
+            <element signature="e#50050#50051#0" expanded="true" />
           </folding>
         </state>
       </provider>
