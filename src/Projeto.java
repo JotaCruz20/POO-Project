@@ -23,8 +23,8 @@ public class Projeto implements Serializable {
     private ArrayList<Formando> formandos;
     private ArrayList<Doutorado> doutorados;
     //gui main
-    private JFrame frame;
-    private JButton buttonCriaTarefa,buttonEliminaTarefa,buttonListaTarefaNConcluidas,buttonListaTarefasNaoIniciadas,buttonCusto,buttonConclusao,buttonAtualizarConclusao,buttonAtribuiTarefa;
+    private JFrame frame,frameOriginal;
+    private JButton buttonCriaTarefa,buttonEliminaTarefa,buttonListaTarefaNConcluidas,buttonListaTarefasNaoIniciadas,buttonCusto,buttonConclusao,buttonAtualizarConclusao,buttonAtribuiTarefa,buttonAtualizaData,buttonFecharFrame;
     private JPanel panel,panelJuncao,panelJuncaoPesoas,panelResize,panelInformacao;
     private JButton buttonVoltarAtras;
     private JList listaTarefas,listaPessoas;
@@ -55,12 +55,13 @@ public class Projeto implements Serializable {
      * @param dataFim Data de fim do Projeto
      * @param duracao Duração estimada do projeto
      */
-    public Projeto(String nome, String acron, GregorianCalendar dataInicio, GregorianCalendar dataFim, double duracao){
+    public Projeto(String nome, String acron, GregorianCalendar dataInicio, GregorianCalendar dataFim, double duracao,JFrame frameOriginal){
         this.nome=nome;
         this.acron = acron;
         this.dataInicio = dataInicio;
         this.duracao = duracao;
         this.dataFim = dataFim;
+        this.frameOriginal=frameOriginal;
         investigadorPrincipal = null;
         docentes = new ArrayList<Docente>();
         formandos = new ArrayList<Formando>();
@@ -80,7 +81,7 @@ public class Projeto implements Serializable {
      * @param dataFim Data de fim do Projeto
      * @param duracao Duração estimada do projeto
      */
-    public Projeto(String nome, String acron,Pessoa investigadorPrincipal,ArrayList<Tarefa> tarefas, ArrayList<Formando> formandos,ArrayList<Doutorado> doutorados, ArrayList<Docente> docentes, GregorianCalendar dataInicio, GregorianCalendar dataFim, double duracao){
+    public Projeto(String nome, String acron,Pessoa investigadorPrincipal,ArrayList<Tarefa> tarefas,JFrame frameOriginal ,ArrayList<Formando> formandos,ArrayList<Doutorado> doutorados, ArrayList<Docente> docentes, GregorianCalendar dataInicio, GregorianCalendar dataFim, double duracao){
         this.nome=nome;
         this.acron = acron;
         this.investigadorPrincipal = investigadorPrincipal;
@@ -91,6 +92,7 @@ public class Projeto implements Serializable {
         this.doutorados = doutorados;
         this.formandos = formandos;
         this.tarefas = tarefas;
+        this.frameOriginal=frameOriginal;
     }
 
     /**
@@ -101,7 +103,7 @@ public class Projeto implements Serializable {
         frame=new JFrame();
         frame.setLayout(new BorderLayout(30,200));
         panel=new JPanel();
-        panel.setLayout(new GridLayout(8,1,10,10));
+        panel.setLayout(new GridLayout(10,1,10,10));
 
 
         //adicionar a escolhas
@@ -114,6 +116,9 @@ public class Projeto implements Serializable {
         buttonVoltarAtras.addActionListener(new buttonVoltaAtras());
 
         //butoes main
+        buttonFecharFrame=new JButton("Voltar Atras");
+        buttonAtualizaData=new JButton("Atualizar Data");
+        buttonAtualizaData.addActionListener(new atualizaData());
         buttonCriaTarefa= new JButton("Criar Tarefa");
         buttonCriaTarefa.addActionListener(new criaTarefa());
         buttonAtribuiTarefa=new JButton("Atribuir Tarefas");
@@ -139,6 +144,7 @@ public class Projeto implements Serializable {
         panel.add(buttonListaTarefaNConcluidas);
         panel.add(buttonListaTarefasNaoIniciadas);
         panel.add(buttonAtualizarConclusao);
+        panel.add(buttonAtualizaData);
         panel.add(buttonConclusao);
 
         labelInformacaoDataAtual=new JLabel("Data Atual: "+dia+"/"+mes+"/"+ano);
@@ -308,7 +314,7 @@ public class Projeto implements Serializable {
      */
     public DefaultListModel listaPessoas(){
         DefaultListModel list=new DefaultListModel();
-        //list.addElement(investigadorPrincipal.toString());
+        list.addElement(investigadorPrincipal.toString());
         for(int i=0;i<doutorados.size();i++){
             list.addElement(doutorados.get(i).toString());
         }
@@ -328,7 +334,7 @@ public class Projeto implements Serializable {
     public DefaultListModel listarTarefa(){
         DefaultListModel list=new DefaultListModel();
         for (int i = 0; i <tarefas.size() ; i++) {
-           list.addElement(tarefas.get(i).toString());
+            list.addElement(tarefas.get(i).toString());
         }
         return list;
     }
@@ -350,7 +356,7 @@ public class Projeto implements Serializable {
             data1=new GregorianCalendar(Integer.parseInt(dataAtual[0]),Integer.parseInt(dataAtual[1]),Integer.parseInt(dataAtual[2]));
             data2 = tarefas.get(i).dataInicio;
             if (data2.compareTo(data1) > 0) {
-            list.addElement(tarefas.get(i).toString());
+                list.addElement(tarefas.get(i).toString());
             }
         }
         return list;
@@ -371,11 +377,41 @@ public class Projeto implements Serializable {
     }
 
     /**
-     * Vai eliminar uma tarefa da lista
+     * Vai eliminar uma tarefa da lista, da array list de tarefas da pessoa e tirar a sua taxa de esforço
      * @param index Vai eliminar a tarefa na posiçao index da lista
      */
     public void eliminaTarefa(int index){
-        tarefas.remove(index);
+        Pessoa pessoa=tarefas.get(index).getPessoaResponsavel();
+        String[] keep_data;
+        GregorianCalendar dataAtual;
+        try {
+            for (int i = 0; i < pessoa.getTarefas().size(); i++) {
+                if (tarefas.get(index) == pessoa.getTarefas().get(i)) {
+                    keep_data = labelInformacaoDataAtual.getText().split("/");
+                    dataAtual = new GregorianCalendar(Integer.parseInt(keep_data[0]), Integer.parseInt(keep_data[1]), Integer.parseInt(keep_data[2]));
+                    if(tarefas.get(index).getDataInicio().after(dataAtual)) {
+                        pessoa.setEsforco(pessoa.getEsforco() - pessoa.getTarefas().get(i).getTaxaEsforco());
+                    }
+                    pessoa.removeTarefa(i);
+                }
+            }
+            tarefas.remove(index);
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null,"Error a eliminar Tarefa","ERROR!",JOptionPane.PLAIN_MESSAGE);
+        }
+    }
+
+    //nao sei se esta certo tough
+    public double verificaEsforço(GregorianCalendar dataInicial,GregorianCalendar dataFinalTarefa,GregorianCalendar dataFinalTarefaLista,GregorianCalendar dataInicialTarefaLista,Tarefa tarefa){
+        if(dataInicialTarefaLista.after(dataInicial) & dataFinalTarefa.before(dataFinalTarefa)){
+            return tarefa.getTaxaEsforco();
+        }
+        else if(dataFinalTarefaLista.after(dataInicial) & dataFinalTarefaLista.before(dataFinalTarefa)){
+            return tarefa.getTaxaEsforco();
+        }
+        else{
+            return 0;
+        }
     }
 
     /**
@@ -407,27 +443,48 @@ public class Projeto implements Serializable {
             if (opcao==0) {
                 tarefa = new Desenvolvimento(data, duracaoEstimada, pessoa);
                 tarefas.add(tarefa);
+                pessoa.addTarefa(tarefa);
             } else if (opcao==1) {
                 tarefa = new Design(data, duracaoEstimada, pessoa);
                 tarefas.add(tarefa);
+                pessoa.addTarefa(tarefa);
             } else {
                 tarefa = new Documentacao(data, duracaoEstimada, pessoa);
                 tarefas.add(tarefa);
+                pessoa.addTarefa(tarefa);
             }
         }
     }
 
+    //falta testar se esta certoooo
     /**
      * Atribui uma tarefa a uma pessoa
      * @param tarefa Tarefa a atribuir
      * @param pessoa Pessoa cuja tarefa se vai atribuir
      */
     public void atribuirTarefa(Tarefa tarefa,Pessoa pessoa) {
+        double esforco;
+        GregorianCalendar dataFinalTarefaAtribuir,dataFinalTarefa;
+        int durTarefa=(int)Math.ceil(tarefa.getDuracao()),durTarefaFinal;
         if (pessoa == null) {
             JOptionPane.showMessageDialog(null, "Pessoa não existe");
         }
         else{
+            esforco=tarefa.getTaxaEsforco();
+            dataFinalTarefaAtribuir=tarefa.getDataInicio();
+            dataFinalTarefaAtribuir.add(GregorianCalendar.MONTH,durTarefa);
+            for (int i = 0; i <pessoa.getTarefas().size() ; i++) {
+                durTarefaFinal=(int)Math.ceil(pessoa.getTarefas().get(i).getDuracao());
+                dataFinalTarefa=pessoa.getTarefas().get(i).getDataInicio();
+                dataFinalTarefa.add(GregorianCalendar.MONTH,durTarefaFinal);
+                esforco+=verificaEsforço(pessoa.getTarefas().get(i).getDataInicio(),dataFinalTarefa,tarefa.getDataInicio(),dataFinalTarefaAtribuir,pessoa.getTarefas().get(i));
+                if(esforco>1){
+                    JOptionPane.showMessageDialog(null, "Pessoa com taxa de Esforço ao máximo!");
+                    return;
+                }
+            }
             tarefa.atribuirPessoa(pessoa);
+            pessoa.addTarefa(tarefa);
         }
     }
 
@@ -438,6 +495,11 @@ public class Projeto implements Serializable {
      */
     public void atualizaConclusao(Tarefa tarefa, double perConclusao){
         tarefa.setPerConclusao(perConclusao);
+        if(perConclusao==100){
+            Pessoa pessoa=tarefa.getPessoaResponsavel();
+            pessoa.setEsforco(pessoa.getEsforco() - tarefa.getTaxaEsforco());
+            tarefa.setD
+        }
     }
 
     /**
@@ -456,6 +518,49 @@ public class Projeto implements Serializable {
     }
 
     //butoes
+    private class atualizaData implements ActionListener{
+        public void actionPerformed(ActionEvent actionEvent){
+            String value = JOptionPane.showInputDialog(null, "Introduza a data", "Data", JOptionPane.QUESTION_MESSAGE);
+            String[] keep_data;
+            ArrayList<Tarefa> tarefas;
+            int duracao;
+            GregorianCalendar dataFinalEstimada,dataAtual;
+            try {
+                keep_data=value.split("/");
+                labelInformacaoDataAtual.setText("Data atual: "+keep_data[0]+"/"+keep_data[1]+"/"+keep_data[2]);
+                dataAtual=new GregorianCalendar(Integer.parseInt(keep_data[0]),Integer.parseInt(keep_data[1]),Integer.parseInt(keep_data[2]));
+                for(int i = 0; i < formandos.size() ; i++) {
+                    tarefas=formandos.get(i).getTarefas();
+                    if(tarefas!=null) {
+                        for (int j = 0; j < tarefas.size(); j++) {
+                            dataFinalEstimada = tarefas.get(j).getDataInicio();
+                            duracao = (int) Math.ceil(tarefas.get(j).getDuracao());
+                            dataFinalEstimada.add(GregorianCalendar.MONTH, duracao);
+                            if (dataFinalEstimada.after(dataAtual)) {
+                                formandos.get(i).setEsforco(formandos.get(i).getEsforco() + tarefas.get(j).getTaxaEsforco());
+                            }
+                        }
+                    }
+                }
+                for (int i = 0; i <doutorados.size() ; i++) {
+                    tarefas=doutorados.get(i).getTarefas();
+                    if(tarefas!=null) {
+                        for (int j = 0; j < tarefas.size(); j++) {
+                            dataFinalEstimada = tarefas.get(j).getDataInicio();
+                            duracao = (int) Math.ceil(tarefas.get(j).getDuracao());
+                            dataFinalEstimada.add(GregorianCalendar.MONTH, duracao);
+                            if (dataFinalEstimada.after(dataAtual)) {
+                                doutorados.get(i).setEsforco(doutorados.get(i).getEsforco() + tarefas.get(j).getTaxaEsforco());
+                            }
+                        }
+                    }
+                }
+            }catch (NumberFormatException ex){
+                JOptionPane.showMessageDialog(null, "Error a converter data. Verifique que está separada por / e são numeros", "ERRO!", JOptionPane.PLAIN_MESSAGE);
+            }
+        }
+    }
+
     /**
      * Classe que vai implementar o butao para criar uma nova tarefa
      */
@@ -464,7 +569,7 @@ public class Projeto implements Serializable {
             String[] data,dataAtual;
             Date data1,data2;
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-            String dataFim,dataBuffer;
+            String dataBuffer;
             int dia,mes,ano;
             double duracao;
             Pessoa pessoa;
@@ -494,28 +599,29 @@ public class Projeto implements Serializable {
                                 else if (listaPessoas.getSelectedIndices().length > 1) {
                                     JOptionPane.showMessageDialog(null, "Demasiadas Pessoas Selecionadas!");
                                 } else {
-                                    if (listaPessoas.getSelectedIndex() == 1) {
+                                    System.out.println(listaPessoas.getSelectedIndex());
+                                    if (listaPessoas.getSelectedIndex() == 0) {
                                         pessoa = investigadorPrincipal;
                                         if (pessoa.getEsforco() == 1) {
                                             JOptionPane.showMessageDialog(null, "Pessoa tem o esforço no maximo");
                                             return;
                                         }
-                                    } else if (listaPessoas.getSelectedIndex() > 1 & listaPessoas.getSelectedIndex() < 1 + formandos.size()) {
-                                        pessoa = formandos.get(listaPessoas.getSelectedIndex() - 2);
+                                    } else if (listaPessoas.getSelectedIndex() > 0 & listaPessoas.getSelectedIndex() < formandos.size()) {
+                                        pessoa = formandos.get(listaPessoas.getSelectedIndex() - 1);
                                         if (pessoa.getEsforco() == 1) {
                                             JOptionPane.showMessageDialog(null, "Pessoa tem o esforço no maximo");
                                             return;
                                         }
                                         //falta ver se a tarefa pode ser feita ou nao
-                                    } else if(listaPessoas.getSelectedIndex()>1+formandos.size() & listaPessoas.getSelectedIndex()<1+formandos.size()+doutorados.size()) {
-                                        pessoa = doutorados.get(listaPessoas.getSelectedIndex() - 2 - formandos.size());
+                                    } else if(listaPessoas.getSelectedIndex()>formandos.size() & listaPessoas.getSelectedIndex()<formandos.size()+doutorados.size()) {
+                                        pessoa = doutorados.get(listaPessoas.getSelectedIndex() - 1 - formandos.size());
                                         if (pessoa.getEsforco() == 1) {
                                             JOptionPane.showMessageDialog(null, "Pessoa tem o esforço no maximo");
                                             return;
                                         }
                                     }
                                     else{
-                                        pessoa=docentes.get(listaPessoas.getSelectedIndex()-2-formandos.size()-doutorados.size());
+                                        pessoa=docentes.get(listaPessoas.getSelectedIndex()-1-formandos.size()-doutorados.size());
                                         if (pessoa.getEsforco() == 1) {
                                             JOptionPane.showMessageDialog(null, "Pessoa tem o esforço no maximo");
                                             return;
@@ -524,30 +630,15 @@ public class Projeto implements Serializable {
                                     dataBuffer = labelInformacaoDataAtual.getText();
                                     dataAtual = dataBuffer.split(" ");
                                     dataAtual = dataAtual[2].split("/");
-                                    JOptionPane.showMessageDialog(null, dataAtual[2] + "" + ano + " " + dataAtual[1] + " " + mes + " " + dataAtual[0] + " " + dia);
-                                    if (Integer.parseInt(dataAtual[2]) < ano) {
-                                        JOptionPane.showMessageDialog(null, "Data inferior a data atual!");
-                                        return;
-                                    } else if (Integer.parseInt(dataAtual[1]) < mes) {
-                                        JOptionPane.showMessageDialog(null, "Data inferior a data atual!");
-                                        return;
-                                    } else if (Integer.parseInt(dataAtual[0]) < dia) {
-                                        JOptionPane.showMessageDialog(null, "Data inferior a data atual!");
-                                        return;
-                                    } else {
-                                        dataBuffer = labelInformacaoDataAtual.getText();
-                                        dataAtual = dataBuffer.split(" ");
-                                        dataAtual = dataAtual[2].split("/");
-                                        data1 = sdf.parse(dataAtual[0] + "/" + dataAtual[1] + "/" + dataAtual[2]);
-                                        data2 = sdf.parse(dia + "/" + mes + "/" + ano);
-                                        if (data2.compareTo(data1)<0) {
-                                            JOptionPane.showMessageDialog(null, "Data Inserida inferior a data atual!");
-                                            return ;
-                                        } else {
+                                    data1 = sdf.parse(dataAtual[0] + "/" + dataAtual[1] + "/" + dataAtual[2]);
+                                    data2 = sdf.parse(dia + "/" + mes + "/" + ano);
+                                    if (data2.compareTo(data1)<0) {
+                                        JOptionPane.showMessageDialog(null, "Data Inserida inferior a data atual!");
+                                        return ;
+                                    }else {
                                             criaTarefa(pessoa, duracao, dia, mes, ano, c.getSelectedIndex());
                                         }
                                     }
-                                }
                                 panelJuncao.removeAll();
                                 panelLista.removeAll();
                                 DefaultListModel listListaValues;
@@ -638,6 +729,13 @@ public class Projeto implements Serializable {
             frameAtualiza.setVisible(false);
             frameLista.setVisible(false);
             frame.setVisible(true);
+        }
+    }
+
+    private class fecharFrame implements ActionListener{
+        public void actionPerformed(ActionEvent e) {
+            frame.setVisible(false);
+            frameOriginal.setVisible(true);
         }
     }
 

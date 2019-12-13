@@ -1,12 +1,14 @@
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class Licenciado extends Formando implements Serializable {
 
-    public Licenciado(String nome, String email, int diaFim, int mesFim, int anoFim){
-        super(nome,email,diaFim,mesFim,anoFim);
-        this.docentes=null;
+    public Licenciado(String nome, String email, GregorianCalendar dataInicio, GregorianCalendar dataFim){
+        super(nome,email,dataInicio,dataFim);
+        this.docentes=new ArrayList<>();
+        this.tarefas=new ArrayList<>();
     }
 
     public double getCusto(){

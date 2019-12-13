@@ -9,11 +9,16 @@ public class Docente extends Pessoa implements Serializable {
 
     public Docente(String nome, String email,int numMecanografico, String areaInvestigacao){
         super(nome,email);
+        this.tarefas=new ArrayList<>();
         this.numMecanografico = numMecanografico;
         this.areaInvestigacao = areaInvestigacao;
-        formandos = null;
-        projetos = null;
+        formandos = new ArrayList<>();
+        projetos = new ArrayList<>();
 
+    }
+
+    public void addTarefa(Tarefa tarefa){
+        this.tarefas.add(tarefa);
     }
 
     public void adicionaFormando(Formando formando){

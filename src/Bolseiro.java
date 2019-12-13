@@ -1,31 +1,19 @@
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.util.Scanner;
 
 abstract class Bolseiro extends Pessoa implements Serializable {
     protected GregorianCalendar dataInicio;
     protected GregorianCalendar dataFim;
     protected Projeto projeto;
 
-    public Bolseiro(String nome, String email, int diaFim, int mesFim, int anoFim){super(nome,email);}
-       /* super(nome,email);
-        boolean invalido;
-        Scanner sc = new Scanner(System.in);
-        GregorianCalendar dataInicioLocal = new GregorianCalendar();
-        GregorianCalendar dataFimLocal = new GregorianCalendar(anoFim,mesFim,diaFim);
-        while(dataFimLocal.compareTo(dataInicioLocal)<0) {
-            System.out.println("Data inválida.Insira novos valores");
-            diaFim = sc.nextByte();
-            mesFim = sc.nextByte();
-            anoFim = sc.nextByte();
-            dataFimLocal = new GregorianCalendar(anoFim,mesFim,diaFim);
-        }
-        this.dataInicio = dataInicioLocal;
-        this.dataFim = dataFimLocal;
-        this.projeto = null;
-
-    }*/
+    public Bolseiro(String nome, String email,GregorianCalendar dataInicio,GregorianCalendar dataFim){
+        super(nome,email);
+        this.dataInicio=dataInicio;
+        this.dataFim=dataFim;
+        this.tarefas=new ArrayList<>();
+    }
 
     public abstract double getCusto();
 
@@ -44,9 +32,4 @@ abstract class Bolseiro extends Pessoa implements Serializable {
         }
         return total;
     }
-
-    /*@Override
-    public String toString() {
-        return super.toString()+""
-    }*/
 }

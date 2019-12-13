@@ -12,6 +12,10 @@ public class Tarefa implements Serializable {
     protected Pessoa pessoaResponsavel;
     protected double perConclusao;
 
+    public Pessoa getPessoaResponsavel() {
+        return pessoaResponsavel;
+    }
+
     public double getTaxaEsforco(){ return 0; }
 
     public void atribuirPessoa(Pessoa pessoa){
@@ -29,6 +33,7 @@ public class Tarefa implements Serializable {
     public double getDuracao() {
         return duracao;
     }
+
 
     public GregorianCalendar getDataInicio() {
         return dataInicio;

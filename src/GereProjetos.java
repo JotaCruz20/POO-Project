@@ -949,7 +949,6 @@ public class GereProjetos implements Serializable {
      */
     private boolean lerPessoa(File ficheiroPessoas,File textoPessoas ){
         String line;
-
         if (ficheiroPessoas.exists() && ficheiroPessoas.isFile()) { //abre ficheiro de objetos
             try {
                 FileInputStream fo = new FileInputStream(ficheiroPessoas);

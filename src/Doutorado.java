@@ -1,10 +1,17 @@
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class Doutorado extends Bolseiro implements Serializable {
 
-    public Doutorado(String nome, String email, int diaFim, int mesFim, int anoFim){
-        super(nome,email,diaFim,mesFim,anoFim);
+    public Doutorado(String nome, String email, GregorianCalendar dataInicio, GregorianCalendar dataFim){
+        super(nome,email,dataInicio,dataFim);
+        this.tarefas=new ArrayList<>();
+    }
+
+    public void addTarefa(Tarefa tarefa){
+        this.tarefas.add(tarefa);
     }
 
     public double getCusto(){

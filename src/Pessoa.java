@@ -11,7 +11,19 @@ abstract class Pessoa implements Serializable {
         this.nome = nome;
         this.email = email;
         this.esforco = 0;
-        this.tarefas =null;
+        this.tarefas =new ArrayList<>();
+    }
+
+    public ArrayList<Tarefa> getTarefas() {
+        return tarefas;
+    }
+
+    public void setEsforco(double esforco) {
+        this.esforco = esforco;
+    }
+
+    public void removeTarefa(int index){
+        this.tarefas.remove(index);
     }
 
     public void toStringTarefas(){
@@ -29,6 +41,8 @@ abstract class Pessoa implements Serializable {
     public double getEsforco() {
         return esforco;
     }
+
+    public abstract void addTarefa(Tarefa tarefa);
 
     public abstract double getCusto();
 
